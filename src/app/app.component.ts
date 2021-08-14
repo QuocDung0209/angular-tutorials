@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'bootstrap-tooltip';
+  title: string = "Tooltip - Attribute Directive";
+  test = `<img src=nonexistentimage onerror="alert('Hello there')" />`;
 }
