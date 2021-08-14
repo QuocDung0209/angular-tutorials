@@ -3,16 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TooltipDirective } from './shared/directives/tooltip.directive';
-import { AddClassDirective } from './shared/directives/add-class.directive';
-import { IfDirective } from './shared/directives/if.directive';
+import { TooltipDirective } from './directives/tooltip.directive';
+import { AddClassDirective } from './directives/add-class.directive';
+import { IfDirective } from './directives/if.directive';
+import { TooltipDirectiveComponent } from './components/tooltip-directive/tooltip-directive.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TooltipDirective,
     AddClassDirective,
-    IfDirective
+    IfDirective,
+    TooltipDirectiveComponent
   ],
   imports: [
     BrowserModule,
