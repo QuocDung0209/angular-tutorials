@@ -9,6 +9,7 @@ import { IfDirective } from './directives/if.directive';
 import { TooltipDirectiveComponent } from './components/tooltip-directive/tooltip-directive.component';
 import { ClickOutsideComponent } from './components/click-outside/click-outside.component';
 import { DragDropComponent } from './components/drag-drop/drag-drop.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DragDropComponent } from './components/drag-drop/drag-drop.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

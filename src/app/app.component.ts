@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title: string = "Tooltip - Attribute Directive";
-  test = `<img src=nonexistentimage onerror="alert('Hello there')" />`;
+export class AppComponent implements OnInit {
+  ngOnInit() {
+  }
 }

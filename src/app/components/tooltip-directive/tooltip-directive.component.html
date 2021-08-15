@@ -1,7 +1,27 @@
-<h1>{{title}}</h1>
+<div class="d-flex flex-row justify-content-around align-items-center">
+  <h1>{{title}}</h1>
+  <div class="action">
+    <button class="btn btn-primary circle me-2" placement="bottom" tooltip="Code" data-bs-toggle="modal"
+      data-bs-target="#tooltipDirective"><i class="fa fa-file-code-o" aria-hidden="true"></i></button>
+    <button class="btn btn-dark circle me-2" placement="bottom" tooltip="Source Code"><i class="fa fa-github"
+        aria-hidden="true"></i></button>
+    <div class="btn-group">
+      <button class="btn btn-info circle" tooltip="Tutorial" data-bs-toggle="dropdown" aria-expanded="false"><i
+          class="fa fa-globe" aria-hidden="true"></i></button>
+      <ul class="dropdown-menu mt-2">
+        <li><a class="dropdown-item"
+            href="https://quocdung0209.blogspot.com/2021/08/cach-tao-tooltip-directive-trong-angular.html"
+            target="_blank">Cách tạo Tooltip Directive trong Angular</a></li>
+        <li><a class="dropdown-item"
+            href="https://quocdung0209.blogspot.com/2021/08/tooltip-directive-with-popperjs.html" target="_blank">Định
+            vị vị trí cho Tooltip Directive sử dụng Popper.js Core</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
 <div class="d-flex flex-row justify-content-around mt-5">
-    <div class="btn btn-primary" [htmlTooltip]="true" placement="top" [tooltip]="'Top'">Top</div>
-    <div class="btn btn-primary" placement="right" tooltip="Right">Right</div>
-    <div class="btn btn-primary" placement="bottom" tooltip="Bottom">Bottom</div>
-    <div class="btn btn-primary" placement="left" tooltip="Left">Left</div>
+  <div class="btn btn-primary" [htmlTooltip]="true" placement="top" [tooltip]="'Top'">Top</div>
+  <div class="btn btn-primary" placement="right" tooltip="Right">Right</div>
+  <div class="btn btn-primary" placement="bottom" tooltip="Bottom">Bottom</div>
+  <div class="btn btn-primary" placement="left" tooltip="Left">Left</div>
 </div>
