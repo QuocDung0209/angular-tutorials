@@ -25,3 +25,33 @@
   <div class="btn btn-primary" placement="bottom" tooltip="Bottom">Bottom</div>
   <div class="btn btn-primary" placement="left" tooltip="Left">Left</div>
 </div>
+<div class="modal fade" id="tooltipDirective" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Tooltip Directive Code</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="nav nav-tabs">
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-1">tooltip.directive.ts</button>
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">styles.scss</button>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane fade active show" id="tab-1">
+            <div class="code-block">
+              <!-- <div class="filename">tooltip.directive.ts</div> -->
+              <pre [innerHTML]="tsCode"></pre>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="tab-2">
+            <div class="code-block">
+              <pre [innerHTML]="cssCode"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
