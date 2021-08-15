@@ -1,6 +1,7 @@
-# BootstrapTooltip
+# Custom Directives Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.3.
+Snippet Code and Demo for Customizing Attribute and Structural Directives and Some other demo
 
 ## Development server
 
