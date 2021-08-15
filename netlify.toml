@@ -1,6 +1,6 @@
 [build]
   command = "yarn build"
-  publish = "/dist/custom-directive-angular"
+  publish = "/dist"
   base = "/"
 
 [[redirects]]
