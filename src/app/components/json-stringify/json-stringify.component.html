@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="w-auto badge bg-primary ms-3 p-1 mb-2">Input text</div>
+  <div class="col-12">
+    <textarea name="text-input" id="text-input" cols="30" rows="10" class="form-control" style="resize: none;"
+      [ngModel]="text" (ngModelChange)="stringify($event)"></textarea>
+  </div>
+  <div class="w-auto badge bg-secondary ms-3 p-1 mt-3 mb-2">Stringified text</div>
+  <div class="col-12">
+    <textarea name="text-input" id="text-input" cols="30" rows="10" class="form-control" style="resize: none;"
+      [value]="stringifiedText"></textarea>
+  </div>
+</div>

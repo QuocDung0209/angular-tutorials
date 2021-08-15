@@ -10,6 +10,7 @@ import { TooltipDirectiveComponent } from './components/tooltip-directive/toolti
 import { ClickOutsideComponent } from './components/click-outside/click-outside.component';
 import { DragDropComponent } from './components/drag-drop/drag-drop.component';
 import { FormsModule } from '@angular/forms';
+import { JsonStringifyComponent } from './components/json-stringify/json-stringify.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     IfDirective,
     TooltipDirectiveComponent,
     ClickOutsideComponent,
-    DragDropComponent
+    DragDropComponent,
+    JsonStringifyComponent
   ],
   imports: [
     BrowserModule,
