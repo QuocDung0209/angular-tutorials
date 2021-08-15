@@ -7,6 +7,8 @@ import { TooltipDirective } from './directives/tooltip.directive';
 import { AddClassDirective } from './directives/add-class.directive';
 import { IfDirective } from './directives/if.directive';
 import { TooltipDirectiveComponent } from './components/tooltip-directive/tooltip-directive.component';
+import { ClickOutsideComponent } from './components/click-outside/click-outside.component';
+import { DragDropComponent } from './components/drag-drop/drag-drop.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { TooltipDirectiveComponent } from './components/tooltip-directive/toolti
     TooltipDirective,
     AddClassDirective,
     IfDirective,
-    TooltipDirectiveComponent
+    TooltipDirectiveComponent,
+    ClickOutsideComponent,
+    DragDropComponent
   ],
   imports: [
     BrowserModule,
