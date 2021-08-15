@@ -1,4 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+/***********************************************
+*** CSS For Tooltip Directive
+************************************************/
 .ng-tooltip {
   position: absolute;
   max-width: 150px;
@@ -16,6 +18,7 @@
   position: absolute;
   border-style: solid;
 }
+.ng-tooltip[data-popper-placement^="top"]:after,
 .ng-tooltip-top:after {
   top: 100%;
   left: 50%;
@@ -23,6 +26,7 @@
   border-width: 5px;
   border-color: black transparent transparent transparent;
 }
+.ng-tooltip[data-popper-placement^="bottom"]:after,
 .ng-tooltip-bottom:after {
   bottom: 100%;
   left: 50%;
@@ -30,6 +34,7 @@
   border-width: 5px;
   border-color: transparent transparent black transparent;
 }
+.ng-tooltip[data-popper-placement^="left"]:after,
 .ng-tooltip-left:after {
   top: 50%;
   left: 100%;
@@ -37,6 +42,7 @@
   border-width: 5px;
   border-color: transparent transparent transparent black;
 }
+.ng-tooltip[data-popper-placement^="right"]:after,
 .ng-tooltip-right:after {
   top: 50%;
   right: 100%;
@@ -48,10 +54,10 @@
   opacity: 1;
 }
 
-.blue {
-  background-color: lightblue;
-}
+/***********************************************
+*** Others
+************************************************/
 
-.red {
-  color: red;
+.circle {
+  border-radius: 50% !important;
 }

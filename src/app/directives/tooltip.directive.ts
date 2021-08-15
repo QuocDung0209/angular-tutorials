@@ -7,6 +7,7 @@ import {
   SecurityContext,
 } from '@angular/core';
 import { DomSanitizer } from "@angular/platform-browser";
+import { createPopper, Placement } from '@popperjs/core';
 
 @Directive({
   selector: '[tooltip]'
@@ -15,7 +16,7 @@ export class TooltipDirective {
   @Input('tooltip')
   tooltipTitle!: string; // tooltipTitle may be string or HTML element
   @Input()
-  placement!: string;
+  placement: Placement = 'top';
   @Input()
   delay: string | any;
   tooltip: HTMLElement | any;
@@ -40,7 +41,7 @@ export class TooltipDirective {
 
   show() {
     this.create();
-    this.setPosition();
+    this.setPositionByPopper();
     this.renderer.addClass(this.tooltip, 'ng-tooltip-show');
   }
 
@@ -72,7 +73,7 @@ export class TooltipDirective {
     // this.renderer.appendChild(this.el.nativeElement, this.tooltip);
 
     this.renderer.addClass(this.tooltip, 'ng-tooltip');
-    this.renderer.addClass(this.tooltip, `ng-tooltip-${this.placement}`);
+    // this.renderer.addClass(this.tooltip, `ng-tooltip-${this.placement}`);
 
     // delay setting
     this.renderer.setStyle(this.tooltip, '-webkit-transition', `opacity ${this.delay}ms`);
@@ -119,7 +120,23 @@ export class TooltipDirective {
     }
 
     // When scrolling occurs, the vertical scroll coordinate value should be reflected on the top of the tooltip element.
+    // If we don't plus scrollPos, when the scroll happens, the position of the tooltip will be incorrect.
+    // Because Element.getBoundingClientRect() returns its position according to the viewport
     this.renderer.setStyle(this.tooltip, 'top', `${top + scrollPos}px`);
     this.renderer.setStyle(this.tooltip, 'left', `${left}px`);
+  }
+
+  setPositionByPopper() {
+    createPopper(this.el.nativeElement, this.tooltip, {
+      placement: this.placement,
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, this.offset],
+          },
+        },
+      ],
+    });
   }
 }
