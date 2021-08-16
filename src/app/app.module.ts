@@ -12,6 +12,7 @@ import { DragDropComponent } from './components/drag-drop/drag-drop.component';
 import { FormsModule } from '@angular/forms';
 import { JsonStringifyComponent } from './components/json-stringify/json-stringify.component';
 import { TooltipCssComponent } from './components/tooltip-css/tooltip-css.component';
+import { BootstrapFormsComponent } from './components/bootstrap-forms/bootstrap-forms.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TooltipCssComponent } from './components/tooltip-css/tooltip-css.compon
     ClickOutsideComponent,
     DragDropComponent,
     JsonStringifyComponent,
-    TooltipCssComponent
+    TooltipCssComponent,
+    BootstrapFormsComponent
   ],
   imports: [
     BrowserModule,

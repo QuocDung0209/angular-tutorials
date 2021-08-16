@@ -1,0 +1,53 @@
+<div class="d-flex flex-row justify-content-around align-items-center">
+  <h1>{{title}}</h1>
+  <div class="action">
+    <button class="btn btn-primary circle me-2" placement="bottom" tooltip="Code" data-bs-toggle="modal"
+      data-bs-target="#tooltipDirective" (click)="embededProject()"><i class="fa fa-file-code-o"
+        aria-hidden="true"></i></button>
+    <a class="btn btn-dark circle me-2" placement="bottom" tooltip="Source Code"
+      href="https://github.com/QuocDung0209/custom-directive-angular/tree/tooltip-directive-v1.0" target="_blank"><i
+        class="fa fa-github" aria-hidden="true"></i></a>
+    <div class="btn-group">
+      <button class="btn btn-info circle" tooltip="Tutorial" data-bs-toggle="dropdown" aria-expanded="false"><i
+          class="fa fa-globe" aria-hidden="true"></i></button>
+      <ul class="dropdown-menu mt-2">
+        <li><a class="dropdown-item"
+            href="https://quocdung0209.blogspot.com/2021/08/cach-tao-tooltip-directive-trong-angular.html"
+            target="_blank">Cách tạo Tooltip Directive trong Angular</a></li>
+        <li><a class="dropdown-item"
+            href="https://quocdung0209.blogspot.com/2021/08/tooltip-directive-with-popperjs.html" target="_blank">Định
+            vị vị trí cho Tooltip Directive sử dụng Popper.js Core</a></li>
+        <li><a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/forms/layout/#forms" target="_blank">
+            Bootstrap Form Layout
+          </a></li>
+        <li><a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/forms/validation/" target="_blank">
+            Bootstrap Form Validation
+          </a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="tooltipDirective" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Invalid Tooltip Directive Playground</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="invalid-tooltip-project"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-center mb-3 mt-5 pt-5">
+  <div class="col-12 mb-5">
+    <p class="w-75 bg-primary text-white m-auto py-3 text-center rounded fs-4">This part reuse and recustom <a
+        class="text-white fw-bold" routerLink="/tooltip-directive">tooltip directive</a>.</p>
+  </div>
+  <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+  <div class="col-sm-6">
+    <input type="email" class="form-control is-invalid" tooltip="Required" id="inputEmail3" [invalid]="true">
+  </div>
+</div>
