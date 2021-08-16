@@ -1,22 +1,22 @@
 .demo {
-    margin: auto;
-    margin-top: 50px;
-    padding: 70px;
-    height: 300px;
-    width: 600px;
-    border: 1px solid #cccccc;
-    position: relative;
-    overflow: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  margin: auto;
+  margin-top: 50px;
+  padding: 70px;
+  height: 300px;
+  width: 600px;
+  border: 1px solid #cccccc;
+  position: relative;
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .button {
-    background-color: aquamarine;
-    border: none;
-    border-radius: 5px;
-    width: 80px;
+  background-color: aquamarine;
+  border: none;
+  border-radius: 5px;
+  width: 80px;
 }
 
 /**
@@ -24,34 +24,34 @@
  */
 /* Base styles for the element that has a tooltip */
 [d-tooltip] {
-    position: relative;
-    cursor: pointer;
+  position: relative;
+  cursor: pointer;
 }
 
 /* Base styles for the tooltip's directional arrow */
 /* This will create a square 12px */
 [d-tooltip]:hover:before {
-    position: absolute;
-    z-index: 1001;
-    border: 6px solid transparent;
-    background: transparent;
-    content: "";
-    // transition: all 0.2s ease-in-out;
+  position: absolute;
+  z-index: 1001;
+  border: 6px solid transparent;
+  background: transparent;
+  content: "";
+  // transition: all 0.2s ease-in-out;
 }
 /* Base styles for the tooltip's content area */
 [d-tooltip]:hover:after {
-    content: attr(d-tooltip); // Insert content of d-tooltip attribute
-    position: absolute;
-    z-index: 1000;
-    padding: 8px;
-    width: 160px;
-    border-radius: 5px;
-    background-color: rgba(51, 51, 51, 0.9);
-    color: #fff;
-    font-size: 14px;
-    line-height: 1.2;
-    pointer-events: none;
-    // transition: all 0.2s ease-in-out;
+  content: attr(d-tooltip); // Insert content of d-tooltip attribute
+  position: absolute;
+  z-index: 1000;
+  padding: 8px;
+  width: 160px;
+  border-radius: 5px;
+  background-color: rgba(51, 51, 51, 0.9);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.2;
+  pointer-events: none;
+  // transition: all 0.2s ease-in-out;
 }
 
 /* Directions */
@@ -59,70 +59,122 @@
 /* Put :before and :after elements starting at the center of the parent element */
 [d-tooltip]:hover:before,
 [d-tooltip]:hover:after {
-    bottom: 100%;
-    left: 50%;
+  bottom: 100%;
+  left: 50%;
 }
 /* Center :before and ::after elements with parent element
 ** by moving it to the front with half its size.
 **/
 [d-tooltip]:hover:before {
-    border-top-color: rgba(51, 51, 51, 0.9);
-    margin-left: -6px;
+  border-top-color: rgba(51, 51, 51, 0.9);
+  margin-left: -6px;
 }
 /* Horizontally align top/bottom tooltips */
 [d-tooltip]:hover:after {
-    margin-left: -80px;
-    margin-bottom: 12px;
+  margin-left: -80px;
+  margin-bottom: 12px;
 }
 
 /* Left */
 /* Vertically center align with parent element */
 [tooltip-position="left"]:hover:before,
 [tooltip-position="left"]:hover:after {
-    right: 100%;
-    bottom: 50%;
-    left: auto;
+  right: 100%;
+  bottom: 50%;
+  left: auto;
 }
 [tooltip-position="left"]:hover:before {
-    margin-bottom: -6px;
-    border-top-color: transparent;
-    border-left-color: rgba(51, 51, 51, 0.9);
+  margin-bottom: -6px;
+  border-top-color: transparent;
+  border-left-color: rgba(51, 51, 51, 0.9);
 }
 [tooltip-position="left"]:hover:after {
-    margin-right: 12px;
-    margin-bottom: -16px;
+  margin-right: 12px;
+  margin-bottom: -16px;
 }
 
 /* Bottom */
 [tooltip-position="bottom"]:hover:before,
 [tooltip-position="bottom"]:hover:after {
-    top: 100%;
-    bottom: auto;
-    left: 50%;
+  top: 100%;
+  bottom: auto;
+  left: 50%;
 }
 [tooltip-position="bottom"]:hover:before {
-    margin-bottom: 0;
-    border-top-color: transparent;
-    border-bottom-color: rgba(51, 51, 51, 0.9);
+  margin-bottom: 0;
+  border-top-color: transparent;
+  border-bottom-color: rgba(51, 51, 51, 0.9);
 }
 
 [tooltip-position="bottom"]:hover:after {
-    margin-top: 12px;
+  margin-top: 12px;
 }
 
 /* Right */
 [tooltip-position="right"]:hover:before,
 [tooltip-position="right"]:hover:after {
-    bottom: 50%;
-    left: 100%;
+  bottom: 50%;
+  left: 100%;
 }
 [tooltip-position="right"]:hover:before {
-    margin-bottom: -6px;
-    margin-left: 0;
-    border-top-color: transparent;
-    border-right-color: rgba(51, 51, 51, 0.9);
+  margin-bottom: -6px;
+  margin-left: 0;
+  border-top-color: transparent;
+  border-right-color: rgba(51, 51, 51, 0.9);
 }
 [tooltip-position="right"]:hover:after {
-    margin-bottom: -16px;
-    margin-left: 12px;
+  margin-bottom: -16px;
+  margin-left: 12px;
+}
+
+/**
+ * Style CSS for Tooltip Popper
+ */
+#tooltip {
+  background: #333;
+  color: white;
+  font-weight: bold;
+  padding: 4px 8px;
+  font-size: 13px;
+  border-radius: 4px;
+  position: fixed !important;
+  display: none;
+}
+
+#tooltip[data-show] {
+  display: block;
+}
+
+#arrow,
+#arrow::before {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+}
+
+#arrow {
+  visibility: hidden;
+}
+
+#arrow::before {
+  visibility: visible;
+  content: "";
+  transform: rotate(45deg);
+}
+
+#tooltip[data-popper-placement^="top"] > #arrow {
+  bottom: -4px;
+}
+
+#tooltip[data-popper-placement^="bottom"] > #arrow {
+  top: -4px;
+}
+
+#tooltip[data-popper-placement^="left"] > #arrow {
+  right: -4px;
+}
+
+#tooltip[data-popper-placement^="right"] > #arrow {
+  left: -4px;
 }
