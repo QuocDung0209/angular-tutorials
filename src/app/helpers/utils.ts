@@ -1,0 +1,1 @@
+export const isUndifined = (value: any) => value === undefined;

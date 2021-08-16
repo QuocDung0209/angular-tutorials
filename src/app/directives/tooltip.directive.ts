@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { DomSanitizer } from "@angular/platform-browser";
 import { createPopper, Placement } from '@popperjs/core';
+import { isUndifined } from '../helpers/utils';
 
 @Directive({
   selector: '[tooltip]'
@@ -24,6 +25,7 @@ export class TooltipDirective {
   offset = 10;
   // Allow HTML in the tooltip.
   @Input() htmlTooltip: boolean = false;
+  @Input() invalid!: boolean;
 
   constructor(
     private el: ElementRef,
@@ -32,7 +34,7 @@ export class TooltipDirective {
   ) { }
 
   @HostListener('mouseenter') onMouseEnter() {
-    if (!this.tooltip) { this.show(); }
+    if ((isUndifined(this.invalid) || this.invalid) && !this.tooltip) { this.show(); }
   }
 
   @HostListener('mouseleave') onMouseLeave() {
@@ -74,6 +76,10 @@ export class TooltipDirective {
 
     this.renderer.addClass(this.tooltip, 'ng-tooltip');
     // this.renderer.addClass(this.tooltip, `ng-tooltip-${this.placement}`);
+
+    if (this.invalid) {
+      this.renderer.addClass(this.tooltip, 'invalid');
+    }
 
     // delay setting
     this.renderer.setStyle(this.tooltip, '-webkit-transition', `opacity ${this.delay}ms`);
@@ -127,6 +133,11 @@ export class TooltipDirective {
   }
 
   setPositionByPopper() {
+    if (this.invalid) {
+      this.placement = 'bottom-start';
+      this.offset = 2;
+    }
+
     createPopper(this.el.nativeElement, this.tooltip, {
       placement: this.placement,
       modifiers: [
