@@ -1269,6 +1269,11 @@
     "@angular-devkit/schematics" "12.1.4"
     jsonc-parser "3.0.0"
 
+"@stackblitz/sdk@^1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@stackblitz/sdk/-/sdk-1.5.2.tgz#8589c4f6dd8df69bc82f67c2677754ef87ab16f3"
+  integrity sha512-rV8HJb7pti8UBROgVUbxc6f1DGxuUpaGCdQvxvHcGecwqqVMB4XAOzeGuk4HkQLmyCrH/9qTbNA6ch4FwQZRDQ==
+
 "@tootallnate/once@1":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
