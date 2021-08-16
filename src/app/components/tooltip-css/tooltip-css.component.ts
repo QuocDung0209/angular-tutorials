@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { createPopper } from '@popperjs/core';
+import hljs from 'highlight.js/lib/common';
+import { CSS_CODE, TS_CODE } from 'src/app/constants/tooltip-css.constant';
 
 @Component({
   selector: 'app-tooltip-css',
@@ -7,6 +9,9 @@ import { createPopper } from '@popperjs/core';
   styleUrls: ['./tooltip-css.component.scss']
 })
 export class TooltipCssComponent implements OnInit {
+  title: string = "Tooltip CSS and Popper.js";
+  tsCode = hljs.highlight(TS_CODE, { language: 'typescript' }).value;
+  cssCode = hljs.highlight(CSS_CODE, { language: 'css' }).value;
 
   constructor() { }
 

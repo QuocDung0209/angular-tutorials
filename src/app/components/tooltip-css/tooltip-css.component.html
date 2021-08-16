@@ -1,8 +1,51 @@
+<div class="d-flex flex-row justify-content-around align-items-center">
+  <h1>{{title}}</h1>
+  <div class="action">
+    <button class="btn btn-primary circle me-2" placement="bottom" tooltip="Code" data-bs-toggle="modal"
+      data-bs-target="#tooltipDirective"><i class="fa fa-file-code-o" aria-hidden="true"></i></button>
+    <a class="btn btn-dark circle me-2" placement="bottom" tooltip="Source Code"
+      href="https://github.com/QuocDung0209/custom-directive-angular/tree/tooltip-directive-v1.0" target="_blank"><i
+        class="fa fa-github" aria-hidden="true"></i></a>
+    <a class="btn btn-info circle" tooltip="Tutorial"
+      href="https://quocdung0209.blogspot.com/2021/08/cach-tao-tooltip-voi-css.html" target="_blank">
+      <i class="fa fa-globe" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
+<div class="modal fade" id="tooltipDirective" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Tooltip CSS Code</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="nav nav-tabs">
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-1">Javascript</button>
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">CSS</button>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane fade active show" id="tab-1">
+            <div class="code-block">
+              <pre [innerHTML]="tsCode"></pre>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="tab-2">
+            <div class="code-block">
+              <pre [innerHTML]="cssCode"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="demo">
-    <button class="button" d-tooltip="Tớ ở trên đây nè!">Top</button>
-    <button class="button" d-tooltip="Bạn nhìn bên trái nha!" tooltip-position="left">Left</button>
-    <button class="button" d-tooltip="Tớ ở bên phải nhé!" tooltip-position="right">Right</button>
-    <button class="button" d-tooltip="Tao ở dưới này nè!" tooltip-position="bottom">Bottom</button>
+  <button class="button" d-tooltip="Tớ ở trên đây nè!">Top</button>
+  <button class="button" d-tooltip="Bạn nhìn bên trái nha!" tooltip-position="left">Left</button>
+  <button class="button" d-tooltip="Tớ ở bên phải nhé!" tooltip-position="right">Right</button>
+  <button class="button" d-tooltip="Tao ở dưới này nè!" tooltip-position="bottom">Bottom</button>
 </div>
 <div style="
     margin: auto;
@@ -14,15 +57,15 @@
     max-height: 150px;
     max-width: 450px;
     ">
-    <button style="margin: 10px 20px;" class="button" d-tooltip="Oh No!">CSS</button>
-    <button class="button" id="button">Popper.js</button>
-    <div id="tooltip">
-        Hello! Oh Yeah!
-        <span id="arrow" data-popper-arrow></span>
-    </div>
-    <button style="margin: 10px 20px;" class="button" d-tooltip="Oh No!" tooltip-position="right">CSS</button>
-    <div>Placeholder text to demonstrate some inline links with tooltips. This is now just filler, no killer. Content
-        placed here just to mimic the presence of real text. And all that just to give you an idea of how tooltips would
-        look when used in real-world situations. So hopefully you've now seen how these tooltips on links can work in
-        practice, once you use them on your own site or project.</div>
+  <button style="margin: 10px 20px;" class="button" d-tooltip="Oh No!">CSS</button>
+  <button class="button" id="button">Popper.js</button>
+  <div id="tooltip">
+    Hello! Oh Yeah!
+    <span id="arrow" data-popper-arrow></span>
+  </div>
+  <button style="margin: 10px 20px;" class="button" d-tooltip="Oh No!" tooltip-position="right">CSS</button>
+  <div>Placeholder text to demonstrate some inline links with tooltips. This is now just filler, no killer. Content
+    placed here just to mimic the presence of real text. And all that just to give you an idea of how tooltips would
+    look when used in real-world situations. So hopefully you've now seen how these tooltips on links can work in
+    practice, once you use them on your own site or project.</div>
 </div>
