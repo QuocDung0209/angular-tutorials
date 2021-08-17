@@ -2,8 +2,8 @@
   <h1>{{title}}</h1>
   <div class="action">
     <a class="btn btn-dark circle me-2" placement="bottom" tooltip="Source Code"
-      href="https://github.com/QuocDung0209/custom-directive-angular/tree/tooltip-css-v1.0" target="_blank"><i
-        class="fa fa-github" aria-hidden="true"></i></a>
+      href="https://github.com/QuocDung0209/custom-directive-angular/commit/aedce142ec22b38e6ba41ab2dc2c84c1b123832e"
+      target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
     <a class="btn btn-info circle" tooltip="Tutorial"
       href="https://quocdung0209.blogspot.com/2021/08/xu-ly-text-overflow-voi-css.html" target="_blank">
       <i class="fa fa-globe" aria-hidden="true"></i>
@@ -137,6 +137,13 @@
     overflow: hidden;
     <b class="text-primary">{{boxOrient}}</b>
     <b class="text-info">-webkit-line-clamp: {{lineClamp}};</b>
+  &#125;</pre>
+    </div>
+    <div *ngIf="selectedMethod === methods.wordBreak" class="mt-3 m-auto" style="width: 350px;">
+      <div class="badge bg-secondary mb-2">CSS Code</div>
+      <pre class="m-auto border rounded py-3">
+  .word-break-overflow &#123;
+    <b class="text-primary">{{selectedStyles}}</b>
   &#125;</pre>
     </div>
   </div>

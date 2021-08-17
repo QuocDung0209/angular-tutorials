@@ -13,19 +13,24 @@ export class TextOveflowCssComponent implements OnInit {
   selectedMethod: string = TEXT_OVERFLOW_METHOD.textOverflow;
   selectedStyles: string = 'text-overflow: clip;';
 
+  // Result width
   units = UNITS;
   selectedUnit: string = 'px';
   width: number = 350;
   resultWidth = 'width: 350px;';
 
+  // Text overflow method
   textOverflowOptions = TEXT_OVERFLOW_OPTIONS;
 
+  // -webkit-box method
   orientOptions = ORIENT_OPTIONS;
   boxOrient: string = '-webkit-box-orient: vertical;';
   lineClamp: number = 1;
 
+  // word-break method
   wordBreakOptions = WORD_BREAK_OPTIONS;
 
+  // Angular directive method
   numberOfLines: number = 2;
   showTooltip: boolean = true;
 
@@ -42,9 +47,16 @@ export class TextOveflowCssComponent implements OnInit {
     }
     if (value === this.methods.webkitLineClamp) {
       this.selectedStyles = EMPTY_STRING;
+      this.boxOrient = '-webkit-box-orient: vertical;';
+      this.lineClamp = 1;
     }
     if (value === this.methods.wordBreak) {
       this.selectedStyles = 'word-break: break-all;';
+    }
+    if (value === this.methods.angularDirective) {
+      this.selectedStyles = EMPTY_STRING;
+      this.numberOfLines = 2;
+      this.showTooltip = true;
     }
   }
 
