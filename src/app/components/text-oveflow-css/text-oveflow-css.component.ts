@@ -9,7 +9,7 @@ import { ORIENT_OPTIONS, TEXT_OVERFLOW_METHOD, TEXT_OVERFLOW_OPTIONS, UNITS, WOR
 })
 export class TextOveflowCssComponent implements OnInit {
   methods = TEXT_OVERFLOW_METHOD;
-  selectedMethod: string = TEXT_OVERFLOW_METHOD.webkitLineClamp;
+  selectedMethod: string = TEXT_OVERFLOW_METHOD.angularDirective;
   selectedStyles: string = 'text-overflow: clip;';
 
   units = UNITS;
@@ -24,6 +24,9 @@ export class TextOveflowCssComponent implements OnInit {
   lineClamp: number = 1;
 
   wordBreakOptions = WORD_BREAK_OPTIONS;
+
+  numberOfLines: number = 2;
+  showTooltip: boolean = true;
 
   constructor() { }
 
@@ -52,6 +55,12 @@ export class TextOveflowCssComponent implements OnInit {
     }
 
     this.resultWidth = `width: ${this.width}${this.selectedUnit}`;
+  }
+
+  reset() {
+    this.width = 350;
+    this.selectedUnit = 'px';
+    this.resultWidth = 'width: 350px;';
   }
 
   onWebkitBoxChange(value: any, type: string) {

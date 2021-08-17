@@ -2,7 +2,7 @@ export const TEXT_OVERFLOW_METHOD = {
   textOverflow: 'text-overflow',
   webkitLineClamp: 'line-clamp-overflow',
   wordBreak: 'word-break-overflow',
-  angularDirective: '',
+  angularDirective: 'text-overflow-directive',
 }
 
 export const UNITS = [

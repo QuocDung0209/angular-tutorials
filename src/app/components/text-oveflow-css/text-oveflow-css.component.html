@@ -10,7 +10,7 @@
     <div class="row align-items-center mt-3">
       <div class="col-3"><a href="https://www.w3schools.com/cssref/css_units.asp" target="_blank"
           class="badge bg-primary text-decoration-none p-2">Result Width</a></div>
-      <div class="col-4">
+      <div class="col-3">
         <input type="number" class="form-control form-control-sm" [ngModel]="width"
           (ngModelChange)="onWidthChange($event, 'width')">
       </div>
@@ -19,6 +19,9 @@
           (ngModelChange)="onWidthChange($event, 'unit')" disabled>
           <option *ngFor="let unit of units" [value]="unit">{{unit}}</option>
         </select>
+      </div>
+      <div class="col-3">
+        <button class="btn btn-sm btn-danger" (click)="reset()">Reset</button>
       </div>
     </div>
     <div *ngIf="selectedMethod === methods.textOverflow" class="mt-3 border rounded p-3 bg-light">
@@ -61,11 +64,34 @@
         </div>
       </div>
     </div>
+    <div *ngIf="selectedMethod === methods.angularDirective" class="mt-3 border rounded p-3 bg-light">
+      <div class="badge bg-secondary mb-2">CSS Property</div>
+      <div>
+        <div class="fw-bold my-2">Pop up the tooltip to show full content:</div>
+        <div class="form-check">
+          <input class="form-check-input" name="options" id="true" type="radio" [value]="true"
+            [(ngModel)]="showTooltip">
+          <label class="form-check-label" for="true">true</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" name="options" id="false" type="radio" [value]="false"
+            [(ngModel)]="showTooltip">
+          <label class="form-check-label" for="false">false</label>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="line" class="col-sm-6 col-form-label fw-bold">Number of lines:</label>
+        <div class="col-sm-3">
+          <input type="number" class="form-control" id="line" min="1" [(ngModel)]="numberOfLines">
+        </div>
+      </div>
+    </div>
   </div>
   <div class="col-7">
     <div class="m-auto border rounded p-3" [style]="resultWidth">
       <div class="badge bg-success mb-3">Result</div>
-      <p [class]="selectedMethod" [style]="selectedStyles">
+      <p [class]="selectedMethod" [style]="selectedStyles" [textOverflow]="selectedMethod" [lineClamp]="numberOfLines"
+        [hoverShowFull]="showTooltip">
         <a href="#" [class]="selectedMethod === methods.textOverflow ? 'text-overflow-inline-block' : ''"
           [style]="selectedStyles">The text-overflow
           property</a> specifies how overflowed

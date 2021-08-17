@@ -14,6 +14,7 @@ import { JsonStringifyComponent } from './components/json-stringify/json-stringi
 import { TooltipCssComponent } from './components/tooltip-css/tooltip-css.component';
 import { BootstrapFormsComponent } from './components/bootstrap-forms/bootstrap-forms.component';
 import { TextOveflowCssComponent } from './components/text-oveflow-css/text-oveflow-css.component';
+import { TextOverflowDirective } from './directives/text-overflow.directive';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TextOveflowCssComponent } from './components/text-oveflow-css/text-ovef
     JsonStringifyComponent,
     TooltipCssComponent,
     BootstrapFormsComponent,
-    TextOveflowCssComponent
+    TextOveflowCssComponent,
+    TextOverflowDirective
   ],
   imports: [
     BrowserModule,
