@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { JsonStringifyComponent } from './components/json-stringify/json-stringify.component';
 import { TooltipCssComponent } from './components/tooltip-css/tooltip-css.component';
 import { BootstrapFormsComponent } from './components/bootstrap-forms/bootstrap-forms.component';
+import { TextOveflowCssComponent } from './components/text-oveflow-css/text-oveflow-css.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { BootstrapFormsComponent } from './components/bootstrap-forms/bootstrap-
     DragDropComponent,
     JsonStringifyComponent,
     TooltipCssComponent,
-    BootstrapFormsComponent
+    BootstrapFormsComponent,
+    TextOveflowCssComponent
   ],
   imports: [
     BrowserModule,

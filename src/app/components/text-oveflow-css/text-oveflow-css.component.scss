@@ -1,0 +1,26 @@
+.text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.line-clamp-overflow {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.word-break-overflow {
+  word-break: break-all;
+}
+
+.text-overflow-inline-block {
+  display: inline-block;
+  max-width: 150px;
+  vertical-align: bottom;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}

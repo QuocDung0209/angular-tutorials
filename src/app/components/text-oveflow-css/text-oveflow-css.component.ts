@@ -1,0 +1,47 @@
+import { Component, OnInit } from '@angular/core';
+import { EMPTY_STRING } from 'src/app/constants/common.constant';
+import { ORIENT_OPTIONS, TEXT_OVERFLOW_METHOD, TEXT_OVERFLOW_OPTIONS } from 'src/app/constants/text-overflow.constant';
+
+@Component({
+  selector: 'app-text-oveflow-css',
+  templateUrl: './text-oveflow-css.component.html',
+  styleUrls: ['./text-oveflow-css.component.scss']
+})
+export class TextOveflowCssComponent implements OnInit {
+  methods = TEXT_OVERFLOW_METHOD;
+  selectedMethod: string = TEXT_OVERFLOW_METHOD.webkitLineClamp;
+  selectedStyles: string = 'text-overflow: clip;';
+
+  textOverflowOptions = TEXT_OVERFLOW_OPTIONS;
+
+  orientOptions = ORIENT_OPTIONS;
+  boxOrient: string = '-webkit-box-orient: vertical;';
+  lineClamp: number = 1;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  onMethodChange(value: string) {
+    this.selectedMethod = value;
+
+    if (value === this.methods.textOverflow) {
+      this.selectedStyles = 'text-overflow: clip;';
+    }
+    if (value === this.methods.webkitLineClamp) {
+      this.selectedStyles = EMPTY_STRING;
+    }
+  }
+
+  onWebkitBoxChange(value: any, type: string) {
+    if (type === 'orient') {
+      this.boxOrient = value;
+    } else {
+      this.lineClamp = value;
+    }
+
+    this.selectedStyles = `${this.boxOrient}-webkit-line-clamp:${this.lineClamp};`;
+  }
+
+}
