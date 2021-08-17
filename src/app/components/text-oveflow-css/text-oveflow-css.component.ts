@@ -8,8 +8,9 @@ import { ORIENT_OPTIONS, TEXT_OVERFLOW_METHOD, TEXT_OVERFLOW_OPTIONS, UNITS, WOR
   styleUrls: ['./text-oveflow-css.component.scss']
 })
 export class TextOveflowCssComponent implements OnInit {
+  title = 'Handle text overflow and create directive for it';
   methods = TEXT_OVERFLOW_METHOD;
-  selectedMethod: string = TEXT_OVERFLOW_METHOD.angularDirective;
+  selectedMethod: string = TEXT_OVERFLOW_METHOD.textOverflow;
   selectedStyles: string = 'text-overflow: clip;';
 
   units = UNITS;

@@ -1,4 +1,16 @@
-<div class="row justify-content-center align-items-start">
+<div class="d-flex flex-row justify-content-around align-items-center">
+  <h1>{{title}}</h1>
+  <div class="action">
+    <a class="btn btn-dark circle me-2" placement="bottom" tooltip="Source Code"
+      href="https://github.com/QuocDung0209/custom-directive-angular/tree/tooltip-css-v1.0" target="_blank"><i
+        class="fa fa-github" aria-hidden="true"></i></a>
+    <a class="btn btn-info circle" tooltip="Tutorial"
+      href="https://quocdung0209.blogspot.com/2021/08/xu-ly-text-overflow-voi-css.html" target="_blank">
+      <i class="fa fa-globe" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
+<div class="row justify-content-center align-items-start mt-4">
   <div class="col-5">
     <div class="badge bg-primary mb-2">Choose a method to handle text overflow</div>
     <select class="form-select" [ngModel]="selectedMethod" (ngModelChange)="onMethodChange($event)">
