@@ -11,5 +11,5 @@ cd dist/custom-directive-angular
 cp index.html 200.html
 
 # Start deploying via Surege
-# The command means deploy current folder to domain angulardemo.surge.sh
-surge . angulardemo.surge.sh
+# The command means deploy current folder to domain angulartutorials.surge.sh
+surge . angulartutorials.surge.sh
