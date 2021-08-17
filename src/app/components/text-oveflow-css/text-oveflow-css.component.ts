@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EMPTY_STRING } from 'src/app/constants/common.constant';
-import { ORIENT_OPTIONS, TEXT_OVERFLOW_METHOD, TEXT_OVERFLOW_OPTIONS, WORD_BREAK_OPTIONS } from 'src/app/constants/text-overflow.constant';
+import { ORIENT_OPTIONS, TEXT_OVERFLOW_METHOD, TEXT_OVERFLOW_OPTIONS, UNITS, WORD_BREAK_OPTIONS } from 'src/app/constants/text-overflow.constant';
 
 @Component({
   selector: 'app-text-oveflow-css',
@@ -11,6 +11,11 @@ export class TextOveflowCssComponent implements OnInit {
   methods = TEXT_OVERFLOW_METHOD;
   selectedMethod: string = TEXT_OVERFLOW_METHOD.webkitLineClamp;
   selectedStyles: string = 'text-overflow: clip;';
+
+  units = UNITS;
+  selectedUnit: string = 'px';
+  width: number = 350;
+  resultWidth = 'width: 350px;';
 
   textOverflowOptions = TEXT_OVERFLOW_OPTIONS;
 
@@ -37,6 +42,16 @@ export class TextOveflowCssComponent implements OnInit {
     if (value === this.methods.wordBreak) {
       this.selectedStyles = 'word-break: break-all;';
     }
+  }
+
+  onWidthChange(value: any, type: string) {
+    if (type === 'width') {
+      this.width = value;
+    } else {
+      this.selectedUnit = value;
+    }
+
+    this.resultWidth = `width: ${this.width}${this.selectedUnit}`;
   }
 
   onWebkitBoxChange(value: any, type: string) {
