@@ -42,3 +42,30 @@ export const ORIENT_OPTIONS = [
         value: '-webkit-box-orient: initial;',
     },
 ];
+
+export const WORD_BREAK_OPTIONS = [
+    {
+        id: 'normal',
+        value: 'word-break: normal;',
+    },
+    {
+        id: 'break-all',
+        value: 'word-break: break-all;',
+    },
+    {
+        id: 'keep-all',
+        value: 'word-break: keep-all;',
+    },
+    {
+        id: 'break-word',
+        value: 'word-break: break-word;',
+    },
+    {
+        id: 'initial',
+        value: 'word-break: initial;',
+    },
+    {
+        id: 'inherit',
+        value: 'word-break: inherit;',
+    },
+];

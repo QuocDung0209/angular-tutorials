@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EMPTY_STRING } from 'src/app/constants/common.constant';
-import { ORIENT_OPTIONS, TEXT_OVERFLOW_METHOD, TEXT_OVERFLOW_OPTIONS } from 'src/app/constants/text-overflow.constant';
+import { ORIENT_OPTIONS, TEXT_OVERFLOW_METHOD, TEXT_OVERFLOW_OPTIONS, WORD_BREAK_OPTIONS } from 'src/app/constants/text-overflow.constant';
 
 @Component({
   selector: 'app-text-oveflow-css',
@@ -18,6 +18,8 @@ export class TextOveflowCssComponent implements OnInit {
   boxOrient: string = '-webkit-box-orient: vertical;';
   lineClamp: number = 1;
 
+  wordBreakOptions = WORD_BREAK_OPTIONS;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -31,6 +33,9 @@ export class TextOveflowCssComponent implements OnInit {
     }
     if (value === this.methods.webkitLineClamp) {
       this.selectedStyles = EMPTY_STRING;
+    }
+    if (value === this.methods.wordBreak) {
+      this.selectedStyles = 'word-break: break-all;';
     }
   }
 
