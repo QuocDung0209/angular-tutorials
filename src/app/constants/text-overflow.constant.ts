@@ -43,22 +43,22 @@ export const ORIENT_OPTIONS = [
     id: 'vertical',
     value: '-webkit-box-orient: vertical;',
   },
-  {
-    id: 'block-axis',
-    value: '-webkit-box-orient: block-axis;',
-  },
-  {
-    id: 'horizontal',
-    value: '-webkit-box-orient: horizontal;',
-  },
-  {
-    id: 'inline-axis',
-    value: '-webkit-box-orient: inline-axis;',
-  },
-  {
-    id: 'initial',
-    value: '-webkit-box-orient: initial;',
-  },
+  // {
+  //   id: 'block-axis',
+  //   value: '-webkit-box-orient: block-axis;',
+  // },
+  // {
+  //   id: 'horizontal',
+  //   value: '-webkit-box-orient: horizontal;',
+  // },
+  // {
+  //   id: 'inline-axis',
+  //   value: '-webkit-box-orient: inline-axis;',
+  // },
+  // {
+  //   id: 'initial',
+  //   value: '-webkit-box-orient: initial;',
+  // },
 ];
 
 export const WORD_BREAK_OPTIONS = [

@@ -13,6 +13,9 @@ export class TextOveflowCssComponent implements OnInit {
   selectedMethod: string = TEXT_OVERFLOW_METHOD.textOverflow;
   selectedStyles: string = 'text-overflow: clip;';
 
+  blockText = " specifies how overflowed content that is not displayed should be signaled to the user. It can be clipped, display an ellipsis (...), or display a custom string.";
+  inlineBlockText = "The text-overflow property";
+
   // Result width
   units = UNITS;
   selectedUnit: string = 'px';
