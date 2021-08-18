@@ -1,0 +1,14 @@
+<pre [clipboard]="true" _ngcontent-kxf-c22="" style="background-color: #ffffff; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; max-height: 310px; color: #a9b7c6; font-family: JetBrains Mono, monospace; font-size: 9.8pt; hyphens: none; line-height: 1.5em; margin: 25px auto; overflow: auto; padding: 20px; position: relative; tab-size: 2;"><span _ngcontent-kxf-c22="" style="background-color: white; color: indigo; font-size: 16px; font-weight: 700; padding: 2px 6px; border: 1px solid #cccccc; border-radius: 3px; position: absolute; top: -7px;"></span><code _ngcontent-kxf-c22="">  <span class="hljs-comment">// Copy text to clipboard</span>
+  @<span class="hljs-title class_">HostListener</span>(<span class="hljs-string">'click'</span>)
+  <span class="hljs-title function_">onClick</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">const</span> el = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">'textarea'</span>);
+    el.<span class="hljs-property">value</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">elRef</span>.<span class="hljs-property">nativeElement</span>.<span class="hljs-property">innerText</span>;
+    el.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">'readonly'</span>, <span class="hljs-string">''</span>);
+    el.<span class="hljs-property">style</span>.<span class="hljs-property">position</span> = <span class="hljs-string">'absolute'</span>;
+    el.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = <span class="hljs-string">'-9999px'</span>;
+    <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(el);
+    el.<span class="hljs-title function_">select</span>();
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">execCommand</span>(<span class="hljs-string">'copy'</span>);
+    <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">removeChild</span>(el);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">renderer</span>.<span class="hljs-title function_">addClass</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">clipboardEl</span>, <span class="hljs-string">'copied'</span>);
+  &#125;</code></pre>
