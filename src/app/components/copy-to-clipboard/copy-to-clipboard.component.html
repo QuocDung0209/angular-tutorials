@@ -1,4 +1,17 @@
-<pre [clipboard]="true" _ngcontent-kxf-c22="" style="background-color: #ffffff; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; max-height: 310px; color: #a9b7c6; font-family: JetBrains Mono, monospace; font-size: 9.8pt; hyphens: none; line-height: 1.5em; margin: 25px auto; overflow: auto; padding: 20px; position: relative; tab-size: 2;"><span _ngcontent-kxf-c22="" style="background-color: white; color: indigo; font-size: 16px; font-weight: 700; padding: 2px 6px; border: 1px solid #cccccc; border-radius: 3px; position: absolute; top: -7px;"></span><code _ngcontent-kxf-c22="">  <span class="hljs-comment">// Copy text to clipboard</span>
+<div class="d-flex flex-row justify-content-around align-items-center">
+  <h1>{{title}}</h1>
+  <div class="action">
+    <a class="btn btn-dark circle me-2" placement="bottom" tooltip="Source Code"
+      href="https://github.com/QuocDung0209/custom-directive-angular/commit/11a58d3ceab9fb405097613fd5ccf5a3235635bc"
+      target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+    <a class="btn btn-info circle" tooltip="Tutorial"
+      href="https://quocdung0209.blogspot.com/2021/08/clipboard-directive.html" target="_blank">
+      <i class="fa fa-globe" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
+<pre [clipboard]="true" _ngcontent-kxf-c22=""
+  style="background-color: #ffffff; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; max-height: 310px; color: #a9b7c6; font-family: JetBrains Mono, monospace; font-size: 9.8pt; hyphens: none; line-height: 1.5em; margin: 25px auto; overflow: auto; padding: 20px; position: relative; tab-size: 2;"><span _ngcontent-kxf-c22="" style="background-color: white; color: indigo; font-size: 16px; font-weight: 700; padding: 2px 6px; border: 1px solid #cccccc; border-radius: 3px; position: absolute; top: -7px;"></span><code _ngcontent-kxf-c22="">  <span class="hljs-comment">// Copy text to clipboard</span>
   @<span class="hljs-title class_">HostListener</span>(<span class="hljs-string">'click'</span>)
   <span class="hljs-title function_">onClick</span>(<span class="hljs-params"></span>) &#123;
     <span class="hljs-keyword">const</span> el = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">'textarea'</span>);

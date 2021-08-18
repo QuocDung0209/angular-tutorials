@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./copy-to-clipboard.component.scss']
 })
 export class CopyToClipboardComponent implements OnInit {
+  title = "Create clipboard directive";
 
   constructor() { }
 
