@@ -15,6 +15,8 @@ import { TooltipCssComponent } from './components/tooltip-css/tooltip-css.compon
 import { BootstrapFormsComponent } from './components/bootstrap-forms/bootstrap-forms.component';
 import { TextOveflowCssComponent } from './components/text-oveflow-css/text-oveflow-css.component';
 import { TextOverflowDirective } from './directives/text-overflow.directive';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { ClickOutsideV2Directive } from './directives/click-outside-v2.directive';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { TextOverflowDirective } from './directives/text-overflow.directive';
     TooltipCssComponent,
     BootstrapFormsComponent,
     TextOveflowCssComponent,
-    TextOverflowDirective
+    TextOverflowDirective,
+    ClickOutsideDirective,
+    ClickOutsideV2Directive
   ],
   imports: [
     BrowserModule,
