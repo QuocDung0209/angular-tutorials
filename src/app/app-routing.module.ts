@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BootstrapFormsComponent } from './components/bootstrap-forms/bootstrap-forms.component';
 import { ClickOutsideComponent } from './components/click-outside/click-outside.component';
+import { CopyToClipboardComponent } from './components/copy-to-clipboard/copy-to-clipboard.component';
 import { DragDropComponent } from './components/drag-drop/drag-drop.component';
 import { JsonStringifyComponent } from './components/json-stringify/json-stringify.component';
 import { TextOveflowCssComponent } from './components/text-oveflow-css/text-oveflow-css.component';
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'drag-drop',
     component: DragDropComponent,
+  },
+  {
+    path: 'copy-to-clipboard',
+    component: CopyToClipboardComponent,
   },
   {
     path: 'json-stringify',

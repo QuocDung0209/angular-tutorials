@@ -17,6 +17,8 @@ import { TextOveflowCssComponent } from './components/text-oveflow-css/text-ovef
 import { TextOverflowDirective } from './directives/text-overflow.directive';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { ClickOutsideV2Directive } from './directives/click-outside-v2.directive';
+import { CopyToClipboardComponent } from './components/copy-to-clipboard/copy-to-clipboard.component';
+import { ClipboardDirective } from './directives/clipboard.directive';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ClickOutsideV2Directive } from './directives/click-outside-v2.directive
     TextOveflowCssComponent,
     TextOverflowDirective,
     ClickOutsideDirective,
-    ClickOutsideV2Directive
+    ClickOutsideV2Directive,
+    CopyToClipboardComponent,
+    ClipboardDirective
   ],
   imports: [
     BrowserModule,

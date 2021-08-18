@@ -115,6 +115,69 @@ span.ng-tooltip.invalid.ng-tooltip-show {
 }
 
 /***********************************************
+*** Copy to clipboard
+************************************************/
+
+.wrapper-clipboard {
+  position: relative;
+  float: right;
+}
+
+.btn-clipboard {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  z-index: 10;
+  display: block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.65em;
+  color: #0d6efd;
+  background-color: #fff;
+  border: 1px solid;
+  border-radius: 0.25rem;
+}
+
+.btn-clipboard:hover,
+.btn-clipboard:focus {
+  color: #fff;
+  background-color: #0d6efd;
+}
+
+// Show tooltip when hovering clipboard button
+.btn-clipboard:hover:before,
+.btn-clipboard:hover:after {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn-clipboard:hover:before {
+  content: "Copy to Clipboard";
+  bottom: 100%;
+  margin-bottom: 8px;
+  background-color: rgb(0, 0, 0, 0.9);
+  color: white;
+  font-size: 1.25em;
+  text-align: center;
+  width: 120px;
+  padding: 3px 4px;
+  border-radius: 5px;
+}
+
+.btn-clipboard:hover:after {
+  content: "";
+  top: 0;
+  margin-top: -8px;
+  border: 5px solid transparent;
+  border-top-color: rgb(0, 0, 0, 0.9);
+}
+
+.copied .btn-clipboard:hover:before {
+  content: "Copied!";
+  width: 60px;
+}
+
+/***********************************************
 *** Others
 ************************************************/
 
