@@ -1,0 +1,19 @@
+.dropzone-wrapper {
+  width: 50%;
+  height: 200px;
+  min-width: 350px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 2px dashed #c0bebe;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h4 {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+}

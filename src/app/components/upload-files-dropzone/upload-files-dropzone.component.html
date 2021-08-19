@@ -1,0 +1,42 @@
+<div class="dropzone-wrapper" [class.border-danger]="!isValidFile" [style.width.%]="width" [style.height.px]="height"
+  appDropZone (fileDropped)="handleFileDropped($event)" (onError)="handleFileError($event)">
+  <input hidden type="file" id="fileInput" (change)="fileBrowseHandler($event)">
+  <ng-template [ngIf]="isValidFile" [ngIfElse]="elseBlock">
+    <i class="fa-3x text-secondary mb-2" [ngClass]="config.uploadIconClass" aria-hidden="true"></i>
+    <h4>{{config.dropZoneInstruction}}</h4>
+    <h4>or</h4>
+    <label for="fileInput" class="btn btn-sm btn-outline-primary fw-bold mt-2">{{config.browseButtonText}}</label>
+  </ng-template>
+  <ng-template #elseBlock>
+    <div class="d-flex align-items-center text-danger">
+      <i class="fs-1 me-2" [ngClass]="config.invalidIconClass"></i>
+      <p class="my-0">{{config.invalidMessage}}</p>
+      <button class="btn btn-sm btn-outline-secondary ms-2" (click)="isValidFile = true; filesUploaded = [];">
+        <i class="fa fa-undo" aria-hidden="true"></i>
+      </button>
+    </div>
+  </ng-template>
+</div>
+<!-- Show uploaded files or folders -->
+<div class="mt-3">
+  <!-- For single file -->
+  <div class="d-flex flex-row align-items-end border rounded p-2 my-2"
+    *ngFor="let file of filesUploaded; let i = index">
+    <div>
+      <i class="fa fa-file-text-o fa-3x text-secondary" aria-hidden="true"></i>
+    </div>
+    <div class="w-100 d-flex flex-column px-2">
+      <h4 class="fs-6 text-dark m-0">
+        {{ file?.name }}
+      </h4>
+      <p class="fs-6 text-muted m-0">
+        {{ formatBytes(file?.size) }}
+      </p>
+      <!-- <app-progress [progress]="file?.progress"></app-progress> -->
+    </div>
+
+    <div role="button" class="delete" (click)="deleteFile(i)">
+      <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>

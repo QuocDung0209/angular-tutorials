@@ -19,6 +19,12 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { ClickOutsideV2Directive } from './directives/click-outside-v2.directive';
 import { CopyToClipboardComponent } from './components/copy-to-clipboard/copy-to-clipboard.component';
 import { ClipboardDirective } from './directives/clipboard.directive';
+import { DragDropDirective } from './directives/drag-drop.directive';
+import { ProgressComponent } from './components/progress/progress.component';
+import { DragAndDropDirective } from './directives/drag-and-drop.directive';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { DropZoneDirective } from './directives/drop-zone.directive';
+import { UploadFilesDropzoneComponent } from './components/upload-files-dropzone/upload-files-dropzone.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +43,13 @@ import { ClipboardDirective } from './directives/clipboard.directive';
     ClickOutsideDirective,
     ClickOutsideV2Directive,
     CopyToClipboardComponent,
-    ClipboardDirective
+    ClipboardDirective,
+    DragDropDirective,
+    ProgressComponent,
+    DragAndDropDirective,
+    UploadFileComponent,
+    DropZoneDirective,
+    UploadFilesDropzoneComponent
   ],
   imports: [
     BrowserModule,
