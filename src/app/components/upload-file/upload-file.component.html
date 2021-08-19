@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-center align-items-end">
+    <p class="fs-5 mb-0 fw-bold">{{fileUpload?.name ? fileUpload?.name : noFileChosenString}}</p>
+</div>
+<div class="row">
+    <div class="upload-file-container mx-auto my-0 d-flex flex-column justify-content-center align-items-center"
+        appDragAndDrop (click)="fileInput.click()" (onFileDropped)="handleFileInput($event, true)"
+        [ngClass]="{'border-danger': isValidFile === false}" [style.width.%]="width" [style.height.px]="height">
+        <input hidden type="file" #fileInput (change)="handleFileInput($event, false)">
+        <div class="text-muted text-center">
+            <div *ngIf="!isValidFile">
+                <div class="d-flex align-items-center text-danger">
+                    <i [class]="'fs-1 me-2 ' + exceedingIconClass"></i>
+                    <p class="my-0">{{exceedingContent}}
+                    <p>
+                </div>
+            </div>
+            <div *ngIf="isValidFile">
+                <div class="d-flex align-items-center">
+                    <i [class]="'fs-1 me-2 ' + uploadIconClass"></i>
+                    <p class="my-0">{{uploadInstruction}}
+                        <a href="javascript:void(0)">
+                            <u>{{clickableUploadInstruction}}</u>
+                        </a>
+                    <p>
+                </div>
+                <div class="mt-2">{{maxFileSizeInstruction}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="fileInputInstruction" class="d-flex justify-content-center mt-3">
+    <div [innerHTML]="fileInputInstruction"></div>
+</div>

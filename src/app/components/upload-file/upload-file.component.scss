@@ -1,0 +1,13 @@
+.upload-file-container {
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position: center;
+    border: 2px dashed #c4c3c7;
+    border-radius: 10px;
+}
+
+.upload-file-container:hover {
+    cursor: pointer;
+    background-color: #9ecbec !important;
+    opacity: 0.8;
+}
