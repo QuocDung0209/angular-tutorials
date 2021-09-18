@@ -25,6 +25,8 @@ import { DragAndDropDirective } from './directives/drag-and-drop.directive';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
 import { UploadFilesDropzoneComponent } from './components/upload-files-dropzone/upload-files-dropzone.component';
+import { PopoverDirective } from './directives/popover.directive';
+import { PopoverComponent } from './components/popover/popover.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { UploadFilesDropzoneComponent } from './components/upload-files-dropzone
     DragAndDropDirective,
     UploadFileComponent,
     DropZoneDirective,
-    UploadFilesDropzoneComponent
+    UploadFilesDropzoneComponent,
+    PopoverDirective,
+    PopoverComponent
   ],
   imports: [
     BrowserModule,
