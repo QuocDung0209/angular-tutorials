@@ -1,5 +1,8 @@
-<div class="dropzone-wrapper" [class.border-danger]="!isValidFile" [style.width.%]="width" [style.height.px]="height"
-  appDropZone (fileDropped)="handleFileDropped($event)" (onError)="handleFileError($event)">
+<div class="dropzone-wrapper position-relative" [class.border-danger]="!isValidFile" [style.width.%]="width"
+  [style.height.px]="height" appDropZone (fileDropped)="handleFileDropped($event)" (onError)="handleFileError($event)">
+  <!-- Show invalid files -->
+  <span role="button" class="badge bg-danger position-absolute top-0 end-0 mt-2 me-2"
+    [appPopover]="popoverContent">{{invalidFiles.length}}</span>
   <input hidden type="file" id="fileInput" (change)="fileBrowseHandler($event)">
   <ng-template [ngIf]="isValidFile" [ngIfElse]="elseBlock">
     <i class="fa-3x text-secondary mb-2" [ngClass]="config.uploadIconClass" aria-hidden="true"></i>
@@ -32,7 +35,7 @@
       <p class="fs-6 text-muted m-0">
         {{ formatBytes(file?.size) }}
       </p>
-      <!-- <app-progress [progress]="file?.progress"></app-progress> -->
+      <app-progress [progress]="file?.progress"></app-progress>
     </div>
 
     <div role="button" class="delete" (click)="deleteFile(i)">
@@ -40,3 +43,6 @@
     </div>
   </div>
 </div>
+<ng-template #popoverContent>
+  <h1>test</h1>
+</ng-template>

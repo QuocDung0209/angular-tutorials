@@ -1,4 +1,37 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FileExtension } from 'src/app/types/enums';
+import { Popover } from 'bootstrap';
+
+const fileType = {
+  txt: {
+    type: 'text/plain',
+    fileExtension: '.txt',
+  },
+  jpg: {
+    type: 'image/jpeg',
+    fileExtension: '.jpg',
+  },
+  png: {
+    type: 'image/png',
+    fileExtension: '.png',
+  },
+  pdf: {
+    type: 'application/pdf',
+    fileExtension: '.pdf',
+  },
+  excel: {
+    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    fileExtension: '.xlxs',
+  },
+  mp3: {
+    type: 'audio/mpeg',
+    fileExtension: '.mp3',
+  },
+  mp4: {
+    type: 'video/mp4',
+    fileExtension: '.mp4',
+  },
+}
 
 const defaultConfig = {
   uploadIconClass: 'fa fa-upload',
@@ -23,6 +56,10 @@ export class UploadFilesDropzoneComponent implements OnInit {
   @Input() height: number = 200; // px
   @Input() width: number = 50; // %
 
+  /** Validate files types */
+  @Input() acceptedType: FileExtension = 'all';
+  invalidFiles: any[] = [];
+
   public config = defaultConfig;
   public isValidFile: boolean = true;
 
@@ -35,7 +72,8 @@ export class UploadFilesDropzoneComponent implements OnInit {
   * on file drop handler
   */
   handleFileDropped(files: Array<File>) {
-    this.prepareFilesList(files);
+    const validFiles: Array<File> = this.validateFileType(files);
+    this.prepareFilesList(validFiles);
   }
 
   handleFileError(event: string) {
@@ -109,6 +147,28 @@ export class UploadFilesDropzoneComponent implements OnInit {
     // Converts a string to a floating-point number.
     // Math.pow(base, exponent) function returns the base to the exponent power, as in base^exponent.
     return parseFloat((bytes / Math.pow(kb, i)).toFixed(dm)) + ' ' + sizes[i];
+  }
+
+  /** Validate files types */
+  private validateFileType(files: Array<any>) {
+    if (this.acceptedType === 'all') {
+      return files;
+    } else {
+      const validFiles: Array<File> = [];
+      const accept = fileType[this.acceptedType].type;
+      files && files.forEach((file: File) => {
+        if (file.type === accept) {
+          validFiles.push(file);
+        } else {
+          this.invalidFiles.push({ name: file.name, type: file.type, reason: this.getErrorType(this.acceptedType) });
+        }
+      });
+      return validFiles;
+    }
+  }
+
+  private getErrorType(type: any) {
+    return `Invalid file type! Only except file ${type}`;
   }
 
 }
