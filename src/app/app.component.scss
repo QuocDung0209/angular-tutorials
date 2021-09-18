@@ -1,38 +1,41 @@
-.sidebar {
-  width: 260px;
-  height: 580px;
-  background-color: currentcolor;
+.menu-bar {
   display: flex;
   flex-direction: column;
+  justify-content: start;
   align-items: center;
-  border-radius: 10px;
-  margin: 20px;
-  box-shadow: 0 10px 18px 0 rgb(150 161 175 / 55%);
+  background-color: #ffffff;
+  min-height: 100vh;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.125);
 }
 
-.sidebar-logo img {
-  margin: 30px 0;
-  border-radius: 50%;
-  background-color: floralwhite;
+.toolbar {
+  width: 300px;
+  height: 60px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.item {
-  color: aliceblue;
-  font-size: 18px;
-  font-weight: 700;
-  padding: 8px;
-  width: 100%;
-  text-align: center;
+.list-group-config {
+  max-width: 300px;
+  max-height: 100vh;
+  overflow-y: auto;
 }
 
-.item.active,
-.item:hover {
-  background-color: aliceblue;
-  color: black;
-  cursor: pointer;
+.list-group-item {
+  padding-right: 20px;
+  width: 300px;
+}
+
+.list-group-item:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .content {
   padding: 20px;
-  width: calc(100% - 300px);
+  width: 100%;
 }

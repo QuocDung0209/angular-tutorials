@@ -1,22 +1,25 @@
-<div class="d-flex flex-row">
-  <div class="sidebar">
-    <div class="sidebar-logo position-relative">
-      <img width="150" alt="Angular Logo"
-        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
-      <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">
-        <a href="https://www.w3schools.com/cssref/default.asp" target="_blank"
-          class="text-decoration-none text text-white">CSS Reference</a>
-        <span class="visually-hidden">unread messages</span>
-      </span>
+<div class="d-flex flex-row align-items-start">
+  <div *ngIf="!isOpen" class="d-flex flex-column align-items-center justify-content-start">
+    <button class="btn btn-primary ms-2 mt-2" (click)="isOpen = !isOpen"><i class="fa fa-bars"
+        aria-hidden="true"></i></button>
+    <a href="https://www.w3schools.com/cssref/default.asp" target="_blank" [tooltip]="'CSS Reference'"
+      [placement]="'right'" class="btn btn-success text-decoration-none ms-2 mt-2"><i class="fa fa-css3"
+        aria-hidden="true"></i></a>
+  </div>
+  <div *ngIf="isOpen" class="menu-bar">
+    <div class="toolbar bg-light">
+      <button class="btn btn-sm btn-danger" (click)="menuList = tutorials">Tutorials</button>
+      <button class="btn btn-sm btn-primary" (click)="menuList = codeSnippets">Code snippets</button>
+      <button class="btn btn-sm btn-secondary" (click)="isOpen = false"><i class="fa fa-chevron-circle-left"
+          aria-hidden="true"></i></button>
     </div>
-    <div class="item" routerLink="/tooltip-directive" routerLinkActive="active">Tooltip Directive</div>
-    <div class="item" routerLink="/tooltip-css" routerLinkActive="active">Tooltip CSS</div>
-    <div class="item" routerLink="/text-overflow" routerLinkActive="active">CSS Text Overflow</div>
-    <div class="item" routerLink="/invalid-tooltip" routerLinkActive="active">Invalid Tooltip for forms</div>
-    <div class="item" routerLink="/click-outside" routerLinkActive="active">Click Outside Directive</div>
-    <div class="item" routerLink="/drag-drop" routerLinkActive="active">Drag & Drop Directive</div>
-    <div class="item" routerLink="/copy-to-clipboard" routerLinkActive="active">Copy to Clipboard</div>
-    <div class="item" routerLink="/json-stringify" routerLinkActive="active">JSON Stringify</div>
+    <div class="list-group list-group-config">
+      <ng-container *ngFor="let item of menuList">
+        <button class="list-group-item list-group-item-action" [routerLink]="item.routerLink" routerLinkActive="active">
+          {{item.title}}
+        </button>
+      </ng-container>
+    </div>
   </div>
   <div class="content">
     <router-outlet></router-outlet>
