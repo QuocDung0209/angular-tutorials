@@ -561,6 +561,54 @@ setDefault() &#123;
   </ng-template>
   <ng-template #statusChanges>
     <h2>StatusChanges</h2>
+    <ul>
+      <li><b>StatusChanges</b> được kích hoạt mỗi khi Angular validate FormControl/FormGroup/FormArray.</li>
+      <li><b>StatusChanges</b> trả về một <b>Observable</b> emit <b>latest validation status</b> của control, do đó,
+        chúng ta có thể subscribe nó để lấy <b>validation status mới
+          nhất</b> của control hoặc form.</li>
+      <li><b>Validation status</b> của control hoặc form là một trong 2 giá trị: <b>VALID</b> hoặc <b>INVALID</b>.</li>
+    </ul>
+    <h2>Quá trình kích hoạt StatusChanges của controls và form</h2>
+    <ol>
+      <li>Thay đổi giá trị của <b>input FormControl</b> &#8658; Angular chạy validation để check <b>input
+          FormControl</b>.</li>
+      <li>Nếu validation tạo một list các validation error, status => <b>INVALID</b>. Nếu không có error, status =>
+        <b>VALID</b>.
+      </li>
+      <li>Kích hoạt <b>StatusChanges</b> của <b>FormControl</b>:
+        <code-highlighter [codeClass]="'more-info'" [code]="statusControl"></code-highlighter>
+        <div><b>Note:</b> Lúc này, <b>status của control là mới nhất</b>, NHƯNG <b>status của parent form vẫn giữ status
+            trước đó</b>.
+        </div>
+      </li>
+      <li>Truyền validation status của control lên parent form => Angular update lại validation status của parent form
+        và return <b>VALID</b> hoặc <b>INVALID</b>.</li>
+      <li>Kích hoạt <b>StatusChanges</b> của cả FormGroup
+        <code-highlighter [codeClass]="'more-info'" [code]="statusForm"></code-highlighter>
+      </li>
+      <li>Sau khi chạy xong <b>StatusChanges</b> của parent FormGroup, nếu trước đó chúng ta có sử dụng
+        <b>setTimeout</b> bên trong <b>StatusChanges của control</b> thì nó sẽ run callback của <b>setTimeout</b>.
+      </li>
+    </ol>
+    <h2>emitEvent & StatusChanges</h2>
+    <div>Nếu chúng ta set option <b>emitEvent: false</b> thì <b>StatusChange</b> của control và parent form sẽ không
+      được kích hoạt, dù chúng ta có thay đổi input hay không.
+      <div><code>this.reactiveForm.get("firstname").setValue("", &#123; emitEvent: false &#125;);</code></div>
+      <div>Chúng ta có thể sử dụng <b>emitEvent: false</b> với <b>setValue, patchValue, markAsPending, disable, enable,
+          updateValueAndValidity & setErrors</b> methods.</div>
+    </div>
+    <h2>onlySelf & StatusChanges</h2>
+    <div>Khi chúng ta sử dụng <b>onlySelf: true</b>, các thay đổi chỉ ảnh hưởng đến <b>FormControl</b> và thay đổi không
+      truyền lên parent của nó. Do đó, chỉ có <b>StatusChanges</b> của control được kích hoạt</div>
+    <div><code>this.reactiveForm.get("firstname").setValue("", &#123; onlySelf: true &#125;);</code></div>
+    <div>Chúng ta có thể sử dụng <b>onlySelf: true</b> với <b>setValue, patchValue, markAsUntouched, markAsDirty,
+        markAsPristine, markAsPending, disable, enable, and updateValueAndValidity</b> methods.</div>
+    <h2>Demo</h2>
+    <ul>
+      <li><a href="https://angular-ivy-yhhkcd.stackblitz.io" target="_blank">View Demo</a></li>
+      <li><a href="https://stackblitz.com/edit/angular-ivy-yhhkcd?file=src/app/app.component.ts" target="_blank">Open
+          Stackblitz in new tab</a></li>
+    </ul>
   </ng-template>
   <ng-template #valueChanges>
     <h2>ValueChanges</h2>

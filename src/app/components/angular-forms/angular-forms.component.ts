@@ -9,6 +9,8 @@ import sdk from '@stackblitz/sdk';
 export class AngularFormsComponent implements OnInit {
   title = "Angular Forms";
   isShow = true;
+  statusControl = 'this.reactiveForm.get(\"firstname\").statusChanges.subscribe(newStatus=> {\n   console.log(newStatus)                                    //latest status\n   console.log(this.reactiveForm.get(\"firstname\").status)   //latest status\n   console.log(this.reactiveForm.status)                    //Previous status\n      \n   // waiting for the next tick\n   setTimeout(() => {\n     console.log(this.reactiveForm.status)                  //latest status\n   })\n})';
+  statusForm = `this.reactiveForm.statusChanges.subscribe(newStaus => {\n    console.log('form Status changed event')\n    console.log(newStaus)\n})`;
 
   constructor() { }
 
