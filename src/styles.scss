@@ -261,3 +261,19 @@ span.ng-tooltip.invalid.ng-tooltip-show {
 .circle {
   border-radius: 50% !important;
 }
+
+.more-info {
+  color: rgb(119, 118, 118);
+  border: 1px dotted #8c8d8f;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 8px;
+  max-height: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  font-size: 13px;
+}
+.more-info:hover {
+  padding: 10px;
+  max-height: fit-content;
+}

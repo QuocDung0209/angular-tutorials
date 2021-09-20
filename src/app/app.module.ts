@@ -29,6 +29,7 @@ import { PopoverDirective } from './directives/popover.directive';
 import { PopoverComponent } from './components/popover/popover.component';
 import { AngularFormsComponent } from './components/angular-forms/angular-forms.component';
 import { TabsComponent } from './components/tabs/tabs.component';
+import { CodeHighlighterComponent } from './components/code-highlighter/code-highlighter.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { TabsComponent } from './components/tabs/tabs.component';
     PopoverDirective,
     PopoverComponent,
     AngularFormsComponent,
-    TabsComponent
+    TabsComponent,
+    CodeHighlighterComponent
   ],
   imports: [
     BrowserModule,
