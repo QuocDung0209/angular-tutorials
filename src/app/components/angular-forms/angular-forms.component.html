@@ -1,0 +1,577 @@
+<div class="angular-forms">
+  <h1 class="text-center">&#123;&#123;title&#125;&#125;</h1>
+  <div class="nav nav-tabs">
+    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab1">Các khái niệm</button>
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab2">Template-drivent forms</button>
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab3">Reactive forms</button>
+  </div>
+  <div class="tab-content tab-content-row">
+    <div class="tab-pane fade active show" id="tab1">
+      <ng-container [ngTemplateOutlet]="reactiveForm"></ng-container>
+    </div>
+    <div class="tab-pane fade" id="tab2">
+      <ng-container [ngTemplateOutlet]="templateDrivenForm"></ng-container>
+    </div>
+    <div class="tab-pane fade" id="tab3">
+      <ng-container [ngTemplateOutlet]="templateDrivenForm"></ng-container>
+    </div>
+  </div>
+</div>
+<ng-template #concept>
+  <h5>Một vài thứ mà forms có thể làm:</h5>
+  <ul>
+    <li>Khởi tạo các form fields và hiển thị chúng cho user</li>
+    <li>Thu thập dữ liệu từ user</li>
+    <li>Theo dõi các thay đổi được thực hiện đối với các field</li>
+    <li>Validate the inputs</li>
+    <li>Hiện thị các lỗi hữu ích cho user</li>
+  </ul>
+  <h5>Angular có 2 cách để xây dựng forms:</h5>
+  <table class="table table-primary">
+    <thead>
+      <tr>
+        <th><a href="https://angular.io/guide/forms-overview#key-differences" target="_blank">So sánh</a></th>
+        <th>Reactive forms</th>
+        <th>Template-driven forms</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Giống nhau</th>
+        <td colspan="2">Cả hai forms đều:
+          <ul>
+            <li>Capture user input</li>
+            <li>Validate user input</li>
+            <li>Tạo một form model và data model để update</li>
+            <li>Cung cấp cách để theo dõi các thay đổi (track changes)</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Logic</th>
+        <td>Logic của form được đặt trong component như 1 object</td>
+        <td>Logic của form được đặt trong template</td>
+      </tr>
+      <tr>
+        <th>Set up form model</th>
+        <td>
+          Rõ ràng (Explicit), được tạo trong component class => Có thể truy cập trực tiếp vào FormControl instance (form
+          API).
+        </td>
+        <td>
+          Ngụ ý (implicit), được tạo bởi các directive => Chỉ có thể truy cập FormControl instance thông qua NgModel
+          directive
+        </td>
+      </tr>
+      <tr>
+        <th>Data model</th>
+        <td>Có cấu trúc và bất biến (Structured and immutable)</td>
+        <td>Không có cấu trúc và có thể thay đổi (Unstructured and mutable)</td>
+      </tr>
+      <tr>
+        <th>Data flow between the view and the data model</th>
+        <td>Synchronous => Giúp tạo các form lớn và phức tạp dễ dàng hơn</td>
+        <td>Asynchronous</td>
+      </tr>
+      <tr>
+        <th>Form validation</th>
+        <td>Functions</td>
+        <td>Directives</td>
+      </tr>
+      <tr>
+        <th>Khả năng mở rộng (Scalability)</th>
+        <td>Form model được tạo trong component class nên có thể reuse và dễ mở rộng hơn => Phù hợp cho các form quan
+          trọng hoặc ứng dụng sử dụng reactive pattern.</td>
+        <td>Phù hợp cho các form đơn giản và không thể reuse</td>
+      </tr>
+      <tr>
+        <th>Testing</th>
+        <td>Dễ hơn do không yêu thiết lập quá nhiều thứ và cũng không cần hiểu rõ về <b>change detection</b>.</td>
+        <td>Yêu cầu thiết lập nhiều hơn và phải hiểu rõ về <b>change detection</b> để run manual (thủ công).</td>
+      </tr>
+    </tbody>
+  </table>
+  <ol>
+    <li>
+      <b>Template-driven</b> :
+      <ul>
+        <li>Logic của form được đặt trong template.</li>
+        <li>Phù hợp khi muốn tạo các form đơn giản mà không cần phải reuse.</li>
+        <li>Quá trình cập nhật thay đổi diễn ra giữa view và component là <b>Asynchronous</b>.</li>
+        <li>Sử dụng các directive để validate input fields.</li>
+      </ul>
+    </li>
+    <li>
+      <b>Reactive forms</b> (còn gọi là model-driven forms):
+      <ul>
+        <li>Logic của form được đặt trong component như 1 object. Trong component class:
+          <ul>
+            <li>Tạo form model với Form Groups, Form Controls và Form Arrays.</li>
+            <li>Define validation rules: define các custom validator như các function nhận vào <b>control</b> để
+              validate.</li>
+            <li>Bind form model và validation rules vào HTML form trong template.</li>
+          </ul>
+        </li>
+        <li>Quá trình cập nhật thay đổi diễn ra giữa view và component là <b>Synchronous</b>.</li>
+        <li>Cách tiếp cận theo hướng model có nhiều lợi ích hơn vì nó được tạo trong comonent class với các Form
+          field như các property của component class.Do đó, nó làm cho việc kiểm tra component dễ dàng hơn.
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <h5>Angular Forms (cả Template-driven và Reactive forms) có 3 khối Building (Building Blocks):</h5>
+  <ol>
+    <li><b>FormControl</b>
+      <ul>
+        <li>Đại diện cho 1 input field duy nhất như input,...</li>
+        <li>FormControl là một object chứa tất cả thông tin liên quan đến một input element, cho phép bạn điều
+          khiển input element đó như value, validation status,...</li>
+      </ul>
+    </li>
+    <li><b>FormGroup</b>: là một tập hợp các FormControl, mỗi FormControl được khai báo như một property của object.
+    </li>
+    <li><b>FormArray</b>: là một mảng (array) các FormControl, mỗi FormControl là một phần tử trong mảng.</li>
+  </ol>
+</ng-template>
+<ng-template #templateDrivenForm>
+  <div class="d-flex flex-row">
+    <div class="pro-cons me-3">
+      <h5>Ưu điểm</h5>
+      <ul>
+        <li>Chứa ít code trong component class</li>
+        <li>Dễ set up</li>
+      </ul>
+    </div>
+    <div class="pro-cons">
+      <h5>Nhược điểm</h5>
+      <ul>
+        <li>Khó add dynamic control</li>
+        <li>Khó Unit test</li>
+      </ul>
+    </div>
+  </div>
+  <h2>Các bước xây dựng Template-driven forms:</h2>
+  <ol>
+    <li>Import <b>FormsModule</b> vào root module (hoặc shared module).
+      <div class="more-info">
+        <div><b>FormsModule</b> chứa tất cả các directive
+          form và các cấu trúc để làm việc với forms. <b>FormsModule</b> phải được import nếu bạn muốn sử dụng
+          <b>ngModel</b>.
+        </div>
+        <div><i>Khi chúng ta import <b>FormsModule</b>, <b>ngForm</b> directive của Angular sẽ tự động tìm tất các
+            các &lt;form&gt; trong HTML template và tự động binding với chính nó.</i></div>
+      </div>
+    </li>
+    <li>Tạo HTML Form</li>
+    <li>Export <b>ngForm</b> instance thành một <b>template reference variable</b> (do <b>ngForm</b> directive đã sử
+      dụng
+      <b><i>exportAs</i></b> trong Directive Decorator).
+      <div class="more-info">
+        <div><code>&lt;form #contactForm="ngForm"&gt;</code></div>
+        <div>Điều này cho phép chúng ta truy cập các property và method của <b>ngForm</b> qua template reference
+          variable <b>contactForm</b></div>
+        <div>Nhiệm vụ của <b>ngForm</b>:
+          <ol>
+            <li>Binding chính nó với &lt;Form&gt; directive</li>
+            <li>Tạo một top-level <b>FormGroup</b> instance</li>
+            <li>Tạo <b>FormControl</b> instance cho mỗi field chứa <b>ngModel</b>.
+            </li>
+            <li>Tạo <b>FormGroup</b> instance cho mỗi <b>ngModelGroup</b> directive</li>
+          </ol>
+        </div>
+        <div>Ngoài ra, chúng ta cũng có thể export <b>FormControl</b>/<b>FormGroup</b> instance thành <b>template
+            reference variable</b> tương ứng với exportAs: <b>ngModel</b>/<b>ngModelGroup</b>.</div>
+      </div>
+    </li>
+    <li>Gắn <b>ngModel</b> cho các form field. Bạn cũng có thể cung cấp biến cho <b>ngModel</b> để two-way binding với
+      component.
+      <div class="more-info">
+        <div><code>&lt;input type="text" name="firstname" ngModel&gt;</code></div>
+        <div><b>ngModel</b> sẽ sử dụng
+          <b>name</b> attribute để tạo <b>FormControl</b> instance cho mỗi form field được gắn nó.
+        </div>
+        <div>Trong Template-driven forms, chúng ta sử dụng <b>ngModel</b> và <b>ngModelGroup</b> directive trên các HTML
+          element. <b>FormsModule</b> sau đó sẽ tạo các FormControl & FormGroup instance từ template.</div>
+      </div>
+    </li>
+    <li>Validate form</li>
+    <li>Submit form data cho component sử dụng <b>ngSubmit</b> event.
+      <div class="more-info">
+        Chúng ta sử dụng event binding để bind <b>ngSubmit</b> với <b>onSubmit</b> method in component class
+        <div><code>&lt;form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)"&gt;</code></div>
+        <div>Khi user click submit button (type="submit"), <b>ngSubmit</b> event sẽ kích hoạt.</div>
+        <div>Chúng ta truyền local template variable <b>contactForm</b> vào <b>onSubmit</b>. <b>contactForm</b> giữ tham
+          chiếu đến <b>ngForm</b> directive, bằng cách này chúng ta có thể truy xuất data form field từ component class.
+        </div>
+      </div>
+    </li>
+  </ol>
+  <h2>Get form controls từ forms</h2>
+  <div class="explain">
+    <div><code>@ViewChild('contactForm') contactForm: NgForm;</code></div>
+    <div><code>this.contactForm.controls['country'].setValue('vn');</code></div>
+    <div><code>this.contactForm.control.get('country').setValue('vn');</code></div>
+  </div>
+  <h2>Demo</h2>
+  <ul>
+    <li><a href="https://angular-ivy-igfetg.stackblitz.io" target="_blank">View Demo</a></li>
+    <li><a href="https://stackblitz.com/edit/angular-ivy-igfetg?file=src/app/app.component.ts" target="_blank">Open
+        Stackblitz in new tab</a></li>
+  </ul>
+  <button *ngIf="isShow" class="ms-3 btn btn-sm btn-primary" (click)="embededProject()">Load project HERE</button>
+  <div id="angular-template-driven-form"></div>
+</ng-template>
+<ng-template #reactiveForm>
+  <app-tabs [tabDisplay]="'column'">
+    <div #tabContent tab-title="Ưu & nhược điểm">
+      <ng-container [ngTemplateOutlet]="proCons"></ng-container>
+    </div>
+    <div #tabContent tab-title="Tạo Forms">
+      <ng-container [ngTemplateOutlet]="createForms"></ng-container>
+    </div>
+    <div #tabContent tab-title="Default Value">
+      <ng-container [ngTemplateOutlet]="defaultValue"></ng-container>
+    </div>
+    <div #tabContent tab-title="Sync Validator">
+      <ng-container [ngTemplateOutlet]="syncValidator"></ng-container>
+    </div>
+    <div #tabContent tab-title="Async Validator">
+      <ng-container [ngTemplateOutlet]="asyncValidator"></ng-container>
+    </div>
+    <div #tabContent tab-title="Group form controls">
+      <ng-container [ngTemplateOutlet]="groupControls"></ng-container>
+    </div>
+    <div #tabContent tab-title="FormBuilder">
+      <ng-container [ngTemplateOutlet]="formBuilder"></ng-container>
+    </div>
+    <div #tabContent tab-title="setValue and patchValue">
+      <ng-container [ngTemplateOutlet]="setPatchValue"></ng-container>
+    </div>
+    <div #tabContent tab-title="StatusChanges">
+      <ng-container [ngTemplateOutlet]="statusChanges"></ng-container>
+    </div>
+    <div #tabContent tab-title="ValueChanges">
+      <ng-container [ngTemplateOutlet]="valueChanges"></ng-container>
+    </div>
+    <div #tabContent tab-title="FormControl">
+      <ng-container [ngTemplateOutlet]="formControl"></ng-container>
+    </div>
+    <div #tabContent tab-title="FormGroup">
+      <ng-container [ngTemplateOutlet]="formGroup"></ng-container>
+    </div>
+    <div #tabContent tab-title="FormArray">
+      <ng-container [ngTemplateOutlet]="formArray"></ng-container>
+    </div>
+  </app-tabs>
+  <ng-template #proCons>
+    <div class="d-flex flex-row">
+      <div class="pro-cons me-3">
+        <h5>Ưu điểm</h5>
+        <ul>
+          <li>Có thể truy cập và tương tác trực tiếp với các form API (FormControl,...)</li>
+          <li>Dễ dàng tạo các custom validators bằng cách tạo ra các function nhận vào <b>control</b>.</li>
+          <li>Hỗ trợ tạo các dynamic form</li>
+          <li>Dễ dàng reuse và mở rộng</li>
+          <li><a href="https://angular.io/guide/forms-overview#testing" target="_blank">Testing</a> đơn giản hơn so với
+            Template-driven forms.</li>
+        </ul>
+      </div>
+      <div class="pro-cons">
+        <h5>Nhược điểm</h5>
+        <ul>
+          <li>Cần học nhiều thứ hơn để có thể làm việc với các Reactive forms có logic xử lý phức tạp.</li>
+        </ul>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #createForms>
+    <h2>Các bước xây dựng và sử dụng Reactive Forms</h2>
+    <ol>
+      <li>Import <b>ReactiveFormsModule</b> vào root module hoặc shared module - e.g: <b>AppModule</b>;
+        <div class="more-info">
+          <code>import &#123; ReactiveFormsModule &#125; from '@angular/forms';</code>
+        </div>
+      </li>
+      <li>Tạo <b>Form Model</b> trong component class sử dụng <b>Form Group, Form Control & Form Arrays</b>;
+        <div class="more-info">
+          <h6>Import FormGroup, FormControl & Validator từ @angular/forms.</h6>
+          <code>import &#123; FormGroup, FormControl, Validators &#125; from '@angular/forms'</code>
+          <h6>Tạo FormGroup</h6>
+          <code>contactForm = new FormGroup(&#123;&#125;)</code>
+          <p>The <b>FormGroup</b> takes <b>3</b> arguments. <b>a collection</b> of a child <b>FormControl</b>, a
+            <b>validator - Sync Validator</b>, and an <b>asynchronous validator - Async Validator</b>. The validators
+            are
+            optional.
+          </p>
+          <h6>Tạo FormControl</h6>
+          <pre>
+        contactForm = new FormGroup(&#123;
+          firstname: new FormControl(),
+          lastname: new FormControl(),
+          email: new FormControl(),
+          gender: new FormControl(),
+          isMarried: new FormControl(),
+          country: new FormControl()
+        &#125;)</pre>
+          <p>The <b>FormControl</b> takes <b>3</b> arguments. a default value, a <b>validator - Sync Validator</b>, and
+            an
+            <b>asynchronous validator - Async Validator</b>. The validators are optional.
+          </p>
+        </div>
+      </li>
+      <li>Tạo <b> HTML Form</b> tương ứng với <b>Form Model</b> trong template.</li>
+      <li>Bind <b> HTML Form</b> với <b>Form Model</b> sử dụng <b>[FormGroup]</b> và <b>formControlName</b>.
+        <div class="more-info">
+          <ol>
+            <li>Binding the template to the model - set <b>FormGroup</b> directive bằng model (contactFrom defined in
+              component class)
+              <div><code>&lt;form [formGroup]="contactForm"&gt;</code></div>
+            </li>
+            <li>Binding từng form field element trong form của chúng ta với <b>FormControl</b> models sử dụng
+              FormControlName (formControlName) directive. Note: value được gán cho <b>formControlName</b> tương ứng với
+              FormControl instance đã khai báo trong component class.
+              <div><code>&lt;input type="text" id="firstname" name="firstname" formControlName="firstname"&gt;</code>
+              </div>
+              <div><code>&lt;input type="text" id="lastname" name="lastname" formControlName="lastname"&gt;</code></div>
+            </li>
+          </ol>
+        </div>
+      </li>
+      <li>Submit form sử dụng <b>(ngSubmit)</b>
+        <div class="more-info">
+          Chúng ta sử dụng event binding để bind <b>ngSubmit</b> với <b>onSubmit</b> method in component class:
+          <div><code>&lt;form [formGroup]="contactForm" (ngSubmit)="onSubmit()"&gt;</code></div>
+        </div>
+      </li>
+    </ol>
+    <h2>Demo</h2>
+    <ul>
+      <li><a href="https://angular-ivy-yhhkcd.stackblitz.io" target="_blank">View Demo</a></li>
+      <li><a href="https://stackblitz.com/edit/angular-ivy-yhhkcd?file=src/app/app.component.ts" target="_blank">Open
+          Stackblitz in new tab</a></li>
+    </ul>
+  </ng-template>
+  <ng-template #defaultValue>
+    <h2>Default Value</h2>
+    <div>Bạn có thể truyền giá trị mặc định dưới dạng <b>primitive values</b> (string,...) hoặc <b>object</b>
+      (key-value)
+      cho <b>FormControl</b> khi khởi tạo.</div>
+    <div><i class="text-secondary" [style.fontSize.px]="13">// Setting Default value as string</i></div>
+    <div><code>firstname= new FormControl('Kenji');</code></div>
+    <div class="text-primary">Khi bạn <b>truyền object</b>, bạn có thiết lập cả <b>value</b> và <b>disabled</b> (Nếu gán
+      <b>true</b> sẽ disable
+      element).
+    </div>
+    <div><i class="text-secondary" [style.fontSize.px]="13">// Setting Default value & disabled state as object</i>
+    </div>
+    <div><code>firstname: new FormControl(&#123;value: 'Kenji', disabled: true&#125;),</code></div>
+    <h4>Có 2 cách để set default value cho forms:</h4>
+    <ol>
+      <li>Set giá trị mặc định cho từng FormControl khi tạo form bằng cách truyền default value vào tham số đầu tiên của
+        FormControl.
+        <div class="explain">
+          <div><code>firstname: new FormControl('Nguyen'),</code></div>
+          <div><code>firstname: [''],</code></div>
+        </div>
+      </li>
+      <li>Dùng <b>setValue</b> trong <b>ngOnInit</b> method.
+        <div class="explain">
+          <div>
+            <pre>
+ngOnInit() &#123;
+  this.setDefault();
+&#125;
+  
+setDefault() &#123;
+  let contact = &#123;
+    firstname: "Sachin",
+    lastname: "Tendulkar",
+    email: "sachin@gmail.com",
+    gender: "male",
+    isMarried: true,
+    country: "2",
+    address: &#123;
+      city: "Mumbai",
+      street: "Perry Cross Rd",
+      pincode: "400050"
+    &#125;
+  &#125;;
+
+  this.reactiveForm.setValue(contact);
+&#125;</pre>
+          </div>
+          <div><b>Note:</b> contact object phải bao gồm tất cả các controls của form và phải chính xác số lượng control
+            (không ít hơn, cũng không được nhiều hơn).</div>
+        </div>
+      </li>
+    </ol>
+  </ng-template>
+  <ng-template #syncValidator>
+    <h2>Sync Validator</h2>
+    <div>The second parameter is an <b>array</b> of sync Validators. Angular has some built-in Validators such as
+      <code>required</code> and
+      <code>minLength</code> etc.
+    </div>
+    <div><code>firstname: new FormControl('', [Validators.required,Validators.minLength(10)]),</code></div>
+  </ng-template>
+  <ng-template #asyncValidator>
+    <h2>Asynchronous validator</h2>
+    <div>The third argument is the Async Validator. The syntax of Async Validators is similar to Sync Validators.</div>
+  </ng-template>
+  <ng-template #groupControls>
+    <h2>Grouping the controls using <b>FormGroup</b></h2>
+    <div>Cách nhóm các form controls cũng giống như cách mà chúng tạo <b>FormGroup - contactForm</b> ban đầu.</div>
+    <div>Chúng ta sẽ tạo ra một FromGroup mới đặt tên là <b>address</b> và tạo thêm 3 form controls cho <b>address</b>
+      group:</div>
+    <pre>
+      contactForm = new FormGroup(&#123;
+        ...,
+        country: new FormControl(),
+        address:new FormGroup(&#123;
+          city: new FormControl(),
+          street: new FormControl(),
+          pincode:new FormControl()
+        &#125;)
+      &#125;)
+    </pre>
+    <div>Trong template, chúng ta sử dụng <b>formGroupName</b> để đánh dấu một group các controls trong Form. Và đồng
+      thời
+      cũng sử dụng <b>formControlName</b> cho mỗi form control của <b>address</b> group.</div>
+    <div><code>&lt;div formGroupName="address"&gt;</code></div>
+  </ng-template>
+  <ng-template #formBuilder>
+    <div>
+      <h2>Sử dụng FormBuilder để build Forms</h2>
+      <p>FormBuilder là API hỗ trợ xây dựng các reactive form trong Angular một cách đơn giản hơn. Nó cung cấp một
+        syntax ngắn gọn hơn để tạo instance của <b>FormControl</b>, <b>FormGroup</b>, <b>các FormGroup lồng nhau</b>,
+        hoặc <b>FormArray</b> => Giúp chúng ta giảm code required để viết các forms phức tạp.</p>
+      <h2>Cách sử dụng FormBuilder</h2>
+      <ol>
+        <li>Import & inject FormBuilder API vào component
+          <div><code>import &#123; FormBuilder &#125; from '@angular/forms'</code></div>
+          <div><code>constructor(private formBuilder: FormBuilder)</code></div>
+        </li>
+        <li>Use the <b>group, array & control</b> methods to build the FormModel:
+          <div class="more-info">
+            <h6>FormGroup</h6>
+            <pre>
+              this.contactForm = this.formBuilder.group(&#123;
+                firstname: [''],
+                lastname: [''],
+                email: [''],
+                gender: [''],
+                isMarried: [''],
+                country: [''],
+              &#125;);</pre>
+            <h6>Nested FormGroup</h6>
+            <pre>
+            this.contactForm = this.formBuilder.group(&#123;
+              ...,
+              country: [''],
+              address: this.formBuilder.group(&#123;
+                city: [''],
+                street: [''],
+                pincode: ['']
+              &#125;)
+            &#125;)</pre>
+            <h6>Validations</h6>
+            <i>The second argument to the FormControl is the list of sync validators.</i>
+            <pre>
+              this.contactForm = this.formBuilder.group(&#123;
+                firstname: ['', [Validators.required, Validators.minLength(10)]],
+                lastname: ['', [Validators.required, Validators.maxLength(15), Validators.pattern("^[a-zA-Z]+$")]],
+                email: ['', [Validators.required, Validators.email]],
+                gender: ['', [Validators.required]],
+                isMarried: ['', [Validators.required]],
+                country: ['', [Validators.required]],
+                address: this.formBuilder.group(&#123;
+                  city: ['', [Validators.required]],
+                  street: ['', [Validators.required]],
+                  pincode: ['', [Validators.required]],
+                &#125;)
+              &#125;);</pre>
+          </div>
+        </li>
+      </ol>
+      <h2>Demo</h2>
+      <ul>
+        <li><a href="https://angular-ivy-yhhkcd.stackblitz.io" target="_blank">View Demo</a></li>
+        <li><a href="https://stackblitz.com/edit/angular-ivy-yhhkcd?file=src/app/app.component.ts" target="_blank">Open
+            Stackblitz in new tab</a></li>
+      </ul>
+    </div>
+  </ng-template>
+  <ng-template #setPatchValue>
+    <ng-container>
+      <h2>setValue</h2>
+      <div>
+        <code>setValue(value: &#123; [key: string]: any; &#125;, options: &#123; onlySelf?: boolean; emitEvent?: boolean; &#125; = &#123;&#125;): void</code>
+      </div>
+      <div class="explain">
+        <div>Chúng ta sử dụng <b>setValue</b> để update <b>FormControl, FormGroup, FormArray</b>.</div>
+        <div><b>Note:</b>
+          <ul>
+            <li>Khi sử dụng <b>setValue</b> để update, object truyền vào phải match chính xác với cấu trúc
+              FormGroup hoặc FormArray đã tạo - object phải bao gồm tất cả form control của form (chính xác số lượng
+              controls của form - không hơn, không kém), nếu không, chúng ta sẽ
+              gặp lỗi.</li>
+            <li>Chúng ta thường dùng <b>setValue</b> để set default values và giá trị của một form control cụ thể.</li>
+          </ul>
+        </div>
+      </div>
+      <h2>patchValue</h2>
+      <div>
+        <code>patchValue(value: &#123; [key: string]: any; &#125;, options: &#123; onlySelf?: boolean; emitEvent?: boolean; &#125; = &#123;&#125;): void</code>
+        <div class="explain">
+          Chúng ta sử dụng <b>patchValue</b> khi chỉ muốn update một vài form controls mà chúng ta chỉ định và
+          giữ nguyên giá trị của các form controls khác.
+        </div>
+      </div>
+      <h2>onlySelf</h2>
+      <ul>
+        <li>Giá trị mặc định của <b>onlySelf</b> là <b>false</b> &#10142; Khi <b>setValue</b> của một form control nào
+          đó, Angular sẽ check validation của form control đó. Sau đó, nó sẽ gửi kết quả validation của control này lên
+          top-level FormGroup. Do đó, <b>validation status của FormGroup</b> trước và sau setValue<b> có thể bị
+            thay đổi</b>.
+        </li>
+        <li>Nếu set giá trị <b>onlySelf: true</b> &#10142; Angular sẽ chỉ check validation của form control thực hiện
+          <b>setValue</b>, không check lại validation của form control khác, và cũng không gửi kết quả validation của
+          form control đó đến parent form group. Do đó, <b>validation status của FormGroup</b> trước và sau
+          setValue<b> không thay đổi</b>.
+          <div>&#10148; Do đó, khi <b>onlySelf: true</b> - <b>StatusChanges và ValueChanges</b> chỉ kích hoạt với
+            controls được chỉ định, không kích hoạt với form.</div>
+        </li>
+      </ul>
+      <h2>emitEvent</h2>
+      <div>Angular forms emit 2 event: <b>ValueChanges</b> (valueChanges Observable) và <b>StatusChanges</b>
+        (statusChanges Observable). <b>ValueChanges</b> event được emit bất cứ khi nào value của form
+        bị thay đổi. <b>StatusChanges</b> event được emit bất của khi nào Angular validate form.</div>
+      <ul>
+        <li>Mặc định, <b>emitEvent: true</b> &#10142; Kích hoạt <b>ValueChanges</b> và <b>StatusChanges</b>.</li>
+        <li>Nếu <b>emitEvent: false</b> &#10142; sẽ stop hành vi mặc định của ValueChanges và StatusChanges event. Không
+          kích hoạt <b>ValueChanges</b> và <b>StatusChanges</b>.</li>
+      </ul>
+      <h2>Cách get form controls từ FormGroup</h2>
+      <div class="explain">
+        <div><code>contactForm: FormGroup;</code></div>
+        <div><code>this.reactiveForm.get("firstname");</code></div>
+        <div><code>this.reactiveForm.get("firstname").setValue("");</code></div>
+      </div>
+    </ng-container>
+  </ng-template>
+  <ng-template #statusChanges>
+    <h2>StatusChanges</h2>
+  </ng-template>
+  <ng-template #valueChanges>
+    <h2>ValueChanges</h2>
+  </ng-template>
+  <ng-template #formControl>
+    <h2>FormControl</h2>
+  </ng-template>
+  <ng-template #formGroup>
+    <h2>FormGroup</h2>
+  </ng-template>
+  <ng-template #formArray>
+    <h2>FormArray</h2>
+  </ng-template>
+</ng-template>

@@ -9,11 +9,16 @@ import { TUTORIALS } from './constants/tutorials-routes.constant';
 })
 export class AppComponent implements OnInit {
   isOpen = false;
-  tutorials = TUTORIALS;
-  codeSnippets = CODE_SNIPPETS;
+  isActive = false;
+  tutorials: any = TUTORIALS;
+  codeSnippets: any = CODE_SNIPPETS;
   menuList = this.tutorials;
 
   ngOnInit() {
 
+  }
+
+  onOutsideClick() {
+    this.isOpen = false;
   }
 }

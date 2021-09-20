@@ -27,6 +27,8 @@ import { DropZoneDirective } from './directives/drop-zone.directive';
 import { UploadFilesDropzoneComponent } from './components/upload-files-dropzone/upload-files-dropzone.component';
 import { PopoverDirective } from './directives/popover.directive';
 import { PopoverComponent } from './components/popover/popover.component';
+import { AngularFormsComponent } from './components/angular-forms/angular-forms.component';
+import { TabsComponent } from './components/tabs/tabs.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { PopoverComponent } from './components/popover/popover.component';
     DropZoneDirective,
     UploadFilesDropzoneComponent,
     PopoverDirective,
-    PopoverComponent
+    PopoverComponent,
+    AngularFormsComponent,
+    TabsComponent
   ],
   imports: [
     BrowserModule,
