@@ -6,7 +6,7 @@
       [placement]="'right'" class="btn btn-success text-decoration-none btn-position"><i class="fa fa-css3"
         aria-hidden="true"></i></a>
   </div>
-  <div *ngIf="isOpen" class="menu-bar" (clickOutsideV2)="onOutsideClick()">
+  <div *ngIf="isOpen" class="menu-bar" (clickOutsideSkipFirst)="onOutsideClick()">
     <div class="toolbar bg-light">
       <button class="btn btn-sm btn-danger" (click)="menuList = tutorials">Tutorials</button>
       <button class="btn btn-sm btn-primary" (click)="menuList = codeSnippets">Code snippets</button>

@@ -10,10 +10,10 @@ import { fromEvent } from "rxjs";
 import { take } from "rxjs/operators";
 
 @Directive({
-  selector: '[clickOutsideV2]'
+  selector: '[clickOutsideSkipFirst]'
 })
 export class ClickOutsideV2Directive implements OnInit {
-  @Output() clickOutsideV2: EventEmitter<any> = new EventEmitter();
+  @Output() clickOutsideSkipFirst: EventEmitter<any> = new EventEmitter();
 
   captured = false;
 
@@ -30,7 +30,7 @@ export class ClickOutsideV2Directive implements OnInit {
     }
 
     if (!this.elRef.nativeElement.contains(target)) {
-      this.clickOutsideV2.emit();
+      this.clickOutsideSkipFirst.emit();
     }
   }
 
