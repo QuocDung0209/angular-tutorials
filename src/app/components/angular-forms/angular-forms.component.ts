@@ -32,6 +32,15 @@ export class AngularFormsComponent implements OnInit {
   setControl = `setControl() {\n  this.middleName = new FormControl('test', [Validators.required]);\n  this.reactiveForm.setControl(\"middleName\",this.middleName);\n}`;
   containsControl = `containsControl() {\n  console.log(this.reactiveForm.contains(\"middleName\"));\n}`;
 
+  formArrayModel = `skillsForm: FormGroup;\n \n  constructor(private fb:FormBuilder) {\n \n    this.skillsForm = this.fb.group({\n      name: '',\n      skills: this.fb.array([]) ,\n    });\n  \n  }`;
+  getterFormArray = `get skills() : FormArray {\n  return this.skillsForm.get(\"skills\") as FormArray\n}`;
+  newElementFormArray = `newSkill(): FormGroup {\n   return this.fb.group({\n     skill: '',\n     exp: '',\n   })\n}`;
+  pushElementToArray = `addSkills() {\n   this.skills.push(this.newSkill());\n}`;
+  removeElementFromArray = `removeSkill(i:number) {\n  this.skills.removeAt(i);\n}`;
+  submitFormArray = `onSubmit() {\n   console.log(this.skillsForm.value);\n }`;
+  bindingFormArray = `<div formArrayName=\"skills\">\n  <div *ngFor=\"let skill of skills.controls; let i=index\">\n \n  </div>\n</div>`;
+  finalTemplateFormArray = `Skills:\n  <div formArrayName=\"skills\">\n    <div *ngFor=\"let skill of skills.controls; let i=index\">\n      <div [formGroupName]=\"i\">\n        {{i}}\n        skill name :\n        <input type=\"text\" formControlName=\"skill\">\n        exp:\n        <input type=\"text\" formControlName=\"exp\">\n \n        <button (click)=\"removeSkill(i)\">Remove</button>\n      </div>\n    </div>\n  </div>`;
+
   constructor() { }
 
   ngOnInit(): void {

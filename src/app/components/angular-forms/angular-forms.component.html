@@ -1013,5 +1013,71 @@ setDefault() &#123;
   </ng-template>
   <ng-template #formArray>
     <h2>FormArray</h2>
+    <p>FormArray cũng là một cách để nhóm các FormControl nhưng theo dạng mảng. Thường được dùng để tạo form dạng table.
+    </p>
+    <p>FormArray cho phép chúng ta add controls dynamically.</p>
+    <h2>Cách tạo và submit một FormArray</h2>
+    <ol>
+      <li>Import FormArray từ <em>@angular/forms</em>
+        <div class="explain">
+          <code>import &#123; FormGroup, FormControl,FormArray, FormBuilder } from '@angular/forms'</code>
+        </div>
+      </li>
+      <li>Tạo Form Model
+        <code-highlighter [code]="formArrayModel"></code-highlighter>
+      </li>
+      <li>Dùng <em>getter</em> method để get <em>skills</em> FormArray
+        <code-highlighter [code]="getterFormArray"></code-highlighter>
+      </li>
+      <li>Viết 1 function return về 1 phần tử của <em>skills</em> FormArray
+        <code-highlighter [code]="newElementFormArray"></code-highlighter>
+      </li>
+      <li>Viết 1 function để dynamic add 1 phần tử vào <em>skills</em> FormArray bằng <em>push</em> method
+        <code-highlighter [code]="pushElementToArray"></code-highlighter>
+      </li>
+      <li>Viết 1 function để dynamic remove 1 phần tử ra khỏi <em>skills</em> FormArray bằng <em>removeAt</em> method
+        <code-highlighter [code]="removeElementFromArray"></code-highlighter>
+      </li>
+      <li>Viết 1 function để submit form
+        <code-highlighter [code]="submitFormArray"></code-highlighter>
+      </li>
+      <li>Tạo Form template
+        <dl>
+          <dt>Binding <em class="text-danger">skills</em> FormArray (name của FormArray) cho <em
+              class="text-danger">formArrayName</em></dt>
+          <dd class="ms-3">
+            <div><code>&lt;div formArrayName="skills"&gt;&lt;/div&gt;</code></div>
+            <em>Bây giờ, <b>div</b> và mọi thứ bên trong <b>div</b> element được liên kết với <b>skills</b>
+              FormArray.</em>
+          </dd>
+          <dt>Bên trong <em class="text-danger">div</em> sử dụng <em class="text-danger">ngFor</em> để lặp qua từng phần
+            tử của <em class="text-danger">skills</em> FormArray</dt>
+          <dd class="ms-3">
+            <code-highlighter [code]="bindingFormArray"></code-highlighter>
+          </dd>
+          <dt>Final template</dt>
+          <dd>
+            <code-highlighter [code]="finalTemplateFormArray"></code-highlighter>
+          </dd>
+        </dl>
+      </li>
+    </ol>
+    <h2>Demo</h2>
+    <ul>
+      <li><a href="https://angular-ivy-ss6sf1.stackblitz.io" target="_blank">View Demo</a></li>
+      <li><a href="https://stackblitz.com/edit/angular-ivy-ss6sf1?file=src/app/app.component.ts" target="_blank">Open
+          Stackblitz in new tab</a></li>
+    </ul>
+    <h2>Tài liệu tham khảo</h2>
+    <ul>
+      <li><a href="https://www.tektutorialshub.com/angular/angular-formarray-example-in-reactive-forms/" target="_blank"
+          rel="noopener noreferrer">Angular FormArray Example</a></li>
+      <li><a href="https://www.tektutorialshub.com/angular/nested-formarray-example-add-form-fields-dynamically/"
+          target="_blank" rel="noopener noreferrer">Nested FormArray Example Add Form Fields Dynamically</a></li>
+      <li><a href="https://www.tektutorialshub.com/angular/setvalue-patchvalue-in-formarray-angular/" target="_blank"
+          rel="noopener noreferrer">SetValue & PatchValue in FormArray Angular</a></li>
+      <li><a href="https://www.tektutorialshub.com/angular/select-options-example-in-angular/" target="_blank"
+          rel="noopener noreferrer">Select Options Example in Angular</a></li>
+    </ul>
   </ng-template>
 </ng-template>
