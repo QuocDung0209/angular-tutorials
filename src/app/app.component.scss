@@ -17,9 +17,8 @@
 }
 
 .menu-bar {
-  display: flex;
+  display: flex-start;
   flex-direction: column;
-  justify-content: start;
   align-items: center;
   background-color: #ffffff;
   min-height: 100vh;
