@@ -262,6 +262,9 @@
     <div #tabContent tab-title="FormArray">
       <ng-container [ngTemplateOutlet]="formArray"></ng-container>
     </div>
+    <div #tabContent tab-title="Custom Validator">
+      <ng-template [ngTemplateOutlet]="customValidator"></ng-template>
+    </div>
   </app-tabs>
   <ng-template #proCons>
     <div class="d-flex flex-row">
@@ -408,15 +411,86 @@ setDefault() &#123;
   </ng-template>
   <ng-template #syncValidator>
     <h2>Sync Validator</h2>
-    <div>The second parameter is an <b>array</b> of sync Validators. Angular has some built-in Validators such as
-      <code>required</code> and
+    <ul>
+      <li>The second parameter is an <b>array</b> of sync Validators.</li>
+      <li><em>Sync validators</em> chạy validation và trả về kết quả ngay lập tức.</li>
+      <li>Trả về một danh sách <em>errors</em> hoặc <em>null</em> nếu validate thành công.</li>
+    </ul>
+    <div class="explain">
+      <div><b>Note:</b> Chúng cần <em>disable browser validator</em> cần cách thêm <b>novalidate</b> attribute vào form
+        element. Bằng cách này, chúng ta sẽ ngăn chặn built-in HTML5 validate form khi submit.</div>
+      <div><code>&lt;form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate&gt;</code></div>
+    </div>
+    <h2>Cách thêm validators cho FormControl</h2>
+    <div>Angular has some built-in Validators such as
+      <code>required</code>, <code>pattern</code> and
       <code>minLength</code> etc.
     </div>
-    <div><code>firstname: new FormControl('', [Validators.required,Validators.minLength(10)]),</code></div>
+    <dl>
+      <dt>Required Validator</dt>
+      <dd><code>firstname: new FormControl('', [Validators.required]),</code>
+        <div class="explain"><em>Dùng <b>FormBuilder</b>: </em> <code>firstname: ['', [Validators.required]]</code>
+        </div>
+      </dd>
+      <dt>Minlength Validator</dt>
+      <dd><code>firstname: new FormControl('', [Validators.required,Validators.minLength(10)]),</code></dd>
+      <dt>Maxlength Validator</dt>
+      <dd><code>lastname: new FormControl('',[Validators.maxLength(15)]),</code></dd>
+      <dt>Pattern Validator</dt>
+      <dd>
+        <code>lastname: new FormControl('',[Validators.maxLength(15), Validators.pattern("^[a-zA-Z]+$")]),</code>
+        <div class="explain">Chỉ cho phép ký tự chữ và không chứa khoảng trắng.</div>
+      </dd>
+      <dt>Email Validator</dt>
+      <dd><code>email:new FormControl('',[Validators.email,Validators.required]),</code></dd>
+    </dl>
+    <h2>Disable Submit button</h2>
+    <div class="explain"><code>&lt;button type="submit" [disabled]="!contactForm.valid">Submit&lt;/button></code></div>
+    <h2>Displaying the Validation/Error messages</h2>
+    <dl>
+      <dt>Component Class</dt>
+      <dd>
+        <code-highlighter [code]="getterFormControl"></code-highlighter>
+      </dd>
+      <dt>Template</dt>
+      <dd>
+        <code-highlighter [code]="showErrorMessages"></code-highlighter>
+      </dd>
+      <dd>Cách khác:
+        <code-highlighter [code]="showErrorMessagesAnother"></code-highlighter>
+      </dd>
+    </dl>
+    <h2>Demo</h2>
+    <ul>
+      <li><a href="https://angular-ivy-yhhkcd.stackblitz.io" target="_blank">View Demo</a></li>
+      <li><a href="https://stackblitz.com/edit/angular-ivy-yhhkcd?file=src/app/app.component.ts" target="_blank">Open
+          Stackblitz in new tab</a></li>
+    </ul>
+    <h2>Bảng ký tự đặc biệt dùng với biểu thức chính quy (regular expression)</h2>
+    <img src="../../../assets/images/regex.png" alt="Regex" />
+    <a href="https://viblo.asia/p/bieu-thuc-chinh-quy-regex-trong-javascript-QpmleQ9mlrd?__cf_chl_jschl_tk__=18125abdad530d67d82b69aa1a5c90650e224411-1625545417-0-AYz-Qb_8lTRgMyIT-CDccfzCMhbu4ORLgpCr7CNKoptZoP3FdVkZS-F8HWH5KbIispcXKT1uLDGgKbShLrYm_AWiOd00O9eK88htnKXs6bMlbmYG9kqbyzmr7hcW_uKkCYVr99ygPdRnsz7Je-DjsowaldhP1nLyWMCxqyltgYXrLL2xVLsWEnNiSy8qUO8cI9Jxh16Du_irOywlRZ6D0_MiExP0089a2WE4Z9XHxKom7nh6wRD-edHDa6hgaHgPAq7PrH2JMW4z-QPRd52W6BkZIq97zmZcASnzTqZiVFOlBEopROHSNbGW5K-wBpwGY_ncgUCCW1siHcybtM0Rll4W7SmwsEACgSmzvlvxrgs1tlVFtzTNZOWXPxg1fQ3N-D_94FDnJSPGA5JbkfEJIpShZB9uWOw_WSCvcBJmUBFYx9-TWMeTRi3Fg77A1gnflYXApklGXOBUit74-71EgT0"
+      target="_blank" rel="noopener noreferrer">Link</a>
   </ng-template>
   <ng-template #asyncValidator>
     <h2>Asynchronous validator</h2>
-    <div>The third argument is the Async Validator. The syntax of Async Validators is similar to Sync Validators.</div>
+    <ul>
+      <li>The third argument is the Async Validator. The syntax of Async Validators is similar to Sync Validators.</li>
+      <li><em>Async validators</em> trả về một <b>Promise</b> hoặc <b>Observable.</b> Đây là điểm khác biệt so với sync
+        validator.</li>
+    </ul>
+    <h3>Cách tạo custom Async Validator</h3>
+    <ol>
+      <li>Tạo function implement <b>AsyncValidatorFn</b> Interface.
+        <code-highlighter [code]="asyncValidatorFn"></code-highlighter>
+      </li>
+      <li>Function phải trả về <em>ValidationErrors | null</em> dưới dạng <b>Promise hoặc Observable</b>.
+        <code-highlighter [code]="asyncValidatorExample"></code-highlighter>
+      </li>
+    </ol>
+    <h3>Example</h3>
+    <code-highlighter [code]="asyncValidatorHttp"></code-highlighter>
+    <div class="explain">Chúng ta có thể sử dụng <b>combineLatest</b> để merge data từ nhiều Observable và validate
+      input.</div>
   </ng-template>
   <ng-template #groupControls>
     <h2>Grouping the controls using <b>FormGroup</b></h2>
@@ -1078,6 +1152,51 @@ setDefault() &#123;
           rel="noopener noreferrer">SetValue & PatchValue in FormArray Angular</a></li>
       <li><a href="https://www.tektutorialshub.com/angular/select-options-example-in-angular/" target="_blank"
           rel="noopener noreferrer">Select Options Example in Angular</a></li>
+    </ul>
+  </ng-template>
+  <ng-template #customValidator>
+    <h2>Custom Validator</h2>
+    <p>Built-in validators không thể cover hết tất cả các case trong quá trình chúng ta làm việc với form. Do đó, chúng
+      ta có thể tạo ra một custom validator để sử dụng logic riêng của mình.</p>
+    <h3>Cách tạo một custom validator</h3>
+    <p><b>Validator</b> là một function implement <b>ValidatorFn</b> interface. Nó nhận vào <b>AbstractControl</b> và
+      trả về <b>ValidationErrors</b> object hoặc <b>null</b>.</p>
+    <dl>
+      <dt>ValidatorFn</dt>
+      <dd>
+        <code-highlighter [code]="validatorFn"></code-highlighter>
+      </dd>
+      <dd><b>AbstractControl</b> là base class cho FormControl, FormGroup và FormArray.</dd>
+      <dt>Example</dt>
+      <dd>
+        <code-highlighter [code]="exampleValidator"></code-highlighter>
+      </dd>
+      <dd class="explain"><b>ValidationErrors</b> là một object key-value kiểu [key: string]: bất kỳ và nó xác định quy
+        tắc bị hỏng. <em>key</em> là <em>string</em> và phải chứa tên của quy tắc bị hỏng (nên lấy tên validator
+        function). Giá trị có thể là bất kỳ giá trị nào, nhưng thường được đặt thành <b>true</b>.
+        <div><code>return &#123; 'gte': true, 'requiredValue': 10 }</code></div>
+      </dd>
+    </dl>
+    <h3>Tạo Custom Validator nhận thêm tham số đầu vào</h3>
+    <p><em>Bởi vì validator phải implement <b>ValidatorFn</b> Interface và <b>ValidatorFn</b> chỉ nhận một tham số
+        i.e <b>control: AbstractControl</b></em>. Do đó, để truyền tham số cho custom validator, chúng ta cần tạo
+      function nhận vào các tham số chúng ta muốn và phải trả về <b>ValidatorFn</b> function (function này nhận vào
+      <b>control:
+        AbstractControl</b> và trả về <b>ValidationErrors | null</b>) - A factory function.
+    </p>
+    <code-highlighter [code]="customValidatorParams"></code-highlighter>
+    <h3>Read more</h3>
+    <ul>
+      <li><a href="https://www.tektutorialshub.com/angular/inject-service-into-validator-in-angular/" target="_blank"
+          rel="noopener noreferrer">Inject Service Into Custom Validator</a></li>
+      <li><a href="https://www.tektutorialshub.com/angular/cross-field-or-multi-field-validation-angular/"
+          target="_blank" rel="noopener noreferrer">Cross Field or Multi Field Validation Angular</a></li>
+      <li><a
+          href="https://www.tektutorialshub.com/angular/how-to-add-validators-dynamically-using-setvalidators-in-angular/"
+          target="_blank" rel="noopener noreferrer">How to add Validators Dynamically using SetValidators in Angular</a>
+      </li>
+      <li><a href="https://www.tektutorialshub.com/angular/custom-validator-in-template-driven-forms-in-angular/"
+          target="_blank" rel="noopener noreferrer">Custom Validator in Template Driven Forms in Angular</a></li>
     </ul>
   </ng-template>
 </ng-template>

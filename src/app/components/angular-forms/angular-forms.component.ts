@@ -41,6 +41,18 @@ export class AngularFormsComponent implements OnInit {
   bindingFormArray = `<div formArrayName=\"skills\">\n  <div *ngFor=\"let skill of skills.controls; let i=index\">\n \n  </div>\n</div>`;
   finalTemplateFormArray = `Skills:\n  <div formArrayName=\"skills\">\n    <div *ngFor=\"let skill of skills.controls; let i=index\">\n      <div [formGroupName]=\"i\">\n        {{i}}\n        skill name :\n        <input type=\"text\" formControlName=\"skill\">\n        exp:\n        <input type=\"text\" formControlName=\"exp\">\n \n        <button (click)=\"removeSkill(i)\">Remove</button>\n      </div>\n    </div>\n  </div>`;
 
+  getterFormControl = `get firstname() {\n   return this.contactForm.get('firstname');\n}`;
+  showErrorMessages = `<div\n    *ngIf=\"!firstname?.valid && (firstname?.dirty ||firstname?.touched)\">\n    <div [hidden]=\"!firstname.errors.required\">\n      First Name is required\n    </div>\n    <div [hidden]=\"!firstname.errors.minlength\">\n      Min Length is 10\n    </div>\n  </div>`;
+  showErrorMessagesAnother = `<div\n    *ngIf=\"!contactForm.controls.firstname?.valid && (contactForm.controls.firstname?.dirty\n    ||contactForm.controls.firstname?.touched)\">\n      First Name is not valid\n  </div>`;
+
+  validatorFn = 'interface ValidatorFn {\n  (control: AbstractControl): ValidationErrors | null\n}';
+  exampleValidator = `export function gte(control: AbstractControl): ValidationErrors | null {\n    const v:number=+control.value; // Get value from control\n \n    if (...) {\n      // Add logic here\n      return { 'gte': true, 'requiredValue': 10 }\n    }      \n \n    return null\n}`;
+  customValidatorParams = `export function gte(val: number): ValidatorFn {\n \n  return (control: AbstractControl): ValidationErrors | null => {\n    let v: number = +control.value; // Get value from control\n \n    if (...) {\n      // Add validation logic\n      return { 'gte': true, 'requiredValue': val }\n    }      \n      \n    return null;\n  }\n}`;
+
+  asyncValidatorFn = `interface AsyncValidatorFn {\n  (control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null>\n}`;
+  asyncValidatorExample = `import { AbstractControl, ValidationErrors } from '@angular/forms'\nimport { Observable, of } from 'rxjs';\n \nexport function gte(control: AbstractControl): Observable<ValidationErrors> | null {\n    const v:number=+control.value; \n \n    if (...) {\n      // Add validation logic\n      return of({ 'gte': true, 'requiredValue': 10 });\n    } \n \n    return of(null);\n}`;
+  asyncValidatorHttp = `import { AbstractControl, ValidationErrors } from '@angular/forms'\nimport { Observable, pipe } from 'rxjs';\nimport { map, debounceTime } from 'rxjs/operators';\n \nexport function validate(control: AbstractControl): Observable<ValidationErrors> | null {\n  const value: string = control.value;\n \n  return this.http.get(this.baseURL + 'checkIfValid/?value=' + value)\n    .pipe(\n      debounceTime(500),\n      map( (data:any) =>  {\n          if (!data.isValid) return ({ 'InValid': true })\n      })\n    )\n  \n}`;
+
   constructor() { }
 
   ngOnInit(): void {
