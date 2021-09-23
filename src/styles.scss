@@ -277,3 +277,7 @@ span.ng-tooltip.invalid.ng-tooltip-show {
   padding: 10px;
   max-height: fit-content;
 }
+
+body {
+  counter-reset: step-counter;
+}

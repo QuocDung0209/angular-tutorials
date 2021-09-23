@@ -1,13 +1,15 @@
 import {
   Directive,
-  Input,
   ElementRef,
   HostListener,
+  Input,
+  OnChanges,
   Renderer2,
-  SecurityContext,
+  SecurityContext
 } from '@angular/core';
+import { Placement, createPopper } from '@popperjs/core';
+
 import { DomSanitizer } from "@angular/platform-browser";
-import { createPopper, Placement } from '@popperjs/core';
 import { isUndifined } from '../helpers/utils';
 
 @Directive({

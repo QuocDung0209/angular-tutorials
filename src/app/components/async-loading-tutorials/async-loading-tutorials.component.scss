@@ -1,0 +1,23 @@
+.step {
+  margin: 15px 0;
+}
+
+.step::before {
+  counter-increment: step-counter;
+  content: "Step " counter(step-counter);
+  background-color: lightblue;
+  padding: 6px;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-weight: 700;
+}
+
+.explain {
+  color: #727275;
+  font-size: 15px;
+  font-family: system-ui;
+  margin-top: 10px;
+  padding-left: 10px;
+  line-height: 20px;
+  border-left: 5px solid darkgray;
+}

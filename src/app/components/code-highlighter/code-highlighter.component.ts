@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import hljs from 'highlight.js/lib/common';
+
 import { EMPTY_STRING } from 'src/app/constants/common.constant';
+import hljs from 'highlight.js/lib/common';
 
 @Component({
   selector: 'code-highlighter',
@@ -8,6 +9,7 @@ import { EMPTY_STRING } from 'src/app/constants/common.constant';
   styleUrls: ['./code-highlighter.component.scss']
 })
 export class CodeHighlighterComponent implements OnInit {
+  @Input() height: string = 'auto';
   @Input('codeClass') class: string = 'code-block';
   _code: string = EMPTY_STRING;
   @Input()

@@ -1,9 +1,15 @@
 <div class="angular-forms">
   <h1 class="text-center">&#123;&#123;title&#125;&#125;</h1>
   <div class="nav nav-tabs">
-    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab1">Các khái niệm</button>
-    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab2">Template-drivent forms</button>
-    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab3">Reactive forms</button>
+    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab1">
+      Các khái niệm
+    </button>
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab2">
+      Template-drivent forms
+    </button>
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab3">
+      Reactive forms
+    </button>
   </div>
   <div class="tab-content tab-content-row">
     <div class="tab-pane fade active show" id="tab1">
@@ -30,7 +36,13 @@
   <table class="table table-primary">
     <thead>
       <tr>
-        <th><a href="https://angular.io/guide/forms-overview#key-differences" target="_blank">So sánh</a></th>
+        <th>
+          <a
+            href="https://angular.io/guide/forms-overview#key-differences"
+            target="_blank"
+            >So sánh</a
+          >
+        </th>
         <th>Reactive forms</th>
         <th>Template-driven forms</th>
       </tr>
@@ -38,7 +50,8 @@
     <tbody>
       <tr>
         <th>Giống nhau</th>
-        <td colspan="2">Cả hai forms đều:
+        <td colspan="2">
+          Cả hai forms đều:
           <ul>
             <li>Capture user input</li>
             <li>Validate user input</li>
@@ -55,12 +68,12 @@
       <tr>
         <th>Set up form model</th>
         <td>
-          Rõ ràng (Explicit), được tạo trong component class => Có thể truy cập trực tiếp vào FormControl instance (form
-          API).
+          Rõ ràng (Explicit), được tạo trong component class => Có thể truy cập
+          trực tiếp vào FormControl instance (form API).
         </td>
         <td>
-          Ngụ ý (implicit), được tạo bởi các directive => Chỉ có thể truy cập FormControl instance thông qua NgModel
-          directive
+          Ngụ ý (implicit), được tạo bởi các directive => Chỉ có thể truy cập
+          FormControl instance thông qua NgModel directive
         </td>
       </tr>
       <tr>
@@ -80,14 +93,23 @@
       </tr>
       <tr>
         <th>Khả năng mở rộng (Scalability)</th>
-        <td>Form model được tạo trong component class nên có thể reuse và dễ mở rộng hơn => Phù hợp cho các form quan
-          trọng hoặc ứng dụng sử dụng reactive pattern.</td>
+        <td>
+          Form model được tạo trong component class nên có thể reuse và dễ mở
+          rộng hơn => Phù hợp cho các form quan trọng hoặc ứng dụng sử dụng
+          reactive pattern.
+        </td>
         <td>Phù hợp cho các form đơn giản và không thể reuse</td>
       </tr>
       <tr>
         <th>Testing</th>
-        <td>Dễ hơn do không yêu thiết lập quá nhiều thứ và cũng không cần hiểu rõ về <b>change detection</b>.</td>
-        <td>Yêu cầu thiết lập nhiều hơn và phải hiểu rõ về <b>change detection</b> để run manual (thủ công).</td>
+        <td>
+          Dễ hơn do không yêu thiết lập quá nhiều thứ và cũng không cần hiểu rõ
+          về <b>change detection</b>.
+        </td>
+        <td>
+          Yêu cầu thiết lập nhiều hơn và phải hiểu rõ về
+          <b>change detection</b> để run manual (thủ công).
+        </td>
       </tr>
     </tbody>
   </table>
@@ -97,40 +119,68 @@
       <ul>
         <li>Logic của form được đặt trong template.</li>
         <li>Phù hợp khi muốn tạo các form đơn giản mà không cần phải reuse.</li>
-        <li>Quá trình cập nhật thay đổi diễn ra giữa view và component là <b>Asynchronous</b>.</li>
+        <li>
+          Quá trình cập nhật thay đổi diễn ra giữa view và component là
+          <b>Asynchronous</b>.
+        </li>
         <li>Sử dụng các directive để validate input fields.</li>
       </ul>
     </li>
     <li>
       <b>Reactive forms</b> (còn gọi là model-driven forms):
       <ul>
-        <li>Logic của form được đặt trong component như 1 object. Trong component class:
+        <li>
+          Logic của form được đặt trong component như 1 object. Trong component
+          class:
           <ul>
-            <li>Tạo form model với Form Groups, Form Controls và Form Arrays.</li>
-            <li>Define validation rules: define các custom validator như các function nhận vào <b>control</b> để
-              validate.</li>
-            <li>Bind form model và validation rules vào HTML form trong template.</li>
+            <li>
+              Tạo form model với Form Groups, Form Controls và Form Arrays.
+            </li>
+            <li>
+              Define validation rules: define các custom validator như các
+              function nhận vào <b>control</b> để validate.
+            </li>
+            <li>
+              Bind form model và validation rules vào HTML form trong template.
+            </li>
           </ul>
         </li>
-        <li>Quá trình cập nhật thay đổi diễn ra giữa view và component là <b>Synchronous</b>.</li>
-        <li>Cách tiếp cận theo hướng model có nhiều lợi ích hơn vì nó được tạo trong comonent class với các Form
-          field như các property của component class.Do đó, nó làm cho việc kiểm tra component dễ dàng hơn.
+        <li>
+          Quá trình cập nhật thay đổi diễn ra giữa view và component là
+          <b>Synchronous</b>.
+        </li>
+        <li>
+          Cách tiếp cận theo hướng model có nhiều lợi ích hơn vì nó được tạo
+          trong comonent class với các Form field như các property của component
+          class.Do đó, nó làm cho việc kiểm tra component dễ dàng hơn.
         </li>
       </ul>
     </li>
   </ol>
-  <h5>Angular Forms (cả Template-driven và Reactive forms) có 3 khối Building (Building Blocks):</h5>
+  <h5>
+    Angular Forms (cả Template-driven và Reactive forms) có 3 khối Building
+    (Building Blocks):
+  </h5>
   <ol>
-    <li><b>FormControl</b>
+    <li>
+      <b>FormControl</b>
       <ul>
         <li>Đại diện cho 1 input field duy nhất như input,...</li>
-        <li>FormControl là một object chứa tất cả thông tin liên quan đến một input element, cho phép bạn điều
-          khiển input element đó như value, validation status,...</li>
+        <li>
+          FormControl là một object chứa tất cả thông tin liên quan đến một
+          input element, cho phép bạn điều khiển input element đó như value,
+          validation status,...
+        </li>
       </ul>
     </li>
-    <li><b>FormGroup</b>: là một tập hợp các FormControl, mỗi FormControl được khai báo như một property của object.
+    <li>
+      <b>FormGroup</b>: là một tập hợp các FormControl, mỗi FormControl được
+      khai báo như một property của object.
     </li>
-    <li><b>FormArray</b>: là một mảng (array) các FormControl, mỗi FormControl là một phần tử trong mảng.</li>
+    <li>
+      <b>FormArray</b>: là một mảng (array) các FormControl, mỗi FormControl là
+      một phần tử trong mảng.
+    </li>
   </ol>
 </ng-template>
 <ng-template #templateDrivenForm>
@@ -152,56 +202,97 @@
   </div>
   <h2>Các bước xây dựng Template-driven forms:</h2>
   <ol>
-    <li>Import <b>FormsModule</b> vào root module (hoặc shared module).
+    <li>
+      Import <b>FormsModule</b> vào root module (hoặc shared module).
       <div class="more-info">
-        <div><b>FormsModule</b> chứa tất cả các directive
-          form và các cấu trúc để làm việc với forms. <b>FormsModule</b> phải được import nếu bạn muốn sử dụng
-          <b>ngModel</b>.
+        <div>
+          <b>FormsModule</b> chứa tất cả các directive form và các cấu trúc để
+          làm việc với forms. <b>FormsModule</b> phải được import nếu bạn muốn
+          sử dụng <b>ngModel</b>.
         </div>
-        <div><i>Khi chúng ta import <b>FormsModule</b>, <b>ngForm</b> directive của Angular sẽ tự động tìm tất các
-            các &lt;form&gt; trong HTML template và tự động binding với chính nó.</i></div>
+        <div>
+          <i
+            >Khi chúng ta import <b>FormsModule</b>, <b>ngForm</b> directive của
+            Angular sẽ tự động tìm tất các các &lt;form&gt; trong HTML template
+            và tự động binding với chính nó.</i
+          >
+        </div>
       </div>
     </li>
     <li>Tạo HTML Form</li>
-    <li>Export <b>ngForm</b> instance thành một <b>template reference variable</b> (do <b>ngForm</b> directive đã sử
-      dụng
+    <li>
+      Export <b>ngForm</b> instance thành một
+      <b>template reference variable</b> (do <b>ngForm</b> directive đã sử dụng
       <b><i>exportAs</i></b> trong Directive Decorator).
       <div class="more-info">
         <div><code>&lt;form #contactForm="ngForm"&gt;</code></div>
-        <div>Điều này cho phép chúng ta truy cập các property và method của <b>ngForm</b> qua template reference
-          variable <b>contactForm</b></div>
-        <div>Nhiệm vụ của <b>ngForm</b>:
+        <div>
+          Điều này cho phép chúng ta truy cập các property và method của
+          <b>ngForm</b> qua template reference variable <b>contactForm</b>
+        </div>
+        <div>
+          Nhiệm vụ của <b>ngForm</b>:
           <ol>
             <li>Binding chính nó với &lt;Form&gt; directive</li>
             <li>Tạo một top-level <b>FormGroup</b> instance</li>
-            <li>Tạo <b>FormControl</b> instance cho mỗi field chứa <b>ngModel</b>.
+            <li>
+              Tạo <b>FormControl</b> instance cho mỗi field chứa <b>ngModel</b>.
             </li>
-            <li>Tạo <b>FormGroup</b> instance cho mỗi <b>ngModelGroup</b> directive</li>
+            <li>
+              Tạo <b>FormGroup</b> instance cho mỗi
+              <b>ngModelGroup</b> directive
+            </li>
           </ol>
         </div>
-        <div>Ngoài ra, chúng ta cũng có thể export <b>FormControl</b>/<b>FormGroup</b> instance thành <b>template
-            reference variable</b> tương ứng với exportAs: <b>ngModel</b>/<b>ngModelGroup</b>.</div>
+        <div>
+          Ngoài ra, chúng ta cũng có thể export <b>FormControl</b>/<b
+            >FormGroup</b
+          >
+          instance thành <b>template reference variable</b> tương ứng với
+          exportAs: <b>ngModel</b>/<b>ngModelGroup</b>.
+        </div>
       </div>
     </li>
-    <li>Gắn <b>ngModel</b> cho các form field. Bạn cũng có thể cung cấp biến cho <b>ngModel</b> để two-way binding với
-      component.
+    <li>
+      Gắn <b>ngModel</b> cho các form field. Bạn cũng có thể cung cấp biến cho
+      <b>ngModel</b> để two-way binding với component.
       <div class="more-info">
-        <div><code>&lt;input type="text" name="firstname" ngModel&gt;</code></div>
-        <div><b>ngModel</b> sẽ sử dụng
-          <b>name</b> attribute để tạo <b>FormControl</b> instance cho mỗi form field được gắn nó.
+        <div>
+          <code>&lt;input type="text" name="firstname" ngModel&gt;</code>
         </div>
-        <div>Trong Template-driven forms, chúng ta sử dụng <b>ngModel</b> và <b>ngModelGroup</b> directive trên các HTML
-          element. <b>FormsModule</b> sau đó sẽ tạo các FormControl & FormGroup instance từ template.</div>
+        <div>
+          <b>ngModel</b> sẽ sử dụng <b>name</b> attribute để tạo
+          <b>FormControl</b> instance cho mỗi form field được gắn nó.
+        </div>
+        <div>
+          Trong Template-driven forms, chúng ta sử dụng <b>ngModel</b> và
+          <b>ngModelGroup</b> directive trên các HTML element.
+          <b>FormsModule</b> sau đó sẽ tạo các FormControl & FormGroup instance
+          từ template.
+        </div>
       </div>
     </li>
     <li>Validate form</li>
-    <li>Submit form data cho component sử dụng <b>ngSubmit</b> event.
+    <li>
+      Submit form data cho component sử dụng <b>ngSubmit</b> event.
       <div class="more-info">
-        Chúng ta sử dụng event binding để bind <b>ngSubmit</b> với <b>onSubmit</b> method in component class
-        <div><code>&lt;form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)"&gt;</code></div>
-        <div>Khi user click submit button (type="submit"), <b>ngSubmit</b> event sẽ kích hoạt.</div>
-        <div>Chúng ta truyền local template variable <b>contactForm</b> vào <b>onSubmit</b>. <b>contactForm</b> giữ tham
-          chiếu đến <b>ngForm</b> directive, bằng cách này chúng ta có thể truy xuất data form field từ component class.
+        Chúng ta sử dụng event binding để bind <b>ngSubmit</b> với
+        <b>onSubmit</b> method in component class
+        <div>
+          <code
+            >&lt;form #contactForm="ngForm"
+            (ngSubmit)="onSubmit(contactForm)"&gt;</code
+          >
+        </div>
+        <div>
+          Khi user click submit button (type="submit"), <b>ngSubmit</b> event sẽ
+          kích hoạt.
+        </div>
+        <div>
+          Chúng ta truyền local template variable <b>contactForm</b> vào
+          <b>onSubmit</b>. <b>contactForm</b> giữ tham chiếu đến
+          <b>ngForm</b> directive, bằng cách này chúng ta có thể truy xuất data
+          form field từ component class.
         </div>
       </div>
     </li>
@@ -210,15 +301,32 @@
   <div class="explain">
     <div><code>@ViewChild('contactForm') contactForm: NgForm;</code></div>
     <div><code>this.contactForm.controls['country'].setValue('vn');</code></div>
-    <div><code>this.contactForm.control.get('country').setValue('vn');</code></div>
+    <div>
+      <code>this.contactForm.control.get('country').setValue('vn');</code>
+    </div>
   </div>
   <h2>Demo</h2>
   <ul>
-    <li><a href="https://angular-ivy-igfetg.stackblitz.io" target="_blank">View Demo</a></li>
-    <li><a href="https://stackblitz.com/edit/angular-ivy-igfetg?file=src/app/app.component.ts" target="_blank">Open
-        Stackblitz in new tab</a></li>
+    <li>
+      <a href="https://angular-ivy-igfetg.stackblitz.io" target="_blank"
+        >View Demo</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://stackblitz.com/edit/angular-ivy-igfetg?file=src/app/app.component.ts"
+        target="_blank"
+        >Open Stackblitz in new tab</a
+      >
+    </li>
   </ul>
-  <button *ngIf="isShow" class="ms-3 btn btn-sm btn-primary" (click)="embededProject()">Load project HERE</button>
+  <button
+    *ngIf="isShow"
+    class="ms-3 btn btn-sm btn-primary"
+    (click)="embededProject()"
+  >
+    Load project HERE
+  </button>
   <div id="angular-template-driven-form"></div>
 </ng-template>
 <ng-template #reactiveForm>
@@ -271,18 +379,33 @@
       <div class="pro-cons me-3">
         <h5>Ưu điểm</h5>
         <ul>
-          <li>Có thể truy cập và tương tác trực tiếp với các form API (FormControl,...)</li>
-          <li>Dễ dàng tạo các custom validators bằng cách tạo ra các function nhận vào <b>control</b>.</li>
+          <li>
+            Có thể truy cập và tương tác trực tiếp với các form API
+            (FormControl,...)
+          </li>
+          <li>
+            Dễ dàng tạo các custom validators bằng cách tạo ra các function nhận
+            vào <b>control</b>.
+          </li>
           <li>Hỗ trợ tạo các dynamic form</li>
           <li>Dễ dàng reuse và mở rộng</li>
-          <li><a href="https://angular.io/guide/forms-overview#testing" target="_blank">Testing</a> đơn giản hơn so với
-            Template-driven forms.</li>
+          <li>
+            <a
+              href="https://angular.io/guide/forms-overview#testing"
+              target="_blank"
+              >Testing</a
+            >
+            đơn giản hơn so với Template-driven forms.
+          </li>
         </ul>
       </div>
       <div class="pro-cons">
         <h5>Nhược điểm</h5>
         <ul>
-          <li>Cần học nhiều thứ hơn để có thể làm việc với các Reactive forms có logic xử lý phức tạp.</li>
+          <li>
+            Cần học nhiều thứ hơn để có thể làm việc với các Reactive forms có
+            logic xử lý phức tạp.
+          </li>
         </ul>
       </div>
     </div>
@@ -290,20 +413,32 @@
   <ng-template #createForms>
     <h2>Các bước xây dựng và sử dụng Reactive Forms</h2>
     <ol>
-      <li>Import <b>ReactiveFormsModule</b> vào root module hoặc shared module - e.g: <b>AppModule</b>;
+      <li>
+        Import <b>ReactiveFormsModule</b> vào root module hoặc shared module -
+        e.g: <b>AppModule</b>;
         <div class="more-info">
-          <code>import &#123; ReactiveFormsModule &#125; from '@angular/forms';</code>
+          <code
+            >import &#123; ReactiveFormsModule &#125; from
+            '@angular/forms';</code
+          >
         </div>
       </li>
-      <li>Tạo <b>Form Model</b> trong component class sử dụng <b>Form Group, Form Control & Form Arrays</b>;
+      <li>
+        Tạo <b>Form Model</b> trong component class sử dụng
+        <b>Form Group, Form Control & Form Arrays</b>;
         <div class="more-info">
           <h6>Import FormGroup, FormControl & Validator từ @angular/forms.</h6>
-          <code>import &#123; FormGroup, FormControl, Validators &#125; from '@angular/forms'</code>
+          <code
+            >import &#123; FormGroup, FormControl, Validators &#125; from
+            '@angular/forms'</code
+          >
           <h6>Tạo FormGroup</h6>
           <code>contactForm = new FormGroup(&#123;&#125;)</code>
-          <p>The <b>FormGroup</b> takes <b>3</b> arguments. <b>a collection</b> of a child <b>FormControl</b>, a
-            <b>validator - Sync Validator</b>, and an <b>asynchronous validator - Async Validator</b>. The validators
-            are
+          <p>
+            The <b>FormGroup</b> takes <b>3</b> arguments.
+            <b>a collection</b> of a child <b>FormControl</b>, a
+            <b>validator - Sync Validator</b>, and an
+            <b>asynchronous validator - Async Validator</b>. The validators are
             optional.
           </p>
           <h6>Tạo FormControl</h6>
@@ -315,69 +450,121 @@
           gender: new FormControl(),
           isMarried: new FormControl(),
           country: new FormControl()
-        &#125;)</pre>
-          <p>The <b>FormControl</b> takes <b>3</b> arguments. a default value, a <b>validator - Sync Validator</b>, and
-            an
-            <b>asynchronous validator - Async Validator</b>. The validators are optional.
+        &#125;)</pre
+          >
+          <p>
+            The <b>FormControl</b> takes <b>3</b> arguments. a default value, a
+            <b>validator - Sync Validator</b>, and an
+            <b>asynchronous validator - Async Validator</b>. The validators are
+            optional.
           </p>
         </div>
       </li>
-      <li>Tạo <b> HTML Form</b> tương ứng với <b>Form Model</b> trong template.</li>
-      <li>Bind <b> HTML Form</b> với <b>Form Model</b> sử dụng <b>[FormGroup]</b> và <b>formControlName</b>.
+      <li>
+        Tạo <b> HTML Form</b> tương ứng với <b>Form Model</b> trong template.
+      </li>
+      <li>
+        Bind <b> HTML Form</b> với <b>Form Model</b> sử dụng
+        <b>[FormGroup]</b> và <b>formControlName</b>.
         <div class="more-info">
           <ol>
-            <li>Binding the template to the model - set <b>FormGroup</b> directive bằng model (contactFrom defined in
-              component class)
+            <li>
+              Binding the template to the model - set <b>FormGroup</b> directive
+              bằng model (contactFrom defined in component class)
               <div><code>&lt;form [formGroup]="contactForm"&gt;</code></div>
             </li>
-            <li>Binding từng form field element trong form của chúng ta với <b>FormControl</b> models sử dụng
-              FormControlName (formControlName) directive. Note: value được gán cho <b>formControlName</b> tương ứng với
-              FormControl instance đã khai báo trong component class.
-              <div><code>&lt;input type="text" id="firstname" name="firstname" formControlName="firstname"&gt;</code>
+            <li>
+              Binding từng form field element trong form của chúng ta với
+              <b>FormControl</b> models sử dụng FormControlName
+              (formControlName) directive. Note: value được gán cho
+              <b>formControlName</b> tương ứng với FormControl instance đã khai
+              báo trong component class.
+              <div>
+                <code
+                  >&lt;input type="text" id="firstname" name="firstname"
+                  formControlName="firstname"&gt;</code
+                >
               </div>
-              <div><code>&lt;input type="text" id="lastname" name="lastname" formControlName="lastname"&gt;</code></div>
+              <div>
+                <code
+                  >&lt;input type="text" id="lastname" name="lastname"
+                  formControlName="lastname"&gt;</code
+                >
+              </div>
             </li>
           </ol>
         </div>
       </li>
-      <li>Submit form sử dụng <b>(ngSubmit)</b>
+      <li>
+        Submit form sử dụng <b>(ngSubmit)</b>
         <div class="more-info">
-          Chúng ta sử dụng event binding để bind <b>ngSubmit</b> với <b>onSubmit</b> method in component class:
-          <div><code>&lt;form [formGroup]="contactForm" (ngSubmit)="onSubmit()"&gt;</code></div>
+          Chúng ta sử dụng event binding để bind <b>ngSubmit</b> với
+          <b>onSubmit</b> method in component class:
+          <div>
+            <code
+              >&lt;form [formGroup]="contactForm"
+              (ngSubmit)="onSubmit()"&gt;</code
+            >
+          </div>
         </div>
       </li>
     </ol>
     <h2>Demo</h2>
     <ul>
-      <li><a href="https://angular-ivy-yhhkcd.stackblitz.io" target="_blank">View Demo</a></li>
-      <li><a href="https://stackblitz.com/edit/angular-ivy-yhhkcd?file=src/app/app.component.ts" target="_blank">Open
-          Stackblitz in new tab</a></li>
+      <li>
+        <a href="https://angular-ivy-yhhkcd.stackblitz.io" target="_blank"
+          >View Demo</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://stackblitz.com/edit/angular-ivy-yhhkcd?file=src/app/app.component.ts"
+          target="_blank"
+          >Open Stackblitz in new tab</a
+        >
+      </li>
     </ul>
   </ng-template>
   <ng-template #defaultValue>
     <h2>Default Value</h2>
-    <div>Bạn có thể truyền giá trị mặc định dưới dạng <b>primitive values</b> (string,...) hoặc <b>object</b>
-      (key-value)
-      cho <b>FormControl</b> khi khởi tạo.</div>
-    <div><i class="text-secondary" [style.fontSize.px]="13">// Setting Default value as string</i></div>
+    <div>
+      Bạn có thể truyền giá trị mặc định dưới dạng
+      <b>primitive values</b> (string,...) hoặc <b>object</b> (key-value) cho
+      <b>FormControl</b> khi khởi tạo.
+    </div>
+    <div>
+      <i class="text-secondary" [style.fontSize.px]="13"
+        >// Setting Default value as string</i
+      >
+    </div>
     <div><code>firstname= new FormControl('Kenji');</code></div>
-    <div class="text-primary">Khi bạn <b>truyền object</b>, bạn có thiết lập cả <b>value</b> và <b>disabled</b> (Nếu gán
-      <b>true</b> sẽ disable
-      element).
+    <div class="text-primary">
+      Khi bạn <b>truyền object</b>, bạn có thiết lập cả <b>value</b> và
+      <b>disabled</b> (Nếu gán <b>true</b> sẽ disable element).
     </div>
-    <div><i class="text-secondary" [style.fontSize.px]="13">// Setting Default value & disabled state as object</i>
+    <div>
+      <i class="text-secondary" [style.fontSize.px]="13"
+        >// Setting Default value & disabled state as object</i
+      >
     </div>
-    <div><code>firstname: new FormControl(&#123;value: 'Kenji', disabled: true&#125;),</code></div>
+    <div>
+      <code
+        >firstname: new FormControl(&#123;value: 'Kenji', disabled:
+        true&#125;),</code
+      >
+    </div>
     <h4>Có 2 cách để set default value cho forms:</h4>
     <ol>
-      <li>Set giá trị mặc định cho từng FormControl khi tạo form bằng cách truyền default value vào tham số đầu tiên của
-        FormControl.
+      <li>
+        Set giá trị mặc định cho từng FormControl khi tạo form bằng cách truyền
+        default value vào tham số đầu tiên của FormControl.
         <div class="explain">
           <div><code>firstname: new FormControl('Nguyen'),</code></div>
           <div><code>firstname: [''],</code></div>
         </div>
       </li>
-      <li>Dùng <b>setValue</b> trong <b>ngOnInit</b> method.
+      <li>
+        Dùng <b>setValue</b> trong <b>ngOnInit</b> method.
         <div class="explain">
           <div>
             <pre>
@@ -401,10 +588,14 @@ setDefault() &#123;
   &#125;;
 
   this.reactiveForm.setValue(contact);
-&#125;</pre>
+&#125;</pre
+            >
           </div>
-          <div><b>Note:</b> contact object phải bao gồm tất cả các controls của form và phải chính xác số lượng control
-            (không ít hơn, cũng không được nhiều hơn).</div>
+          <div>
+            <b>Note:</b> contact object phải bao gồm tất cả các controls của
+            form và phải chính xác số lượng control (không ít hơn, cũng không
+            được nhiều hơn).
+          </div>
         </div>
       </li>
     </ol>
@@ -413,39 +604,77 @@ setDefault() &#123;
     <h2>Sync Validator</h2>
     <ul>
       <li>The second parameter is an <b>array</b> of sync Validators.</li>
-      <li><em>Sync validators</em> chạy validation và trả về kết quả ngay lập tức.</li>
-      <li>Trả về một danh sách <em>errors</em> hoặc <em>null</em> nếu validate thành công.</li>
+      <li>
+        <em>Sync validators</em> chạy validation và trả về kết quả ngay lập tức.
+      </li>
+      <li>
+        Trả về một danh sách <em>errors</em> hoặc <em>null</em> nếu validate
+        thành công.
+      </li>
     </ul>
     <div class="explain">
-      <div><b>Note:</b> Chúng cần <em>disable browser validator</em> cần cách thêm <b>novalidate</b> attribute vào form
-        element. Bằng cách này, chúng ta sẽ ngăn chặn built-in HTML5 validate form khi submit.</div>
-      <div><code>&lt;form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate&gt;</code></div>
+      <div>
+        <b>Note:</b> Chúng cần <em>disable browser validator</em> cần cách thêm
+        <b>novalidate</b> attribute vào form element. Bằng cách này, chúng ta sẽ
+        ngăn chặn built-in HTML5 validate form khi submit.
+      </div>
+      <div>
+        <code
+          >&lt;form [formGroup]="contactForm" (ngSubmit)="onSubmit()"
+          novalidate&gt;</code
+        >
+      </div>
     </div>
     <h2>Cách thêm validators cho FormControl</h2>
-    <div>Angular has some built-in Validators such as
-      <code>required</code>, <code>pattern</code> and
-      <code>minLength</code> etc.
+    <div>
+      Angular has some built-in Validators such as <code>required</code>,
+      <code>pattern</code> and <code>minLength</code> etc.
     </div>
     <dl>
       <dt>Required Validator</dt>
-      <dd><code>firstname: new FormControl('', [Validators.required]),</code>
-        <div class="explain"><em>Dùng <b>FormBuilder</b>: </em> <code>firstname: ['', [Validators.required]]</code>
+      <dd>
+        <code>firstname: new FormControl('', [Validators.required]),</code>
+        <div class="explain">
+          <em>Dùng <b>FormBuilder</b>: </em>
+          <code>firstname: ['', [Validators.required]]</code>
         </div>
       </dd>
       <dt>Minlength Validator</dt>
-      <dd><code>firstname: new FormControl('', [Validators.required,Validators.minLength(10)]),</code></dd>
+      <dd>
+        <code
+          >firstname: new FormControl('',
+          [Validators.required,Validators.minLength(10)]),</code
+        >
+      </dd>
       <dt>Maxlength Validator</dt>
-      <dd><code>lastname: new FormControl('',[Validators.maxLength(15)]),</code></dd>
+      <dd>
+        <code>lastname: new FormControl('',[Validators.maxLength(15)]),</code>
+      </dd>
       <dt>Pattern Validator</dt>
       <dd>
-        <code>lastname: new FormControl('',[Validators.maxLength(15), Validators.pattern("^[a-zA-Z]+$")]),</code>
-        <div class="explain">Chỉ cho phép ký tự chữ và không chứa khoảng trắng.</div>
+        <code
+          >lastname: new FormControl('',[Validators.maxLength(15),
+          Validators.pattern("^[a-zA-Z]+$")]),</code
+        >
+        <div class="explain">
+          Chỉ cho phép ký tự chữ và không chứa khoảng trắng.
+        </div>
       </dd>
       <dt>Email Validator</dt>
-      <dd><code>email:new FormControl('',[Validators.email,Validators.required]),</code></dd>
+      <dd>
+        <code
+          >email:new
+          FormControl('',[Validators.email,Validators.required]),</code
+        >
+      </dd>
     </dl>
     <h2>Disable Submit button</h2>
-    <div class="explain"><code>&lt;button type="submit" [disabled]="!contactForm.valid">Submit&lt;/button></code></div>
+    <div class="explain">
+      <code
+        >&lt;button type="submit"
+        [disabled]="!contactForm.valid">Submit&lt;/button></code
+      >
+    </div>
     <h2>Displaying the Validation/Error messages</h2>
     <dl>
       <dt>Component Class</dt>
@@ -456,47 +685,78 @@ setDefault() &#123;
       <dd>
         <code-highlighter [code]="showErrorMessages"></code-highlighter>
       </dd>
-      <dd>Cách khác:
+      <dd>
+        Cách khác:
         <code-highlighter [code]="showErrorMessagesAnother"></code-highlighter>
       </dd>
     </dl>
     <h2>Demo</h2>
     <ul>
-      <li><a href="https://angular-ivy-yhhkcd.stackblitz.io" target="_blank">View Demo</a></li>
-      <li><a href="https://stackblitz.com/edit/angular-ivy-yhhkcd?file=src/app/app.component.ts" target="_blank">Open
-          Stackblitz in new tab</a></li>
+      <li>
+        <a href="https://angular-ivy-yhhkcd.stackblitz.io" target="_blank"
+          >View Demo</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://stackblitz.com/edit/angular-ivy-yhhkcd?file=src/app/app.component.ts"
+          target="_blank"
+          >Open Stackblitz in new tab</a
+        >
+      </li>
     </ul>
-    <h2>Bảng ký tự đặc biệt dùng với biểu thức chính quy (regular expression)</h2>
+    <h2>
+      Bảng ký tự đặc biệt dùng với biểu thức chính quy (regular expression)
+    </h2>
     <img src="../../../assets/images/regex.png" alt="Regex" />
-    <a href="https://viblo.asia/p/bieu-thuc-chinh-quy-regex-trong-javascript-QpmleQ9mlrd?__cf_chl_jschl_tk__=18125abdad530d67d82b69aa1a5c90650e224411-1625545417-0-AYz-Qb_8lTRgMyIT-CDccfzCMhbu4ORLgpCr7CNKoptZoP3FdVkZS-F8HWH5KbIispcXKT1uLDGgKbShLrYm_AWiOd00O9eK88htnKXs6bMlbmYG9kqbyzmr7hcW_uKkCYVr99ygPdRnsz7Je-DjsowaldhP1nLyWMCxqyltgYXrLL2xVLsWEnNiSy8qUO8cI9Jxh16Du_irOywlRZ6D0_MiExP0089a2WE4Z9XHxKom7nh6wRD-edHDa6hgaHgPAq7PrH2JMW4z-QPRd52W6BkZIq97zmZcASnzTqZiVFOlBEopROHSNbGW5K-wBpwGY_ncgUCCW1siHcybtM0Rll4W7SmwsEACgSmzvlvxrgs1tlVFtzTNZOWXPxg1fQ3N-D_94FDnJSPGA5JbkfEJIpShZB9uWOw_WSCvcBJmUBFYx9-TWMeTRi3Fg77A1gnflYXApklGXOBUit74-71EgT0"
-      target="_blank" rel="noopener noreferrer">Link</a>
+    <a
+      href="https://viblo.asia/p/bieu-thuc-chinh-quy-regex-trong-javascript-QpmleQ9mlrd?__cf_chl_jschl_tk__=18125abdad530d67d82b69aa1a5c90650e224411-1625545417-0-AYz-Qb_8lTRgMyIT-CDccfzCMhbu4ORLgpCr7CNKoptZoP3FdVkZS-F8HWH5KbIispcXKT1uLDGgKbShLrYm_AWiOd00O9eK88htnKXs6bMlbmYG9kqbyzmr7hcW_uKkCYVr99ygPdRnsz7Je-DjsowaldhP1nLyWMCxqyltgYXrLL2xVLsWEnNiSy8qUO8cI9Jxh16Du_irOywlRZ6D0_MiExP0089a2WE4Z9XHxKom7nh6wRD-edHDa6hgaHgPAq7PrH2JMW4z-QPRd52W6BkZIq97zmZcASnzTqZiVFOlBEopROHSNbGW5K-wBpwGY_ncgUCCW1siHcybtM0Rll4W7SmwsEACgSmzvlvxrgs1tlVFtzTNZOWXPxg1fQ3N-D_94FDnJSPGA5JbkfEJIpShZB9uWOw_WSCvcBJmUBFYx9-TWMeTRi3Fg77A1gnflYXApklGXOBUit74-71EgT0"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Link</a
+    >
   </ng-template>
   <ng-template #asyncValidator>
     <h2>Asynchronous validator</h2>
     <ul>
-      <li>The third argument is the Async Validator. The syntax of Async Validators is similar to Sync Validators.</li>
-      <li><em>Async validators</em> trả về một <b>Promise</b> hoặc <b>Observable.</b> Đây là điểm khác biệt so với sync
-        validator.</li>
+      <li>
+        The third argument is the Async Validator. The syntax of Async
+        Validators is similar to Sync Validators.
+      </li>
+      <li>
+        <em>Async validators</em> trả về một <b>Promise</b> hoặc
+        <b>Observable.</b> Đây là điểm khác biệt so với sync validator.
+      </li>
     </ul>
     <h3>Cách tạo custom Async Validator</h3>
     <ol>
-      <li>Tạo function implement <b>AsyncValidatorFn</b> Interface.
+      <li>
+        Tạo function implement <b>AsyncValidatorFn</b> Interface.
         <code-highlighter [code]="asyncValidatorFn"></code-highlighter>
       </li>
-      <li>Function phải trả về <em>ValidationErrors | null</em> dưới dạng <b>Promise hoặc Observable</b>.
+      <li>
+        Function phải trả về <em>ValidationErrors | null</em> dưới dạng
+        <b>Promise hoặc Observable</b>.
         <code-highlighter [code]="asyncValidatorExample"></code-highlighter>
       </li>
     </ol>
     <h3>Example</h3>
     <code-highlighter [code]="asyncValidatorHttp"></code-highlighter>
-    <div class="explain">Chúng ta có thể sử dụng <b>combineLatest</b> để merge data từ nhiều Observable và validate
-      input.</div>
+    <div class="explain">
+      Chúng ta có thể sử dụng <b>combineLatest</b> để merge data từ nhiều
+      Observable và validate input.
+    </div>
   </ng-template>
   <ng-template #groupControls>
     <h2>Grouping the controls using <b>FormGroup</b></h2>
-    <div>Cách nhóm các form controls cũng giống như cách mà chúng tạo <b>FormGroup - contactForm</b> ban đầu.</div>
-    <div>Chúng ta sẽ tạo ra một FromGroup mới đặt tên là <b>address</b> và tạo thêm 3 form controls cho <b>address</b>
-      group:</div>
+    <div>
+      Cách nhóm các form controls cũng giống như cách mà chúng tạo
+      <b>FormGroup - contactForm</b> ban đầu.
+    </div>
+    <div>
+      Chúng ta sẽ tạo ra một FromGroup mới đặt tên là <b>address</b> và tạo thêm
+      3 form controls cho <b>address</b> group:
+    </div>
     <pre>
       contactForm = new FormGroup(&#123;
         ...,
@@ -508,25 +768,35 @@ setDefault() &#123;
         &#125;)
       &#125;)
     </pre>
-    <div>Trong template, chúng ta sử dụng <b>formGroupName</b> trên một element bao các form control elements để đánh
-      dấu một group các controls trong Form. Và đồng
-      thời
-      cũng sử dụng <b>formControlName</b> cho mỗi form control của <b>address</b> group.</div>
+    <div>
+      Trong template, chúng ta sử dụng <b>formGroupName</b> trên một element bao
+      các form control elements để đánh dấu một group các controls trong Form.
+      Và đồng thời cũng sử dụng <b>formControlName</b> cho mỗi form control của
+      <b>address</b> group.
+    </div>
     <div><code>&lt;div formGroupName="address"&gt;</code></div>
   </ng-template>
   <ng-template #formBuilder>
     <div>
       <h2>Sử dụng FormBuilder để build Forms</h2>
-      <p>FormBuilder là API hỗ trợ xây dựng các reactive form trong Angular một cách đơn giản hơn. Nó cung cấp một
-        syntax ngắn gọn hơn để tạo instance của <b>FormControl</b>, <b>FormGroup</b>, <b>các FormGroup lồng nhau</b>,
-        hoặc <b>FormArray</b> => Giúp chúng ta giảm code required để viết các forms phức tạp.</p>
+      <p>
+        FormBuilder là API hỗ trợ xây dựng các reactive form trong Angular một
+        cách đơn giản hơn. Nó cung cấp một syntax ngắn gọn hơn để tạo instance
+        của <b>FormControl</b>, <b>FormGroup</b>,
+        <b>các FormGroup lồng nhau</b>, hoặc <b>FormArray</b> => Giúp chúng ta
+        giảm code required để viết các forms phức tạp.
+      </p>
       <h2>Cách sử dụng FormBuilder</h2>
       <ol>
-        <li>Import & inject FormBuilder API vào component
-          <div><code>import &#123; FormBuilder &#125; from '@angular/forms'</code></div>
+        <li>
+          Import & inject FormBuilder API vào component
+          <div>
+            <code>import &#123; FormBuilder &#125; from '@angular/forms'</code>
+          </div>
           <div><code>constructor(private formBuilder: FormBuilder)</code></div>
         </li>
-        <li>Use the <b>group, array & control</b> methods to build the FormModel:
+        <li>
+          Use the <b>group, array & control</b> methods to build the FormModel:
           <div class="more-info">
             <h6>FormGroup</h6>
             <pre>
@@ -537,7 +807,8 @@ setDefault() &#123;
                 gender: [''],
                 isMarried: [''],
                 country: [''],
-              &#125;);</pre>
+              &#125;);</pre
+            >
             <h6>Nested FormGroup</h6>
             <pre>
             this.contactForm = this.formBuilder.group(&#123;
@@ -548,9 +819,13 @@ setDefault() &#123;
                 street: [''],
                 pincode: ['']
               &#125;)
-            &#125;)</pre>
+            &#125;)</pre
+            >
             <h6>Validations</h6>
-            <i>The second argument to the FormControl is the list of sync validators.</i>
+            <i
+              >The second argument to the FormControl is the list of sync
+              validators.</i
+            >
             <pre>
               this.contactForm = this.formBuilder.group(&#123;
                 firstname: ['', [Validators.required, Validators.minLength(10)]],
@@ -564,15 +839,25 @@ setDefault() &#123;
                   street: ['', [Validators.required]],
                   pincode: ['', [Validators.required]],
                 &#125;)
-              &#125;);</pre>
+              &#125;);</pre
+            >
           </div>
         </li>
       </ol>
       <h2>Demo</h2>
       <ul>
-        <li><a href="https://angular-ivy-yhhkcd.stackblitz.io" target="_blank">View Demo</a></li>
-        <li><a href="https://stackblitz.com/edit/angular-ivy-yhhkcd?file=src/app/app.component.ts" target="_blank">Open
-            Stackblitz in new tab</a></li>
+        <li>
+          <a href="https://angular-ivy-yhhkcd.stackblitz.io" target="_blank"
+            >View Demo</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://stackblitz.com/edit/angular-ivy-yhhkcd?file=src/app/app.component.ts"
+            target="_blank"
+            >Open Stackblitz in new tab</a
+          >
+        </li>
       </ul>
     </div>
   </ng-template>
@@ -580,51 +865,91 @@ setDefault() &#123;
     <ng-container>
       <h2>setValue</h2>
       <div>
-        <code>setValue(value: &#123; [key: string]: any; &#125;, options: &#123; onlySelf?: boolean; emitEvent?: boolean; &#125; = &#123;&#125;): void</code>
+        <code
+          >setValue(value: &#123; [key: string]: any; &#125;, options: &#123;
+          onlySelf?: boolean; emitEvent?: boolean; &#125; = &#123;&#125;):
+          void</code
+        >
       </div>
       <div class="explain">
-        <div>Chúng ta sử dụng <b>setValue</b> để update <b>FormControl, FormGroup, FormArray</b>.</div>
-        <div><b>Note:</b>
+        <div>
+          Chúng ta sử dụng <b>setValue</b> để update
+          <b>FormControl, FormGroup, FormArray</b>.
+        </div>
+        <div>
+          <b>Note:</b>
           <ul>
-            <li>Khi sử dụng <b>setValue</b> để update, object truyền vào phải match chính xác với cấu trúc
-              FormGroup hoặc FormArray đã tạo - object phải bao gồm tất cả form control của form (chính xác số lượng
-              controls của form - không hơn, không kém), nếu không, chúng ta sẽ
-              gặp lỗi.</li>
-            <li>Chúng ta thường dùng <b>setValue</b> để set default values và giá trị của một form control cụ thể.</li>
+            <li>
+              Khi sử dụng <b>setValue</b> để update, object truyền vào phải
+              match chính xác với cấu trúc FormGroup hoặc FormArray đã tạo -
+              object phải bao gồm tất cả form control của form (chính xác số
+              lượng controls của form - không hơn, không kém), nếu không, chúng
+              ta sẽ gặp lỗi.
+            </li>
+            <li>
+              Chúng ta thường dùng <b>setValue</b> để set default values và giá
+              trị của một form control cụ thể.
+            </li>
           </ul>
         </div>
       </div>
       <h2>patchValue</h2>
       <div>
-        <code>patchValue(value: &#123; [key: string]: any; &#125;, options: &#123; onlySelf?: boolean; emitEvent?: boolean; &#125; = &#123;&#125;): void</code>
+        <code
+          >patchValue(value: &#123; [key: string]: any; &#125;, options: &#123;
+          onlySelf?: boolean; emitEvent?: boolean; &#125; = &#123;&#125;):
+          void</code
+        >
         <div class="explain">
-          Chúng ta sử dụng <b>patchValue</b> khi chỉ muốn update một vài form controls mà chúng ta chỉ định và
-          giữ nguyên giá trị của các form controls khác.
+          Chúng ta sử dụng <b>patchValue</b> khi chỉ muốn update một vài form
+          controls mà chúng ta chỉ định và giữ nguyên giá trị của các form
+          controls khác.
         </div>
       </div>
       <h2>onlySelf</h2>
       <ul>
-        <li>Giá trị mặc định của <b>onlySelf</b> là <b>false</b> &#10142; Khi <b>setValue</b> của một form control nào
-          đó, Angular sẽ check validation của form control đó. Sau đó, nó sẽ gửi kết quả validation của control này lên
-          top-level FormGroup. Do đó, <b>validation status của FormGroup</b> trước và sau setValue<b> có thể bị
-            thay đổi</b>.
+        <li>
+          Giá trị mặc định của <b>onlySelf</b> là <b>false</b> &#10142; Khi
+          <b>setValue</b> của một form control nào đó, Angular sẽ check
+          validation của form control đó. Sau đó, nó sẽ gửi kết quả validation
+          của control này lên top-level FormGroup. Do đó,
+          <b>validation status của FormGroup</b> trước và sau setValue<b>
+            có thể bị thay đổi</b
+          >.
         </li>
-        <li>Nếu set giá trị <b>onlySelf: true</b> &#10142; Angular sẽ chỉ check validation của form control thực hiện
-          <b>setValue</b>, không check lại validation của form control khác, và cũng không gửi kết quả validation của
-          form control đó đến parent form group. Do đó, <b>validation status của FormGroup</b> trước và sau
-          setValue<b> không thay đổi</b>.
-          <div>&#10148; Do đó, khi <b>onlySelf: true</b> - <b>StatusChanges và ValueChanges</b> chỉ kích hoạt với
-            controls được chỉ định, không kích hoạt với form.</div>
+        <li>
+          Nếu set giá trị <b>onlySelf: true</b> &#10142; Angular sẽ chỉ check
+          validation của form control thực hiện <b>setValue</b>, không check lại
+          validation của form control khác, và cũng không gửi kết quả validation
+          của form control đó đến parent form group. Do đó,
+          <b>validation status của FormGroup</b> trước và sau setValue<b>
+            không thay đổi</b
+          >.
+          <div>
+            &#10148; Do đó, khi <b>onlySelf: true</b> -
+            <b>StatusChanges và ValueChanges</b> chỉ kích hoạt với controls được
+            chỉ định, không kích hoạt với form.
+          </div>
         </li>
       </ul>
       <h2>emitEvent</h2>
-      <div>Angular forms emit 2 event: <b>ValueChanges</b> (valueChanges Observable) và <b>StatusChanges</b>
-        (statusChanges Observable). <b>ValueChanges</b> event được emit bất cứ khi nào value của form
-        bị thay đổi. <b>StatusChanges</b> event được emit bất của khi nào Angular validate form.</div>
+      <div>
+        Angular forms emit 2 event: <b>ValueChanges</b> (valueChanges
+        Observable) và <b>StatusChanges</b> (statusChanges Observable).
+        <b>ValueChanges</b> event được emit bất cứ khi nào value của form bị
+        thay đổi. <b>StatusChanges</b> event được emit bất của khi nào Angular
+        validate form.
+      </div>
       <ul>
-        <li>Mặc định, <b>emitEvent: true</b> &#10142; Kích hoạt <b>ValueChanges</b> và <b>StatusChanges</b>.</li>
-        <li>Nếu <b>emitEvent: false</b> &#10142; sẽ stop hành vi mặc định của ValueChanges và StatusChanges event. Không
-          kích hoạt <b>ValueChanges</b> và <b>StatusChanges</b>.</li>
+        <li>
+          Mặc định, <b>emitEvent: true</b> &#10142; Kích hoạt
+          <b>ValueChanges</b> và <b>StatusChanges</b>.
+        </li>
+        <li>
+          Nếu <b>emitEvent: false</b> &#10142; sẽ stop hành vi mặc định của
+          ValueChanges và StatusChanges event. Không kích hoạt
+          <b>ValueChanges</b> và <b>StatusChanges</b>.
+        </li>
       </ul>
       <h2>Cách get form controls từ FormGroup</h2>
       <div class="explain">
@@ -637,134 +962,274 @@ setDefault() &#123;
   <ng-template #statusChanges>
     <h2>StatusChanges</h2>
     <ul>
-      <li><b>StatusChanges</b> được kích hoạt mỗi khi Angular validate FormControl/FormGroup/FormArray.</li>
-      <li><b>StatusChanges</b> trả về một <b>Observable</b> emit <b>latest validation status</b> của control, do đó,
-        chúng ta có thể subscribe nó để lấy <b>validation status mới
-          nhất</b> của control hoặc form.</li>
-      <li><b>Validation status</b> của control hoặc form là một trong 2 giá trị: <b>VALID</b> hoặc <b>INVALID</b>.</li>
+      <li>
+        <b>StatusChanges</b> được kích hoạt mỗi khi Angular validate
+        FormControl/FormGroup/FormArray.
+      </li>
+      <li>
+        <b>StatusChanges</b> trả về một <b>Observable</b> emit
+        <b>latest validation status</b> của control, do đó, chúng ta có thể
+        subscribe nó để lấy <b>validation status mới nhất</b> của control hoặc
+        form.
+      </li>
+      <li>
+        <b>Validation status</b> của control hoặc form là một trong 2 giá trị:
+        <b>VALID</b> hoặc <b>INVALID</b>.
+      </li>
     </ul>
     <h2>Quá trình kích hoạt StatusChanges của controls và form</h2>
     <ol>
-      <li>Thay đổi giá trị của <b>input FormControl</b> &#8658; Angular chạy validation để check <b>input
-          FormControl</b>.</li>
-      <li>Nếu validation tạo một list các validation error, status => <b>INVALID</b>. Nếu không có error, status =>
-        <b>VALID</b>.
+      <li>
+        Thay đổi giá trị của <b>input FormControl</b> &#8658; Angular chạy
+        validation để check <b>input FormControl</b>.
       </li>
-      <li>Kích hoạt <b>StatusChanges</b> của <b>FormControl</b>:
-        <code-highlighter [codeClass]="'more-info'" [code]="statusControl"></code-highlighter>
-        <div><b>Note:</b> Lúc này, <b>status của control là mới nhất</b>, NHƯNG <b>status của parent form vẫn giữ status
-            trước đó</b>.
+      <li>
+        Nếu validation tạo một list các validation error, status =>
+        <b>INVALID</b>. Nếu không có error, status => <b>VALID</b>.
+      </li>
+      <li>
+        Kích hoạt <b>StatusChanges</b> của <b>FormControl</b>:
+        <code-highlighter
+          [codeClass]="'more-info'"
+          [code]="statusControl"
+        ></code-highlighter>
+        <div>
+          <b>Note:</b> Lúc này, <b>status của control là mới nhất</b>, NHƯNG
+          <b>status của parent form vẫn giữ status trước đó</b>.
         </div>
       </li>
-      <li>Truyền validation status của control lên parent form => Angular update lại validation status của parent form
-        và return <b>VALID</b> hoặc <b>INVALID</b>.</li>
-      <li>Kích hoạt <b>StatusChanges</b> của cả FormGroup
-        <code-highlighter [codeClass]="'more-info'" [code]="statusForm"></code-highlighter>
+      <li>
+        Truyền validation status của control lên parent form => Angular update
+        lại validation status của parent form và return <b>VALID</b> hoặc
+        <b>INVALID</b>.
       </li>
-      <li>Sau khi chạy xong <b>StatusChanges</b> của parent FormGroup, nếu trước đó chúng ta có sử dụng
-        <b>setTimeout</b> bên trong <b>StatusChanges của control</b> thì nó sẽ run callback của <b>setTimeout</b>.
+      <li>
+        Kích hoạt <b>StatusChanges</b> của cả FormGroup
+        <code-highlighter
+          [codeClass]="'more-info'"
+          [code]="statusForm"
+        ></code-highlighter>
+      </li>
+      <li>
+        Sau khi chạy xong <b>StatusChanges</b> của parent FormGroup, nếu trước
+        đó chúng ta có sử dụng <b>setTimeout</b> bên trong
+        <b>StatusChanges của control</b> thì nó sẽ run callback của
+        <b>setTimeout</b>.
       </li>
     </ol>
     <h2>emitEvent & StatusChanges</h2>
-    <div>Nếu chúng ta set option <b>emitEvent: false</b> thì <b>StatusChange</b> của control và parent form sẽ không
-      được kích hoạt, dù chúng ta có thay đổi input hay không.
-      <div><code>this.reactiveForm.get("firstname").setValue("", &#123; emitEvent: false &#125;);</code></div>
-      <div>Chúng ta có thể sử dụng <b>emitEvent: false</b> với <b>setValue, patchValue, markAsPending, disable, enable,
-          updateValueAndValidity & setErrors</b> methods.</div>
+    <div>
+      Nếu chúng ta set option <b>emitEvent: false</b> thì
+      <b>StatusChange</b> của control và parent form sẽ không được kích hoạt, dù
+      chúng ta có thay đổi input hay không.
+      <div>
+        <code
+          >this.reactiveForm.get("firstname").setValue("", &#123; emitEvent:
+          false &#125;);</code
+        >
+      </div>
+      <div>
+        Chúng ta có thể sử dụng <b>emitEvent: false</b> với
+        <b
+          >setValue, patchValue, markAsPending, disable, enable,
+          updateValueAndValidity & setErrors</b
+        >
+        methods.
+      </div>
     </div>
     <h2>onlySelf & StatusChanges</h2>
-    <div>Khi chúng ta sử dụng <b>onlySelf: true</b>, các thay đổi chỉ ảnh hưởng đến <b>FormControl</b> và thay đổi không
-      truyền lên parent của nó. Do đó, chỉ có <b>StatusChanges</b> của control được kích hoạt</div>
-    <div><code>this.reactiveForm.get("firstname").setValue("", &#123; onlySelf: true &#125;);</code></div>
-    <div>Chúng ta có thể sử dụng <b>onlySelf: true</b> với <b>setValue, patchValue, markAsUntouched, markAsDirty,
-        markAsPristine, markAsPending, disable, enable, and updateValueAndValidity</b> methods.</div>
+    <div>
+      Khi chúng ta sử dụng <b>onlySelf: true</b>, các thay đổi chỉ ảnh hưởng đến
+      <b>FormControl</b> và thay đổi không truyền lên parent của nó. Do đó, chỉ
+      có <b>StatusChanges</b> của control được kích hoạt
+    </div>
+    <div>
+      <code
+        >this.reactiveForm.get("firstname").setValue("", &#123; onlySelf: true
+        &#125;);</code
+      >
+    </div>
+    <div>
+      Chúng ta có thể sử dụng <b>onlySelf: true</b> với
+      <b
+        >setValue, patchValue, markAsUntouched, markAsDirty, markAsPristine,
+        markAsPending, disable, enable, and updateValueAndValidity</b
+      >
+      methods.
+    </div>
     <h2>Demo</h2>
     <ul>
-      <li><a href="https://angular-ivy-yhhkcd.stackblitz.io" target="_blank">View Demo</a></li>
-      <li><a href="https://stackblitz.com/edit/angular-ivy-yhhkcd?file=src/app/app.component.ts" target="_blank">Open
-          Stackblitz in new tab</a></li>
+      <li>
+        <a href="https://angular-ivy-yhhkcd.stackblitz.io" target="_blank"
+          >View Demo</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://stackblitz.com/edit/angular-ivy-yhhkcd?file=src/app/app.component.ts"
+          target="_blank"
+          >Open Stackblitz in new tab</a
+        >
+      </li>
     </ul>
   </ng-template>
   <ng-template #valueChanges>
     <h2>ValueChanges</h2>
     <ul>
-      <li><b>ValueChanges</b> được kích hoạt bất cứ khi nào <b>value</b> của FormControl/FormGroup/FormArray <b>thay
-          đổi</b>.</li>
-      <li><b>ValueChanges</b> return về một <b>Observable</b>, do đó, chúng ta có thể subscribe nó để lấy <b>value mới
-          nhất</b> của control.</li>
-      <li>Nó cho phép chúng <b>track changes value in real-time</b> và phản hồi lại nó. Do đó, chúng ta có thể <b>sử
-          dụng</b> nó để <b>validate value</b>, tính toán, so sánh các field/control.</li>
+      <li>
+        <b>ValueChanges</b> được kích hoạt bất cứ khi nào <b>value</b> của
+        FormControl/FormGroup/FormArray <b>thay đổi</b>.
+      </li>
+      <li>
+        <b>ValueChanges</b> return về một <b>Observable</b>, do đó, chúng ta có
+        thể subscribe nó để lấy <b>value mới nhất</b> của control.
+      </li>
+      <li>
+        Nó cho phép chúng <b>track changes value in real-time</b> và phản hồi
+        lại nó. Do đó, chúng ta có thể <b>sử dụng</b> nó để
+        <b>validate value</b>, tính toán, so sánh các field/control.
+      </li>
     </ul>
     <h2>Subscribe ValueChanges</h2>
     <ul>
-      <li>Với FormControl:
+      <li>
+        Với FormControl:
         <code-highlighter [code]="valueChangesControl"></code-highlighter>
-        <div><b>Note 1</b>: <b>valueChanges</b>event cho <b>firstname</b> được kích hoạt ngay lập tức <b>sau khi</b> new
-          value được update NHƯNG <b>trước khi</b> thay đổi này được chuyển lên cho parent của nó. Do đó,
-          <b>this.contactForm.value</b> vẫn giữ giá trị trước đó.
+        <div>
+          <b>Note 1</b>: <b>valueChanges</b>event cho <b>firstname</b> được kích
+          hoạt ngay lập tức <b>sau khi</b> new value được update NHƯNG
+          <b>trước khi</b> thay đổi này được chuyển lên cho parent của nó. Do
+          đó, <b>this.contactForm.value</b> vẫn giữ giá trị trước đó.
         </div>
-        <div><b>Note 2</b>: Ta có thể lấy giá trị mới nhất của <b>this.contactForm.value</b> bằng cách lấy nó trong
-          callback của <b>setTimeout</b>. Callback của setTimeout lúc này sẽ nằm trong Callback Queue cho đến khi,
-          Angular truyền thay đổi lên parent (FormGroup), update value của Form. Sau đó, Call Stack trống, callback của
-          <b>setTimeout</b> trong callback queue sẽ được đưa vào Call Stack và thực thi.
+        <div>
+          <b>Note 2</b>: Ta có thể lấy giá trị mới nhất của
+          <b>this.contactForm.value</b> bằng cách lấy nó trong callback của
+          <b>setTimeout</b>. Callback của setTimeout lúc này sẽ nằm trong
+          Callback Queue cho đến khi, Angular truyền thay đổi lên parent
+          (FormGroup), update value của Form. Sau đó, Call Stack trống, callback
+          của <b>setTimeout</b> trong callback queue sẽ được đưa vào Call Stack
+          và thực thi.
         </div>
-        <code-highlighter [codeClass]="'more-info'" [code]="valueChangesControlTimeout"></code-highlighter>
+        <code-highlighter
+          [codeClass]="'more-info'"
+          [code]="valueChangesControlTimeout"
+        ></code-highlighter>
       </li>
-      <li>Với FormGroup:
+      <li>
+        Với FormGroup:
         <code-highlighter [code]="valueChangesForm"></code-highlighter>
       </li>
     </ul>
     <h2>EmitEvent & ValueChanges</h2>
-    <p>Nếu chúng ta set value sử dụng option <b>emitEvent: false</b> thì <b>ValueChanges</b> sẽ không được kích hoạt.
+    <p>
+      Nếu chúng ta set value sử dụng option <b>emitEvent: false</b> thì
+      <b>ValueChanges</b> sẽ không được kích hoạt.
     </p>
-    <div><code>this.contactForm.get("firstname").setValue("", &#123; emitEvent: false &#125;);</code></div>
-    <p>Chúng ta có thể sử dụng <b>emitEvent: false</b> với <b>setValue, patchValue, markAsPending, disable, enable,
-        updateValueAndValidity & setErrors</b> methods.</p>
+    <div>
+      <code
+        >this.contactForm.get("firstname").setValue("", &#123; emitEvent: false
+        &#125;);</code
+      >
+    </div>
+    <p>
+      Chúng ta có thể sử dụng <b>emitEvent: false</b> với
+      <b
+        >setValue, patchValue, markAsPending, disable, enable,
+        updateValueAndValidity & setErrors</b
+      >
+      methods.
+    </p>
     <h2>OnlySelf & ValueChanges</h2>
-    <p>Khi <b>onlySelf: true</b> các thay đổi chỉ ảnh hưởng đến FormControl đang thực hiện thay đổi và các thay đổi
-      không được truyền cho parents của nó. Do đó, <b>ValueChanges</b> của parent <b>FormGroup</b> không được kích hoạt
-      &#8658; Chỉ kích hoạt <b>ValueChanges</b> của <b>FormControl</b> đang thực hiện thay đổi.</p>
-    <div><code>this.contactForm.get("firstname").setValue("", &#123; onlySelf: true &#125;);</code></div>
-    <p>Chúng ta có thể sử dụng <b>onlySelf: true</b> với <b>setValue, patchValue, markAsUntouched, markAsDirty,
-        markAsPristine, markAsPending, disable, enable, and updateValueAndValidity</b> methods.</p>
+    <p>
+      Khi <b>onlySelf: true</b> các thay đổi chỉ ảnh hưởng đến FormControl đang
+      thực hiện thay đổi và các thay đổi không được truyền cho parents của nó.
+      Do đó, <b>ValueChanges</b> của parent <b>FormGroup</b> không được kích
+      hoạt &#8658; Chỉ kích hoạt <b>ValueChanges</b> của <b>FormControl</b> đang
+      thực hiện thay đổi.
+    </p>
+    <div>
+      <code
+        >this.contactForm.get("firstname").setValue("", &#123; onlySelf: true
+        &#125;);</code
+      >
+    </div>
+    <p>
+      Chúng ta có thể sử dụng <b>onlySelf: true</b> với
+      <b
+        >setValue, patchValue, markAsUntouched, markAsDirty, markAsPristine,
+        markAsPending, disable, enable, and updateValueAndValidity</b
+      >
+      methods.
+    </p>
     <h2>Demo</h2>
     <ul>
-      <li><a href="https://angular-ivy-yhhkcd.stackblitz.io" target="_blank">View Demo</a></li>
-      <li><a href="https://stackblitz.com/edit/angular-ivy-yhhkcd?file=src/app/app.component.ts" target="_blank">Open
-          Stackblitz in new tab</a></li>
+      <li>
+        <a href="https://angular-ivy-yhhkcd.stackblitz.io" target="_blank"
+          >View Demo</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://stackblitz.com/edit/angular-ivy-yhhkcd?file=src/app/app.component.ts"
+          target="_blank"
+          >Open Stackblitz in new tab</a
+        >
+      </li>
     </ul>
     <h2>Tài liệu tham khảo:</h2>
     <ul>
-      <li><a href="https://www.tektutorialshub.com/angular/valuechanges-in-angular-forms/" target="_blank">ValueChanges
-          in Angular Forms</a></li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/valuechanges-in-angular-forms/"
+          target="_blank"
+          >ValueChanges in Angular Forms</a
+        >
+      </li>
     </ul>
   </ng-template>
   <ng-template #formControl>
     <h2>FormControl</h2>
-    <p>FormControl là một trong 3 building block của angular forms, được dùng để thiết lập và theo dõi (value và
-      validation status) một input element riêng lẻ.</p>
+    <p>
+      FormControl là một trong 3 building block của angular forms, được dùng để
+      thiết lập và theo dõi (value và validation status) một input element riêng
+      lẻ.
+    </p>
     <div><code>&lt;input type="text" name="firstname" /&gt;</code></div>
     <h2>Các cách sử dụng FormControl</h2>
     <ol>
-      <li>Setting the value
+      <li>
+        Setting the value
         <dl>
           <dt>setValue()</dt>
           <dd>
             <details>
-              <summary><code>abstract setValue(value: any, options?: Object): void</code></summary>
-              <code>this.reactiveForm.get("email").setValue("sachin.tendulakar@gmail.com");</code>
+              <summary>
+                <code
+                  >abstract setValue(value: any, options?: Object): void</code
+                >
+              </summary>
+              <code
+                >this.reactiveForm.get("email").setValue("sachin.tendulakar@gmail.com");</code
+              >
             </details>
           </dd>
           <dt>patchValue()</dt>
           <dd>
             <details>
-              <summary><code>abstract patchValue(value: any, options?: Object): void</code></summary>
-              <code>this.reactiveForm.get("email").setValue("sachin.tendulakar@gmail.com");</code>
+              <summary>
+                <code
+                  >abstract patchValue(value: any, options?: Object): void</code
+                >
+              </summary>
+              <code
+                >this.reactiveForm.get("email").setValue("sachin.tendulakar@gmail.com");</code
+              >
             </details>
           </dd>
         </dl>
       </li>
-      <li>Getting the current value - <em>Readonly</em>
+      <li>
+        Getting the current value - <em>Readonly</em>
         <dl>
           <dt>Sử dung get() method</dt>
           <dd>
@@ -782,12 +1247,18 @@ setDefault() &#123;
           </dd>
         </dl>
       </li>
-      <li>Control validation status
+      <li>
+        Control validation status
         <dl>
           <dt>
             <details>
               <summary>status</summary>
-              <div><em>status: <b>VALID</b> | <b>INVALID</b> | <b>PENDING</b> | <b>DISABLED</b></em></div>
+              <div>
+                <em
+                  >status: <b>VALID</b> | <b>INVALID</b> | <b>PENDING</b> |
+                  <b>DISABLED</b></em
+                >
+              </div>
               <div><code>this.reactiveForm.get("firstname").status</code></div>
             </details>
           </dt>
@@ -816,7 +1287,9 @@ setDefault() &#123;
             <details>
               <summary>disabled</summary>
               <div><em>disabled: boolean</em></div>
-              <div><code>this.reactiveForm.get("firstname").disabled</code></div>
+              <div>
+                <code>this.reactiveForm.get("firstname").disabled</code>
+              </div>
             </details>
           </dt>
           <dt>
@@ -828,14 +1301,20 @@ setDefault() &#123;
           </dt>
           <dt>
             <details>
-              <summary>pristine - TRUE - nếu người dùng chưa thay đổi giá trị trong UI</summary>
+              <summary>
+                pristine - TRUE - nếu người dùng chưa thay đổi giá trị trong UI
+              </summary>
               <div><em>pristine: boolean</em></div>
-              <div><code>this.reactiveForm.get("firstname").pristine</code></div>
+              <div>
+                <code>this.reactiveForm.get("firstname").pristine</code>
+              </div>
             </details>
           </dt>
           <dt>
             <details>
-              <summary>dirty - TRUE - nếu người dùng đã thay đổi giá trị trong UI</summary>
+              <summary>
+                dirty - TRUE - nếu người dùng đã thay đổi giá trị trong UI
+              </summary>
               <div><em>dirty: boolean</em></div>
               <div><code>this.reactiveForm.get("firstname").dirty</code></div>
             </details>
@@ -849,80 +1328,158 @@ setDefault() &#123;
           </dt>
           <dt>
             <details>
-              <summary>untouched - TRUE - Nếu chưa trigger một blur event</summary>
+              <summary>
+                untouched - TRUE - Nếu chưa trigger một blur event
+              </summary>
               <div><em>untouched: boolean</em></div>
-              <div><code>this.reactiveForm.get("firstname").untouched</code></div>
+              <div>
+                <code>this.reactiveForm.get("firstname").untouched</code>
+              </div>
             </details>
           </dt>
         </dl>
       </li>
-      <li>Changing the Status
+      <li>
+        Changing the Status
         <dl>
           <dt>markAsTouched</dt>
           <dd>
             <details>
-              <summary><em>markAsTouched(opts: &#123; onlySelf?: boolean; &#125; = &#123;&#125;): void</em></summary>
-              <div><code>this.reactiveForm.get("firstname").markAsTouched()</code></div>
-              <div><code>this.reactiveForm.get("firstname").markAsTouched(&#123; onlySelf:true; &#125;)</code></div>
+              <summary>
+                <em
+                  >markAsTouched(opts: &#123; onlySelf?: boolean; &#125; =
+                  &#123;&#125;): void</em
+                >
+              </summary>
+              <div>
+                <code>this.reactiveForm.get("firstname").markAsTouched()</code>
+              </div>
+              <div>
+                <code
+                  >this.reactiveForm.get("firstname").markAsTouched(&#123;
+                  onlySelf:true; &#125;)</code
+                >
+              </div>
             </details>
           </dd>
           <dt>markAllAsTouched</dt>
           <dd>
             <details>
               <summary><em>markAllAsTouched(): void</em></summary>
-              <div>Đánh dấu control và tất cả các children control của nó là <b>touched</b>.</div>
+              <div>
+                Đánh dấu control và tất cả các children control của nó là
+                <b>touched</b>.
+              </div>
             </details>
           </dd>
           <dt>markAsUntouched</dt>
           <dd>
             <details>
-              <summary><em>markAsUntouched(opts: &#123; onlySelf?: boolean; &#125; = &#123;&#125;): void</em></summary>
-              <div><b>onlySelf: true</b> - Chỉ đánh dấu control, không đánh dấu children của nó.</div>
+              <summary>
+                <em
+                  >markAsUntouched(opts: &#123; onlySelf?: boolean; &#125; =
+                  &#123;&#125;): void</em
+                >
+              </summary>
+              <div>
+                <b>onlySelf: true</b> - Chỉ đánh dấu control, không đánh dấu
+                children của nó.
+              </div>
             </details>
           </dd>
           <dt>markAsDirty - Đánh dấu đã thay đổi value</dt>
           <dd>
             <details>
-              <summary><em>markAsDirty(opts: &#123; onlySelf?: boolean; &#125; = &#123;&#125;): void</em></summary>
-              <div><b>onlySelf: true</b> - Chỉ đánh dấu control, không đánh dấu children của nó.</div>
+              <summary>
+                <em
+                  >markAsDirty(opts: &#123; onlySelf?: boolean; &#125; =
+                  &#123;&#125;): void</em
+                >
+              </summary>
+              <div>
+                <b>onlySelf: true</b> - Chỉ đánh dấu control, không đánh dấu
+                children của nó.
+              </div>
             </details>
           </dd>
           <dt>markAsPristine - Đánh dấu chưa thay đổi value</dt>
           <dd>
             <details>
-              <summary><em>markAsPristine(opts: &#123; onlySelf?: boolean; &#125; = &#123;&#125;): void</em></summary>
-              <div><b>onlySelf: true</b> - Chỉ đánh dấu control, không đánh dấu children của nó.</div>
-            </details>
-          </dd>
-          <dt>markAsPending - Dùng trong lúc chúng ta custom validation check để đánh dấu PENDING trong lúc đang
-            validate và chưa xong.</dt>
-          <dd>
-            <details>
-              <summary><em>markAsPending(opts: &#123; onlySelf?: boolean; emitEvent?: boolean; &#125; = &#123;&#125;):
-                  void</em></summary>
-              <div><b>onlySelf: true</b> - Chỉ đánh dấu control, không đánh dấu children của nó.</div>
-              <div><b>emitEvent: true hoặc không truyền</b> - Sẽ kích hoạt <b>statusChanges</b>.</div>
-            </details>
-          </dd>
-          <dt>disable - Disables the control. Dùng khi custom validators hoặc valueChanges.</dt>
-          <dd>
-            <details>
-              <summary><em>disable(opts: &#123; onlySelf?: boolean; emitEvent?: boolean; &#125; = &#123;&#125;):
-                  void</em></summary>
-              <div><b>onlySelf: true</b> - Chỉ đánh dấu control, không đánh dấu children của nó.</div>
-              <div><b>emitEvent: true hoặc không truyền</b> - Sẽ kích hoạt cả <b>statusChanges</b> và
-                <b>valueChanges</b>.
+              <summary>
+                <em
+                  >markAsPristine(opts: &#123; onlySelf?: boolean; &#125; =
+                  &#123;&#125;): void</em
+                >
+              </summary>
+              <div>
+                <b>onlySelf: true</b> - Chỉ đánh dấu control, không đánh dấu
+                children của nó.
               </div>
             </details>
           </dd>
-          <dt>enable - Enables control. Dùng khi custom validators hoặc valueChanges.</dt>
+          <dt>
+            markAsPending - Dùng trong lúc chúng ta custom validation check để
+            đánh dấu PENDING trong lúc đang validate và chưa xong.
+          </dt>
           <dd>
             <details>
-              <summary><em>disable(opts: &#123; onlySelf?: boolean; emitEvent?: boolean; &#125; = &#123;&#125;):
-                  void</em></summary>
-              <div><b>onlySelf: true</b> - Chỉ đánh dấu control, không đánh dấu children của nó.</div>
-              <div><b>emitEvent: true hoặc không truyền</b> - Sẽ kích hoạt cả <b>statusChanges</b> và
-                <b>valueChanges</b>.
+              <summary>
+                <em
+                  >markAsPending(opts: &#123; onlySelf?: boolean; emitEvent?:
+                  boolean; &#125; = &#123;&#125;): void</em
+                >
+              </summary>
+              <div>
+                <b>onlySelf: true</b> - Chỉ đánh dấu control, không đánh dấu
+                children của nó.
+              </div>
+              <div>
+                <b>emitEvent: true hoặc không truyền</b> - Sẽ kích hoạt
+                <b>statusChanges</b>.
+              </div>
+            </details>
+          </dd>
+          <dt>
+            disable - Disables the control. Dùng khi custom validators hoặc
+            valueChanges.
+          </dt>
+          <dd>
+            <details>
+              <summary>
+                <em
+                  >disable(opts: &#123; onlySelf?: boolean; emitEvent?: boolean;
+                  &#125; = &#123;&#125;): void</em
+                >
+              </summary>
+              <div>
+                <b>onlySelf: true</b> - Chỉ đánh dấu control, không đánh dấu
+                children của nó.
+              </div>
+              <div>
+                <b>emitEvent: true hoặc không truyền</b> - Sẽ kích hoạt cả
+                <b>statusChanges</b> và <b>valueChanges</b>.
+              </div>
+            </details>
+          </dd>
+          <dt>
+            enable - Enables control. Dùng khi custom validators hoặc
+            valueChanges.
+          </dt>
+          <dd>
+            <details>
+              <summary>
+                <em
+                  >disable(opts: &#123; onlySelf?: boolean; emitEvent?: boolean;
+                  &#125; = &#123;&#125;): void</em
+                >
+              </summary>
+              <div>
+                <b>onlySelf: true</b> - Chỉ đánh dấu control, không đánh dấu
+                children của nó.
+              </div>
+              <div>
+                <b>emitEvent: true hoặc không truyền</b> - Sẽ kích hoạt cả
+                <b>statusChanges</b> và <b>valueChanges</b>.
               </div>
             </details>
           </dd>
@@ -933,29 +1490,54 @@ setDefault() &#123;
         <div><code>statusChanges: Observable&lt;any&gt;</code></div>
       </li>
       <li>
-        <em><b>updateValueAndValidity()</b></em> - Bắt buộc form thực thi validation. Điều này hữu ích khi bạn thêm /
-        xóa validators
-        dynamically bằng cách sử dụng <b>setValidators</b>, <b>RemoveValidators</b>, v.v.
+        <em><b>updateValueAndValidity()</b></em> - Bắt buộc form thực thi
+        validation. Điều này hữu ích khi bạn thêm / xóa validators dynamically
+        bằng cách sử dụng <b>setValidators</b>, <b>RemoveValidators</b>, v.v.
         <div>
-          <code>updateValueAndValidity(opts: &#123; onlySelf?: boolean; emitEvent?: boolean; } = &#123;}): void</code>
+          <code
+            >updateValueAndValidity(opts: &#123; onlySelf?: boolean; emitEvent?:
+            boolean; } = &#123;}): void</code
+          >
         </div>
-        <div><code>this.reactiveForm.get("firstname").updateValueAndValidity();</code></div>
-        <div><b>onlySelf: true</b> - Chỉ update control, không update children của nó.</div>
-        <div><b>emitEvent: true hoặc không truyền</b> - Sẽ kích hoạt cả <b>statusChanges</b> và
-          <b>valueChanges</b>.
+        <div>
+          <code
+            >this.reactiveForm.get("firstname").updateValueAndValidity();</code
+          >
+        </div>
+        <div>
+          <b>onlySelf: true</b> - Chỉ update control, không update children của
+          nó.
+        </div>
+        <div>
+          <b>emitEvent: true hoặc không truyền</b> - Sẽ kích hoạt cả
+          <b>statusChanges</b> và <b>valueChanges</b>.
         </div>
       </li>
-      <li><em><b>setValidators() / setAsyncValidators()</b></em> adds the sync or async validators. Phương pháp này sẽ
-        remove tất cả các sync hoặc async validators đã thêm trước đó.
+      <li>
+        <em><b>setValidators() / setAsyncValidators()</b></em> adds the sync or
+        async validators. Phương pháp này sẽ remove tất cả các sync hoặc async
+        validators đã thêm trước đó.
         <details>
           <summary>
-            <span><code>setValidators(newValidator: ValidatorFn | ValidatorFn[]): void</code></span>
-            <div><code>setAsyncValidators(newValidator: AsyncValidatorFn | AsyncValidatorFn[]): void</code></div>
+            <span
+              ><code
+                >setValidators(newValidator: ValidatorFn | ValidatorFn[]):
+                void</code
+              ></span
+            >
+            <div>
+              <code
+                >setAsyncValidators(newValidator: AsyncValidatorFn |
+                AsyncValidatorFn[]): void</code
+              >
+            </div>
           </summary>
           <code-highlighter [code]="setValidators"></code-highlighter>
         </details>
       </li>
-      <li><em><b>clearValidators() / clearAsyncValidators()</b></em> Clear tất cả các sync/async validators.
+      <li>
+        <em><b>clearValidators() / clearAsyncValidators()</b></em> Clear tất cả
+        các sync/async validators.
         <details>
           <summary>
             <span><code>clearValidators(): void</code></span>
@@ -964,8 +1546,9 @@ setDefault() &#123;
           <code-highlighter [code]="clearValidators"></code-highlighter>
         </details>
       </li>
-      <li><em><b>errors()</b></em> Một object chứa bất kỳ <b>errors</b> nào được tạo ra do không validate được hoặc
-        <b>null</b> nếu không có lỗi.
+      <li>
+        <em><b>errors()</b></em> Một object chứa bất kỳ <b>errors</b> nào được
+        tạo ra do không validate được hoặc <b>null</b> nếu không có lỗi.
         <details>
           <summary>
             <span><code>errors: ValidationErrors | null</code></span>
@@ -973,49 +1556,80 @@ setDefault() &#123;
           <code-highlighter [code]="getErrors"></code-highlighter>
         </details>
       </li>
-      <li><em><b>setErrors()</b></em>
+      <li>
+        <em><b>setErrors()</b></em>
         <details>
           <summary>
-            <span><code>setErrors(errors: ValidationErrors, opts: &#123; emitEvent?: boolean; } = &#123;}): void</code>
+            <span
+              ><code
+                >setErrors(errors: ValidationErrors, opts: &#123; emitEvent?:
+                boolean; } = &#123;}): void</code
+              >
             </span>
           </summary>
           <code-highlighter [code]="setErrors"></code-highlighter>
         </details>
       </li>
-      <li><em><b>getError()</b></em> - Reports error data for the control with the given path.
+      <li>
+        <em><b>getError()</b></em> - Reports error data for the control with the
+        given path.
         <details>
           <summary>
-            <span><code>getError(errorCode: string, path?: string | (string | number)[]): any</code></span>
+            <span
+              ><code
+                >getError(errorCode: string, path?: string | (string |
+                number)[]): any</code
+              ></span
+            >
           </summary>
           <div><code>this.reactiveForm.getError("firstname")</code></div>
           <div><code>this.reactiveForm.getError("address.pincode");</code></div>
-          <div><code>this.reactiveForm.getError(["address","pincode"]);</code></div>
+          <div>
+            <code>this.reactiveForm.getError(["address","pincode"]);</code>
+          </div>
         </details>
       </li>
-      <li><em><b>hasError()</b></em> - Reports whether the control with the given path has the error specified.
+      <li>
+        <em><b>hasError()</b></em> - Reports whether the control with the given
+        path has the error specified.
         <details>
           <summary>
-            <code>hasError(errorCode: string, path?: string | (string | number)[]): boolean</code>
+            <code
+              >hasError(errorCode: string, path?: string | (string | number)[]):
+              boolean</code
+            >
           </summary>
           <div><code>this.reactiveForm.hasError("firstname");</code></div>
           <div><code>this.reactiveForm.hasError("address.pincode");</code></div>
-          <div><code>this.reactiveForm.hasError(["address","pincode"]);</code></div>
+          <div>
+            <code>this.reactiveForm.hasError(["address","pincode"]);</code>
+          </div>
         </details>
       </li>
-      <li><em><b>reset()</b></em> - Resets the control. We can also pass the default value.
+      <li>
+        <em><b>reset()</b></em> - Resets the control. We can also pass the
+        default value.
         <details>
           <summary>
             <code>abstract reset(value?: any, options?: Object): void</code>
           </summary>
           <div><code>this.reactiveForm.get("firstname").reset('');</code></div>
-          <div><code>this.reactiveForm.get("firstname").reset('test');</code></div>
+          <div>
+            <code>this.reactiveForm.get("firstname").reset('test');</code>
+          </div>
         </details>
       </li>
     </ol>
     <h2>Tài liệu tham khảo:</h2>
     <ul>
-      <li><a href="https://www.tektutorialshub.com/angular/formcontrol-in-angular/" target="_blank"
-          rel="noopener noreferrer">FormControl in Angular</a></li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/formcontrol-in-angular/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >FormControl in Angular</a
+        >
+      </li>
     </ul>
   </ng-template>
   <ng-template #formGroup>
@@ -1023,37 +1637,66 @@ setDefault() &#123;
     <ul>
       <li>FormGroup là một tập hợp nhiều FormControl.</li>
       <li>FormGroup cũng là một trong 3 building blocks của Angular forms.</li>
-      <li>FormGroup theo dõi value và validation status của một nhóm các FormControl.</li>
+      <li>
+        FormGroup theo dõi value và validation status của một nhóm các
+        FormControl.
+      </li>
     </ul>
     <code-highlighter [code]="createFormGroup"></code-highlighter>
     <ul class="mt-3">
-      <li>FormGroup hữu ích khi chúng ta muốn check validation, set value hoặc lắng change event,... cho nhiều
-        FormControl.
+      <li>
+        FormGroup hữu ích khi chúng ta muốn check validation, set value hoặc
+        lắng change event,... cho nhiều FormControl.
       </li>
-      <li>FormGroup tổng hợp value của từng FormControl thành một object với control name như một key của object.</li>
-      <li>Validation status của FormGroup được thực hiện bằng cách reduce validation status value của tất cả các
-        FormControl của nó. Do đó, nếu một control trong group <b>invalid</b> thì validation status của group sẽ là
-        <b>invalid</b>.
+      <li>
+        FormGroup tổng hợp value của từng FormControl thành một object với
+        control name như một key của object.
+      </li>
+      <li>
+        Validation status của FormGroup được thực hiện bằng cách reduce
+        validation status value của tất cả các FormControl của nó. Do đó, nếu
+        một control trong group <b>invalid</b> thì validation status của group
+        sẽ là <b>invalid</b>.
       </li>
     </ul>
-    <div><em>FormGroup có tất cả các methods giống FormControl và có thêm một số methods của riêng ForGroup. Trong phần
-        này, chúng ta chỉ tập trung vào các methods của riêng FormGroup, những method khác chúng ta xem tại phần
-        <span class="text-primary fw-bold">FormControl</span>.</em></div>
+    <div>
+      <em
+        >FormGroup có tất cả các methods giống FormControl và có thêm một số
+        methods của riêng ForGroup. Trong phần này, chúng ta chỉ tập trung vào
+        các methods của riêng FormGroup, những method khác chúng ta xem tại phần
+        <span class="text-primary fw-bold">FormControl</span>.</em
+      >
+    </div>
     <h2>Adding Controls Dynamically to Form Group</h2>
     <dl>
-      <dt><em>addControl()</em> - Thêm một control vào FormGroup và cũng update validity & validation status. Nếu
-        control đã tồn tại, nó sẽ bị bỏ qua (ignore).</dt>
+      <dt>
+        <em>addControl()</em> - Thêm một control vào FormGroup và cũng update
+        validity & validation status. Nếu control đã tồn tại, nó sẽ bị bỏ qua
+        (ignore).
+      </dt>
       <dd>
         <details>
-          <summary><code>addControl(name: string, control: AbstractControl): void</code></summary>
+          <summary>
+            <code
+              >addControl(name: string, control: AbstractControl): void</code
+            >
+          </summary>
           <code-highlighter [code]="addControl"></code-highlighter>
         </details>
       </dd>
-      <dt><em>registerControl()</em> - Thêm một control vào FormGroup và nhưng không update validity & validation
-        status. Nếu control đã tồn tại, nó sẽ bị bỏ qua (ignore).</dt>
+      <dt>
+        <em>registerControl()</em> - Thêm một control vào FormGroup và nhưng
+        không update validity & validation status. Nếu control đã tồn tại, nó sẽ
+        bị bỏ qua (ignore).
+      </dt>
       <dd>
         <details>
-          <summary><code>registerControl(name: string, control: AbstractControl): AbstractControl</code></summary>
+          <summary>
+            <code
+              >registerControl(name: string, control: AbstractControl):
+              AbstractControl</code
+            >
+          </summary>
           <code-highlighter [code]="registerControl"></code-highlighter>
         </details>
       </dd>
@@ -1064,14 +1707,24 @@ setDefault() &#123;
           <code-highlighter [code]="removeControl"></code-highlighter>
         </details>
       </dd>
-      <dt><em>setControl()</em> - Thay thế một control có name được cung cấp bằng một FormControl mới.</dt>
+      <dt>
+        <em>setControl()</em> - Thay thế một control có name được cung cấp bằng
+        một FormControl mới.
+      </dt>
       <dd>
         <details>
-          <summary><code>setControl(name: string, control: AbstractControl): void</code></summary>
+          <summary>
+            <code
+              >setControl(name: string, control: AbstractControl): void</code
+            >
+          </summary>
           <code-highlighter [code]="setControl"></code-highlighter>
         </details>
       </dd>
-      <dt><em>contains()</em> - Kiểm tra control với tên được cung cấp có tồn tại trong FormGroup hay không.</dt>
+      <dt>
+        <em>contains()</em> - Kiểm tra control với tên được cung cấp có tồn tại
+        trong FormGroup hay không.
+      </dt>
       <dd>
         <details>
           <summary><code>contains(controlName: string): boolean</code></summary>
@@ -1081,122 +1734,226 @@ setDefault() &#123;
     </dl>
     <h2>Tài liệu tham khảo</h2>
     <ul>
-      <li><a href="https://www.tektutorialshub.com/angular/formgroup-in-angular/" target="_blank"
-          rel="noopener noreferrer">FormGroup in Angular</a></li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/formgroup-in-angular/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >FormGroup in Angular</a
+        >
+      </li>
     </ul>
   </ng-template>
   <ng-template #formArray>
     <h2>FormArray</h2>
-    <p>FormArray cũng là một cách để nhóm các FormControl nhưng theo dạng mảng. Thường được dùng để tạo form dạng table.
+    <p>
+      FormArray cũng là một cách để nhóm các FormControl nhưng theo dạng mảng.
+      Thường được dùng để tạo form dạng table.
     </p>
     <p>FormArray cho phép chúng ta add controls dynamically.</p>
     <h2>Cách tạo và submit một FormArray</h2>
     <ol>
-      <li>Import FormArray từ <em>@angular/forms</em>
+      <li>
+        Import FormArray từ <em>@angular/forms</em>
         <div class="explain">
-          <code>import &#123; FormGroup, FormControl,FormArray, FormBuilder } from '@angular/forms'</code>
+          <code
+            >import &#123; FormGroup, FormControl,FormArray, FormBuilder } from
+            '@angular/forms'</code
+          >
         </div>
       </li>
-      <li>Tạo Form Model
+      <li>
+        Tạo Form Model
         <code-highlighter [code]="formArrayModel"></code-highlighter>
       </li>
-      <li>Dùng <em>getter</em> method để get <em>skills</em> FormArray
+      <li>
+        Dùng <em>getter</em> method để get <em>skills</em> FormArray
         <code-highlighter [code]="getterFormArray"></code-highlighter>
       </li>
-      <li>Viết 1 function return về 1 phần tử của <em>skills</em> FormArray
+      <li>
+        Viết 1 function return về 1 phần tử của <em>skills</em> FormArray
         <code-highlighter [code]="newElementFormArray"></code-highlighter>
       </li>
-      <li>Viết 1 function để dynamic add 1 phần tử vào <em>skills</em> FormArray bằng <em>push</em> method
+      <li>
+        Viết 1 function để dynamic add 1 phần tử vào <em>skills</em> FormArray
+        bằng <em>push</em> method
         <code-highlighter [code]="pushElementToArray"></code-highlighter>
       </li>
-      <li>Viết 1 function để dynamic remove 1 phần tử ra khỏi <em>skills</em> FormArray bằng <em>removeAt</em> method
+      <li>
+        Viết 1 function để dynamic remove 1 phần tử ra khỏi
+        <em>skills</em> FormArray bằng <em>removeAt</em> method
         <code-highlighter [code]="removeElementFromArray"></code-highlighter>
       </li>
-      <li>Viết 1 function để submit form
+      <li>
+        Viết 1 function để submit form
         <code-highlighter [code]="submitFormArray"></code-highlighter>
       </li>
-      <li>Tạo Form template
+      <li>
+        Tạo Form template
         <dl>
-          <dt>Binding <em class="text-danger">skills</em> FormArray (name của FormArray) cho <em
-              class="text-danger">formArrayName</em></dt>
+          <dt>
+            Binding <em class="text-danger">skills</em> FormArray (name của
+            FormArray) cho <em class="text-danger">formArrayName</em>
+          </dt>
           <dd class="ms-3">
-            <div><code>&lt;div formArrayName="skills"&gt;&lt;/div&gt;</code></div>
-            <em>Bây giờ, <b>div</b> và mọi thứ bên trong <b>div</b> element được liên kết với <b>skills</b>
-              FormArray.</em>
+            <div>
+              <code>&lt;div formArrayName="skills"&gt;&lt;/div&gt;</code>
+            </div>
+            <em
+              >Bây giờ, <b>div</b> và mọi thứ bên trong <b>div</b> element được
+              liên kết với <b>skills</b> FormArray.</em
+            >
           </dd>
-          <dt>Bên trong <em class="text-danger">div</em> sử dụng <em class="text-danger">ngFor</em> để lặp qua từng phần
-            tử của <em class="text-danger">skills</em> FormArray</dt>
+          <dt>
+            Bên trong <em class="text-danger">div</em> sử dụng
+            <em class="text-danger">ngFor</em> để lặp qua từng phần tử của
+            <em class="text-danger">skills</em> FormArray
+          </dt>
           <dd class="ms-3">
             <code-highlighter [code]="bindingFormArray"></code-highlighter>
           </dd>
           <dt>Final template</dt>
           <dd>
-            <code-highlighter [code]="finalTemplateFormArray"></code-highlighter>
+            <code-highlighter
+              [code]="finalTemplateFormArray"
+            ></code-highlighter>
           </dd>
         </dl>
       </li>
     </ol>
     <h2>Demo</h2>
     <ul>
-      <li><a href="https://angular-ivy-ss6sf1.stackblitz.io" target="_blank">View Demo</a></li>
-      <li><a href="https://stackblitz.com/edit/angular-ivy-ss6sf1?file=src/app/app.component.ts" target="_blank">Open
-          Stackblitz in new tab</a></li>
+      <li>
+        <a href="https://angular-ivy-ss6sf1.stackblitz.io" target="_blank"
+          >View Demo</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://stackblitz.com/edit/angular-ivy-ss6sf1?file=src/app/app.component.ts"
+          target="_blank"
+          >Open Stackblitz in new tab</a
+        >
+      </li>
     </ul>
     <h2>Tài liệu tham khảo</h2>
     <ul>
-      <li><a href="https://www.tektutorialshub.com/angular/angular-formarray-example-in-reactive-forms/" target="_blank"
-          rel="noopener noreferrer">Angular FormArray Example</a></li>
-      <li><a href="https://www.tektutorialshub.com/angular/nested-formarray-example-add-form-fields-dynamically/"
-          target="_blank" rel="noopener noreferrer">Nested FormArray Example Add Form Fields Dynamically</a></li>
-      <li><a href="https://www.tektutorialshub.com/angular/setvalue-patchvalue-in-formarray-angular/" target="_blank"
-          rel="noopener noreferrer">SetValue & PatchValue in FormArray Angular</a></li>
-      <li><a href="https://www.tektutorialshub.com/angular/select-options-example-in-angular/" target="_blank"
-          rel="noopener noreferrer">Select Options Example in Angular</a></li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/angular-formarray-example-in-reactive-forms/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Angular FormArray Example</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/nested-formarray-example-add-form-fields-dynamically/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Nested FormArray Example Add Form Fields Dynamically</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/setvalue-patchvalue-in-formarray-angular/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >SetValue & PatchValue in FormArray Angular</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/select-options-example-in-angular/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Select Options Example in Angular</a
+        >
+      </li>
     </ul>
   </ng-template>
   <ng-template #customValidator>
     <h2>Custom Validator</h2>
-    <p>Built-in validators không thể cover hết tất cả các case trong quá trình chúng ta làm việc với form. Do đó, chúng
-      ta có thể tạo ra một custom validator để sử dụng logic riêng của mình.</p>
+    <p>
+      Built-in validators không thể cover hết tất cả các case trong quá trình
+      chúng ta làm việc với form. Do đó, chúng ta có thể tạo ra một custom
+      validator để sử dụng logic riêng của mình.
+    </p>
     <h3>Cách tạo một custom validator</h3>
-    <p><b>Validator</b> là một function implement <b>ValidatorFn</b> interface. Nó nhận vào <b>AbstractControl</b> và
-      trả về <b>ValidationErrors</b> object hoặc <b>null</b>.</p>
+    <p>
+      <b>Validator</b> là một function implement <b>ValidatorFn</b> interface.
+      Nó nhận vào <b>AbstractControl</b> và trả về
+      <b>ValidationErrors</b> object hoặc <b>null</b>.
+    </p>
     <dl>
       <dt>ValidatorFn</dt>
       <dd>
         <code-highlighter [code]="validatorFn"></code-highlighter>
       </dd>
-      <dd><b>AbstractControl</b> là base class cho FormControl, FormGroup và FormArray.</dd>
+      <dd>
+        <b>AbstractControl</b> là base class cho FormControl, FormGroup và
+        FormArray.
+      </dd>
       <dt>Example</dt>
       <dd>
         <code-highlighter [code]="exampleValidator"></code-highlighter>
       </dd>
-      <dd class="explain"><b>ValidationErrors</b> là một object key-value kiểu [key: string]: bất kỳ và nó xác định quy
-        tắc bị hỏng. <em>key</em> là <em>string</em> và phải chứa tên của quy tắc bị hỏng (nên lấy tên validator
-        function). Giá trị có thể là bất kỳ giá trị nào, nhưng thường được đặt thành <b>true</b>.
+      <dd class="explain">
+        <b>ValidationErrors</b> là một object key-value kiểu [key: string]: bất
+        kỳ và nó xác định quy tắc bị hỏng. <em>key</em> là <em>string</em> và
+        phải chứa tên của quy tắc bị hỏng (nên lấy tên validator function). Giá
+        trị có thể là bất kỳ giá trị nào, nhưng thường được đặt thành
+        <b>true</b>.
         <div><code>return &#123; 'gte': true, 'requiredValue': 10 }</code></div>
       </dd>
     </dl>
     <h3>Tạo Custom Validator nhận thêm tham số đầu vào</h3>
-    <p><em>Bởi vì validator phải implement <b>ValidatorFn</b> Interface và <b>ValidatorFn</b> chỉ nhận một tham số
-        i.e <b>control: AbstractControl</b></em>. Do đó, để truyền tham số cho custom validator, chúng ta cần tạo
-      function nhận vào các tham số chúng ta muốn và phải trả về <b>ValidatorFn</b> function (function này nhận vào
-      <b>control:
-        AbstractControl</b> và trả về <b>ValidationErrors | null</b>) - A factory function.
+    <p>
+      <em
+        >Bởi vì validator phải implement <b>ValidatorFn</b> Interface và
+        <b>ValidatorFn</b> chỉ nhận một tham số i.e
+        <b>control: AbstractControl</b></em
+      >. Do đó, để truyền tham số cho custom validator, chúng ta cần tạo
+      function nhận vào các tham số chúng ta muốn và phải trả về
+      <b>ValidatorFn</b> function (function này nhận vào
+      <b>control: AbstractControl</b> và trả về <b>ValidationErrors | null</b>)
+      - A factory function.
     </p>
     <code-highlighter [code]="customValidatorParams"></code-highlighter>
     <h3>Read more</h3>
     <ul>
-      <li><a href="https://www.tektutorialshub.com/angular/inject-service-into-validator-in-angular/" target="_blank"
-          rel="noopener noreferrer">Inject Service Into Custom Validator</a></li>
-      <li><a href="https://www.tektutorialshub.com/angular/cross-field-or-multi-field-validation-angular/"
-          target="_blank" rel="noopener noreferrer">Cross Field or Multi Field Validation Angular</a></li>
-      <li><a
-          href="https://www.tektutorialshub.com/angular/how-to-add-validators-dynamically-using-setvalidators-in-angular/"
-          target="_blank" rel="noopener noreferrer">How to add Validators Dynamically using SetValidators in Angular</a>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/inject-service-into-validator-in-angular/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Inject Service Into Custom Validator</a
+        >
       </li>
-      <li><a href="https://www.tektutorialshub.com/angular/custom-validator-in-template-driven-forms-in-angular/"
-          target="_blank" rel="noopener noreferrer">Custom Validator in Template Driven Forms in Angular</a></li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/cross-field-or-multi-field-validation-angular/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Cross Field or Multi Field Validation Angular</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/how-to-add-validators-dynamically-using-setvalidators-in-angular/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >How to add Validators Dynamically using SetValidators in Angular</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/custom-validator-in-template-driven-forms-in-angular/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Custom Validator in Template Driven Forms in Angular</a
+        >
+      </li>
     </ul>
   </ng-template>
 </ng-template>

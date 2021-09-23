@@ -30,6 +30,8 @@ import { PopoverComponent } from './components/popover/popover.component';
 import { AngularFormsComponent } from './components/angular-forms/angular-forms.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { CodeHighlighterComponent } from './components/code-highlighter/code-highlighter.component';
+import { AsyncLoadingTutorialsComponent } from './components/async-loading-tutorials/async-loading-tutorials.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { CodeHighlighterComponent } from './components/code-highlighter/code-hig
     PopoverComponent,
     AngularFormsComponent,
     TabsComponent,
-    CodeHighlighterComponent
+    CodeHighlighterComponent,
+    AsyncLoadingTutorialsComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
