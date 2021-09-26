@@ -1,0 +1,59 @@
+<h1>Build và chạy ứng dụng Angular trong Docker container</h1>
+<h2>Docker là gì?</h2>
+<ul>
+  <li>
+    Docker là một công cụ cho phép chúng ta đóng gói ứng dụng với tất cả thư
+    viện và dependencies cần thiết. Sau đó, deploy và chạy ứng dụng trong một
+    container.
+  </li>
+  <li>
+    Với Docker, chúng ta có thể build và chạy ứng dụng ở bất kỳ môi trường hay
+    hệ điều hành nào (Windows, Linux, Mac, cloud,..) và chúng ta cũng không cần
+    lo lắng việc không tương thích version (NodeJS, Java) như khi chúng cài đặt
+    và build thủ công. - Build một lần và chạy ở bất kỳ đâu.
+  </li>
+  <li>
+    Sau khi config docker cho project và install docker lên OS thì bất cứ
+    developer nào cũng có thể deploy project chỉ với một lệnh đơn giản. Vì trong
+    Docker container mà chúng ta đã tạo ra cho ứng dụng đã chứa tất mọi thứ cần
+    thiết để chạy ứng, do đó, chúng ta chỉ cần install Docker - DockerCompose,
+    không cần cài thêm bất cứ thứ gì.
+  </li>
+  <li>
+    Bạn có thể hình dung như sau: để deploy fontend (Angular, React,...) chúng
+    ta cần:
+    <ol>
+      <li>Clone source code từ Github</li>
+      <li>Install NodeJS: chọn đúng version nếu không có thể xảy ra lỗi</li>
+      <li>Install and config Nginx</li>
+      <li>Chạy npm install - npm run build để build ứng dụng</li>
+      <li>Copy thư mục build vào /usr/share/nginx/html để deploy</li>
+    </ol>
+    <p>
+      Còn với Docker, sau khi clone code về từ github, chúng ta chỉ cần docker
+      build - docker run hoặc nếu sử dụng Docker Compose thì chỉ cần chạy
+      docker-compose up. Vì tất cả mọi thứ chúng ta đã cấu hình trong
+      Dockerfile.
+    </p>
+  </li>
+  <li>
+    Hơn thế nữa, Docker còn hữu cho chúng ta khi chúng ta triển khai kiến trúc
+    Microservices hoặc cần scale ứng dụng một cách linh hoạt,...
+  </li>
+  <li>
+    <a
+      href="https://quocdung0209.blogspot.com/2021/05/docker-docker-file-docker-compose.html"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Tìm hiểu thêm về Docker</a
+    >
+  </li>
+  <li>
+    <a
+      href="https://dev.to/wkrzywiec/build-and-run-angular-application-in-a-docker-container-19pm"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Build and run Angular application in a Docker container</a
+    >
+  </li>
+</ul>

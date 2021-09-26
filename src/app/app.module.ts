@@ -32,6 +32,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { CodeHighlighterComponent } from './components/code-highlighter/code-highlighter.component';
 import { AsyncLoadingTutorialsComponent } from './components/async-loading-tutorials/async-loading-tutorials.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { DockerContainerComponent } from './components/docker-container/docker-container.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     TabsComponent,
     CodeHighlighterComponent,
     AsyncLoadingTutorialsComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    DockerContainerComponent
   ],
   imports: [
     BrowserModule,
