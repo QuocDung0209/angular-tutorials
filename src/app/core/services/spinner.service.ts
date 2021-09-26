@@ -2,7 +2,7 @@ import { BehaviorSubject, NEVER, defer } from 'rxjs';
 import { ComponentFactoryResolver, Injectable, Injector } from '@angular/core';
 import { finalize, share } from 'rxjs/operators';
 
-import { SpinnerComponent } from '../components/spinner/spinner.component';
+import { SpinnerComponent } from '../../shared/components/spinner/spinner.component';
 
 @Injectable({
   providedIn: 'root',

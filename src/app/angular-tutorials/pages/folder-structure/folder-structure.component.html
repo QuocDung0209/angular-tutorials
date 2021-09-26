@@ -1,0 +1,143 @@
+<h1>{{ title }}</h1>
+<h2>Angular modules</h2>
+<ul>
+  <li>
+    Angular module là một class được chỉ định với một decorator
+    <b>@NgModule()</b>
+  </li>
+  <li>
+    Angular module giúp chúng ta tổ chức code là các phần hoặc các khối có thể
+    quản lý được. Và mỗi khối triển khai <em>một tính năng</em> cụ thể.
+  </li>
+  <li>
+    Một module có thể bao gồm các thành phần như components, templates,
+    directives, pipes, services.
+  </li>
+  <li>
+    Với Angular module, chúng ta có thể dễ dàng để bảo trì và mở rộng ứng dụng
+    sau này.
+  </li>
+  <li>
+    Chúng ta có thể load các module bằng cách sử dụng kỹ thuật Lazy load hoặc
+    Preload cải thiện hiệu suất của ứng dụng.
+  </li>
+</ul>
+<h2>Cách tổ chức project theo modules để quản lý code hiệu quả</h2>
+<p>
+  Trong thực tế, khi làm việc với Angular project, chúng ta sẽ chức project theo
+  từng module và mỗi module sẽ đảm nhiệm <em>1 tính năng của ứng dụng</em>.
+</p>
+<p>Trong project chúng ta có thể phần thành 4 loại module như sau:</p>
+<ol>
+  <li>
+    <span class="fs-3">Root module</span>
+    <p>
+      Đây là module bắt buộc phải có trong mọi project Angular vì Angular yêu
+      cầu phải có ít nhất một module được load khi ứng dụng khởi chạy.
+    </p>
+    <p>
+      Một ứng dụng chỉ có 1 Root module. Root module sẽ load root component và
+      tất cả các module khác.
+    </p>
+  </li>
+  <li>
+    <span class="fs-3">Feature modules</span>
+    <p>
+      Mỗi feature module triển khai một tính năng cụ thể của ứng dụng. Mỗi
+      feature module cũng chứa các components, pipes và directives của riêng nó
+      để triển khai tính năng cho ứng dụng.
+    </p>
+  </li>
+  <li>
+    <span class="fs-3">Shared module</span>
+    <p>
+      Shared chứa các components, directives và pipes được dùng chung (hay chia
+      sẻ) cho nhiều feature modules (reuse - tái sử dụng).
+    </p>
+    <p>
+      Shared module phải khai báo các components, directives và pipes của nó sử
+      dụng <em>declarations</em> metadata và export chúng sử dụng
+      <em>exports</em> metadata trong file <em>shared.module.ts</em> thì các
+      module khác mới có thể import và sử dụng được.
+    </p>
+    <p>
+      Shared module không được khai báo services vì shared module có thể được
+      import ở bất cứ đâu, và nó có thể tạo ra một instance mới của service nếu
+      nó được import trong lazy loaded modules.
+    </p>
+    <p>
+      Shared module phải được triển khai độc lập, không được có bất kỳ phụ thuộc
+      nào vào bất kỳ feature module nào khác trong ứng dụng.
+    </p>
+    <p>
+      Các module thường được Angular yêu cầu như
+      <b>CommonModule, FormsModule</b> hoặc third party modules có thể được
+      import và re-export ở shared module. Khi các module khác import shared
+      module thì không cần phải import <b>CommonModule, FormsModule</b>.
+    </p>
+  </li>
+  <li>
+    <span class="fs-3">Core module</span>
+    <p>
+      Core module sẽ chứa tất các models và services được sử dụng trong ứng
+      dụng. Ví dụ như: user authentication, service để fetch data từ backend,..
+    </p>
+    <p>
+      Services thường cần phải Singleton. Chỉ tạo một instance service duy nhất
+      và dùng xuyên suốt cho cả ứng dụng. Do đó, cung cấp service trong Core
+      module để đảm bảo service là Singleton.
+    </p>
+    <p>
+      Angular project chỉ có một Core module và Core module chỉ được import vào
+      Root module không được import vào các module khác.
+    </p>
+  </li>
+</ol>
+<pre>
+├── src
+│   ├── app
+│   │   ├── admin 
+│   │   │   ├── directives
+│   │   │   ├── pages
+│   │   │   │   ├── dashboard
+│   │   │   │   │   ├── dashboard.component.ts
+│   │   │   │   ├── rights
+│   │   │   │   │   ├── rights.component.ts
+│   │   │   │   ├── user
+│   │   │   │   │   ├── user.component.ts
+│   │   │   ├── pipes
+│   │   │   ├── admin.component.ts
+│   │   │   ├── admin.component.html
+│   │   │   ├── admin.component.css
+│   │   │   ├── admin.module.ts
+│   │   │   ├── admin.routing.module.ts
+│   │   ├── core
+│   │   │   ├── models
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── repos.ts
+│   │   │   ├── services
+│   │   │   │   ├── github.service.ts
+│   │   │   ├── core.module.ts
+│   │   ├── shared
+│   │   │   ├── layout
+│   │   │   │   ├── footer
+│   │   │   │   │   ├── footer.component.ts
+│   │   │   │   │   ├── footer.component.html
+│   │   │   │   ├── header
+│   │   │   │   │   ├── header.component.ts
+│   │   │   │   │   ├── header.component.html
+│   │   │   ├── components
+│   │   │   ├── directives
+│   │   │   ├── pipes
+│   │   │   ├── constants
+│   │   │   ├── helpers
+│   │   │   ├── utils
+│   ├── app-routing.module.ts  
+│   ├── app-wildcard-routing.module.ts
+│   ├── app.component.css
+│   ├── app.component.html
+│   ├── app.component.spec.ts
+│   ├── app.component.ts
+│   ├── app.module.ts
+│   ├── not-found.component.ts
+</pre>

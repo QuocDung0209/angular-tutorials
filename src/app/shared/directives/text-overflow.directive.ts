@@ -1,13 +1,14 @@
 import {
   Directive,
-  Input,
   ElementRef,
   HostListener,
-  Renderer2,
-  OnChanges
+  Input,
+  OnChanges,
+  Renderer2
 } from '@angular/core';
+
+import { EMPTY_STRING } from '../../constants/common.constant';
 import { createPopper } from '@popperjs/core';
-import { EMPTY_STRING } from '../constants/common.constant';
 
 @Directive({
   selector: '[textOverflow]'

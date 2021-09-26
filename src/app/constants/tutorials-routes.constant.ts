@@ -1,5 +1,5 @@
-import { AngularFormsComponent } from '../components/angular-forms/angular-forms.component';
-import { AsyncLoadingTutorialsComponent } from '../components/async-loading-tutorials/async-loading-tutorials.component';
+import { AngularFormsComponent } from '../angular-tutorials/pages/angular-forms/angular-forms.component';
+import { AsyncLoadingTutorialsComponent } from '../angular-tutorials/pages/async-loading-tutorials/async-loading-tutorials.component';
 
 export const TUTORIALS = [
   {
@@ -33,7 +33,8 @@ export const TUTORIALS = [
     component: AngularFormsComponent,
   },
   {
-    title: 'Hiển thị loading spinner trong suốt quá trình xử lý đồng thời nhiều HTTP request',
+    title:
+      'Hiển thị loading spinner trong suốt quá trình xử lý đồng thời nhiều HTTP request',
     routerLink: '/async-loading-spinner',
     path: 'async-loading-spinner',
     component: AsyncLoadingTutorialsComponent,

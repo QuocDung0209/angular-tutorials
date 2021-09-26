@@ -17,13 +17,13 @@ import {
   NgZone,
   SimpleChanges,
   ChangeDetectorRef,
-  ApplicationRef
+  ApplicationRef,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { PlacementArray, positionElements } from '../helpers/positioning';
-import { PopupService } from '../services/popup.service';
+import { PlacementArray, positionElements } from '../../helpers/positioning';
+import { PopupService } from '../../core/services/popup.service';
 import { PopoverComponent } from '../components/popover/popover.component';
-import { listenToTriggers } from '../helpers/triggers';
+import { listenToTriggers } from '../../helpers/triggers';
 
 let nextId = 0;
 
@@ -154,10 +154,16 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
   }
 
   constructor(
-    private _elementRef: ElementRef<HTMLElement>, private _renderer: Renderer2, injector: Injector,
-    componentFactoryResolver: ComponentFactoryResolver, viewContainerRef: ViewContainerRef,
-    private _ngZone: NgZone, @Inject(DOCUMENT) private _document: any, private _changeDetector: ChangeDetectorRef,
-    applicationRef: ApplicationRef) {
+    private _elementRef: ElementRef<HTMLElement>,
+    private _renderer: Renderer2,
+    injector: Injector,
+    componentFactoryResolver: ComponentFactoryResolver,
+    viewContainerRef: ViewContainerRef,
+    private _ngZone: NgZone,
+    @Inject(DOCUMENT) private _document: any,
+    private _changeDetector: ChangeDetectorRef,
+    applicationRef: ApplicationRef
+  ) {
     this.animation = true;
     this.autoClose = true;
     this.placement = 'auto';
@@ -168,14 +174,24 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
     this.openDelay = 0;
     this.closeDelay = 0;
     this._popupService = new PopupService<PopoverComponent>(
-      PopoverComponent, injector, viewContainerRef, _renderer, this._ngZone, componentFactoryResolver,
-      applicationRef);
+      PopoverComponent,
+      injector,
+      viewContainerRef,
+      _renderer,
+      this._ngZone,
+      componentFactoryResolver,
+      applicationRef
+    );
 
     this._zoneSubscription = _ngZone.onStable.subscribe(() => {
       if (this._popoverComponentRef) {
         positionElements(
-          this._elementRef.nativeElement, this._popoverComponentRef.location.nativeElement, this.placement,
-          this.container === 'body', 'bs-popover');
+          this._elementRef.nativeElement,
+          this._popoverComponentRef.location.nativeElement,
+          this.placement,
+          this.container === 'body',
+          'bs-popover'
+        );
       }
     });
   }
@@ -189,8 +205,11 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
   open(context?: any) {
     if (!this._popoverComponentRef && !this._isDisabled()) {
       // this type assertion is safe because otherwise _isDisabled would return true
-      const { windowRef, transition$ } =
-        this._popupService.open(this.appPopover as (string | TemplateRef<any>), context, this.animation);
+      const { windowRef, transition$ } = this._popupService.open(
+        this.appPopover as string | TemplateRef<any>,
+        context,
+        this.animation
+      );
       this._popoverComponentRef = windowRef;
       if (this._popoverComponentRef) {
         this._popoverComponentRef.instance.animation = this.animation;
@@ -200,23 +219,34 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
         this._popoverComponentRef.instance.id = this._appPopoverId;
       }
 
-      this._renderer.setAttribute(this._elementRef.nativeElement, 'aria-describedby', this._appPopoverId);
+      this._renderer.setAttribute(
+        this._elementRef.nativeElement,
+        'aria-describedby',
+        this._appPopoverId
+      );
 
       if (this.container === 'body') {
-        this._document.querySelector(this.container).appendChild(this._popoverComponentRef && this._popoverComponentRef.location.nativeElement);
+        this._document
+          .querySelector(this.container)
+          .appendChild(
+            this._popoverComponentRef &&
+              this._popoverComponentRef.location.nativeElement
+          );
       }
 
       // We need to detect changes, because we don't know where .open() might be called from.
       // Ex. opening popover from one of lifecycle hooks that run after the CD
       // (say from ngAfterViewInit) will result in 'ExpressionHasChanged' exception
-      this._popoverComponentRef && this._popoverComponentRef.changeDetectorRef.detectChanges();
+      this._popoverComponentRef &&
+        this._popoverComponentRef.changeDetectorRef.detectChanges();
 
       // We need to mark for check, because popover won't work inside the OnPush component.
       // Ex. when we use expression like `{{ popover.isOpen() : 'opened' : 'closed' }}`
       // inside the template of an OnPush component and we change the popover from
       // open -> closed, the expression in question won't be updated unless we explicitly
       // mark the parent component to be checked.
-      this._popoverComponentRef && this._popoverComponentRef.changeDetectorRef.markForCheck();
+      this._popoverComponentRef &&
+        this._popoverComponentRef.changeDetectorRef.markForCheck();
 
       // ngbAutoClose(
       //   this._ngZone, this._document, this.autoClose, () => this.close(), this.hidden,
@@ -233,7 +263,10 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
    */
   close() {
     if (this._popoverComponentRef) {
-      this._renderer.removeAttribute(this._elementRef.nativeElement, 'aria-describedby');
+      this._renderer.removeAttribute(
+        this._elementRef.nativeElement,
+        'aria-describedby'
+      );
       this._popupService.close(this.animation).subscribe(() => {
         this._popoverComponentRef = null;
         this.hidden.emit();
@@ -258,17 +291,32 @@ export class PopoverDirective implements OnInit, OnDestroy, OnChanges {
   /**
    * Returns `true`, if the popover is currently shown.
    */
-  isOpen(): boolean { return this._popoverComponentRef != null; }
+  isOpen(): boolean {
+    return this._popoverComponentRef != null;
+  }
 
   ngOnInit() {
     this._unregisterListenersFn = listenToTriggers(
-      this._renderer, this._elementRef.nativeElement, this.triggers, this.isOpen.bind(this), this.open.bind(this),
-      this.close.bind(this), +this.openDelay, +this.closeDelay);
+      this._renderer,
+      this._elementRef.nativeElement,
+      this.triggers,
+      this.isOpen.bind(this),
+      this.open.bind(this),
+      this.close.bind(this),
+      +this.openDelay,
+      +this.closeDelay
+    );
   }
 
-  ngOnChanges({ ngbPopover, popoverTitle, disablePopover, popoverClass }: SimpleChanges) {
+  ngOnChanges({
+    ngbPopover,
+    popoverTitle,
+    disablePopover,
+    popoverClass,
+  }: SimpleChanges) {
     if (popoverClass && this.isOpen()) {
-      this._popoverComponentRef!.instance.popoverClass = popoverClass.currentValue;
+      this._popoverComponentRef!.instance.popoverClass =
+        popoverClass.currentValue;
     }
     // close popover if title and content become empty, or disablePopover set to true
     if ((ngbPopover || popoverTitle || disablePopover) && this._isDisabled()) {

@@ -5,15 +5,15 @@ import {
   Input,
   OnChanges,
   Renderer2,
-  SecurityContext
+  SecurityContext,
 } from '@angular/core';
 import { Placement, createPopper } from '@popperjs/core';
 
-import { DomSanitizer } from "@angular/platform-browser";
-import { isUndifined } from '../helpers/utils';
+import { DomSanitizer } from '@angular/platform-browser';
+import { isUndifined } from '../../helpers/utils';
 
 @Directive({
-  selector: '[tooltip]'
+  selector: '[tooltip]',
 })
 export class TooltipDirective {
   @Input('tooltip')
@@ -33,18 +33,24 @@ export class TooltipDirective {
     private el: ElementRef,
     private renderer: Renderer2,
     private sanitizer: DomSanitizer
-  ) { }
+  ) {}
 
   @HostListener('mouseenter') onMouseEnter() {
-    if ((isUndifined(this.invalid) || this.invalid) && !this.tooltip) { this.show(); }
+    if ((isUndifined(this.invalid) || this.invalid) && !this.tooltip) {
+      this.show();
+    }
   }
 
   @HostListener('mouseleave') onMouseLeave() {
-    if (this.tooltip) { this.hide(); }
+    if (this.tooltip) {
+      this.hide();
+    }
   }
 
   @HostListener('click') onClick() {
-    if (this.tooltip) { this.hide(); }
+    if (this.tooltip) {
+      this.hide();
+    }
   }
 
   show() {
@@ -90,10 +96,26 @@ export class TooltipDirective {
     }
 
     // delay setting
-    this.renderer.setStyle(this.tooltip, '-webkit-transition', `opacity ${this.delay}ms`);
-    this.renderer.setStyle(this.tooltip, '-moz-transition', `opacity ${this.delay}ms`);
-    this.renderer.setStyle(this.tooltip, '-o-transition', `opacity ${this.delay}ms`);
-    this.renderer.setStyle(this.tooltip, 'transition', `opacity ${this.delay}ms`);
+    this.renderer.setStyle(
+      this.tooltip,
+      '-webkit-transition',
+      `opacity ${this.delay}ms`
+    );
+    this.renderer.setStyle(
+      this.tooltip,
+      '-moz-transition',
+      `opacity ${this.delay}ms`
+    );
+    this.renderer.setStyle(
+      this.tooltip,
+      '-o-transition',
+      `opacity ${this.delay}ms`
+    );
+    this.renderer.setStyle(
+      this.tooltip,
+      'transition',
+      `opacity ${this.delay}ms`
+    );
   }
 
   setPosition() {
@@ -109,7 +131,11 @@ export class TooltipDirective {
     // window's scroll top
     // The getBoundingClientRect method returns the relative position in the viewport.
     // When scrolling occurs, the vertical scroll coordinate value should be reflected on the top of the tooltip element.
-    const scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const scrollPos =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0;
 
     let top, left;
 

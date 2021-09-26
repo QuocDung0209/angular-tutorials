@@ -1,11 +1,11 @@
-import { BootstrapFormsComponent } from "../components/bootstrap-forms/bootstrap-forms.component";
-import { ClickOutsideComponent } from "../components/click-outside/click-outside.component";
-import { CopyToClipboardComponent } from "../components/copy-to-clipboard/copy-to-clipboard.component";
-import { DragDropComponent } from "../components/drag-drop/drag-drop.component";
-import { JsonStringifyComponent } from "../components/json-stringify/json-stringify.component";
-import { TextOveflowCssComponent } from "../components/text-oveflow-css/text-oveflow-css.component";
-import { TooltipCssComponent } from "../components/tooltip-css/tooltip-css.component";
-import { TooltipDirectiveComponent } from "../components/tooltip-directive/tooltip-directive.component";
+import { BootstrapFormsComponent } from '../code-snippets/pages/bootstrap-forms/bootstrap-forms.component';
+import { ClickOutsideComponent } from '../code-snippets/pages/click-outside/click-outside.component';
+import { CopyToClipboardComponent } from '../code-snippets/pages/copy-to-clipboard/copy-to-clipboard.component';
+import { DragDropComponent } from '../code-snippets/pages/drag-drop/drag-drop.component';
+import { JsonStringifyComponent } from '../code-snippets/pages/json-stringify/json-stringify.component';
+import { TextOveflowCssComponent } from '../code-snippets/pages/text-oveflow-css/text-oveflow-css.component';
+import { TooltipCssComponent } from '../code-snippets/pages/tooltip-css/tooltip-css.component';
+import { TooltipDirectiveComponent } from '../code-snippets/pages/tooltip-directive/tooltip-directive.component';
 
 export const CODE_SNIPPETS = [
   {
@@ -56,4 +56,4 @@ export const CODE_SNIPPETS = [
     path: 'json-stringify',
     component: JsonStringifyComponent,
   },
-]
+];
