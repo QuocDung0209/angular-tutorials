@@ -2,6 +2,7 @@ import { AngularFormsComponent } from 'src/app/angular-tutorials/pages/angular-f
 import { AsyncLoadingTutorialsComponent } from 'src/app/angular-tutorials/pages/async-loading-tutorials/async-loading-tutorials.component';
 import { DockerContainerComponent } from 'src/app/angular-tutorials/pages/docker-container/docker-container.component';
 import { FolderStructureComponent } from 'src/app/angular-tutorials/pages/folder-structure/folder-structure.component';
+import { InitialProjectComponent } from 'src/app/angular-tutorials/pages/initial-project/initial-project.component';
 
 export const TUTORIALS = [
   {
@@ -20,7 +21,7 @@ export const TUTORIALS = [
     title: 'Tạo và cấu hình project Angular',
     routerLink: '/angular-tutorials/initialize-angular-project',
     path: 'initialize-angular-project',
-    component: FolderStructureComponent,
+    component: InitialProjectComponent,
   },
   {
     title: 'Data Binding',
