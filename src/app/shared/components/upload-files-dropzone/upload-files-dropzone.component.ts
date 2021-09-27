@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FileExtension } from 'src/app/types/enums';
+
+import { FileExtension } from 'src/app/core/types/enums';
 import { Popover } from 'bootstrap';
 
 const fileType = {

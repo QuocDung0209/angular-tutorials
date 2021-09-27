@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { EMPTY_STRING } from 'src/app/constants/common.constant';
+import { EMPTY_STRING } from '../../constants/common.constant';
 import hljs from 'highlight.js/lib/common';
 
 @Component({

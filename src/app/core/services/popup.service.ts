@@ -12,7 +12,7 @@ import {
 import { Observable, of } from 'rxjs';
 import { mergeMap, take, tap } from 'rxjs/operators';
 
-import { ngbRunTransition } from '../../helpers/transition';
+import { ngbRunTransition } from 'src/app/shared/helpers/transition';
 
 export class ContentRef {
   constructor(

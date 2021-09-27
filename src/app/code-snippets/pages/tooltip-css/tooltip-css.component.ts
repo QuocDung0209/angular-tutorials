@@ -1,7 +1,8 @@
+import { CSS_CODE, TS_CODE } from 'src/app/shared/constants/tooltip-css.constant';
 import { Component, OnInit } from '@angular/core';
+
 import { createPopper } from '@popperjs/core';
 import hljs from 'highlight.js/lib/common';
-import { CSS_CODE, TS_CODE } from 'src/app/constants/tooltip-css.constant';
 
 @Component({
   selector: 'app-tooltip-css',

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EMPTY_STRING } from 'src/app/constants/common.constant';
-import { ORIENT_OPTIONS, TEXT_OVERFLOW_METHOD, TEXT_OVERFLOW_OPTIONS, UNITS, WORD_BREAK_OPTIONS } from 'src/app/constants/text-overflow.constant';
+import { ORIENT_OPTIONS, TEXT_OVERFLOW_METHOD, TEXT_OVERFLOW_OPTIONS, UNITS, WORD_BREAK_OPTIONS } from 'src/app/shared/constants/text-overflow.constant';
+
+import { EMPTY_STRING } from 'src/app/shared/constants/common.constant';
 
 @Component({
   selector: 'app-text-oveflow-css',

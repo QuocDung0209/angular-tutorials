@@ -1,5 +1,6 @@
-import { Component, Output, EventEmitter, Input, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { EMPTY_STRING } from 'src/app/constants/common.constant';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+
+import { EMPTY_STRING } from '../../constants/common.constant';
 
 export const FILE_INPUT = {
   NO_FILE_CHOSEN: 'No File Chosen',

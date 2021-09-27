@@ -7,7 +7,7 @@ import {
   Renderer2
 } from '@angular/core';
 
-import { EMPTY_STRING } from '../../constants/common.constant';
+import { EMPTY_STRING } from '../constants/common.constant';
 import { createPopper } from '@popperjs/core';
 
 @Directive({

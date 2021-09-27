@@ -20,10 +20,10 @@ import {
   ApplicationRef,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { PlacementArray, positionElements } from '../../helpers/positioning';
 import { PopupService } from '../../core/services/popup.service';
 import { PopoverComponent } from '../components/popover/popover.component';
-import { listenToTriggers } from '../../helpers/triggers';
+import { PlacementArray, positionElements } from '../helpers/positioning';
+import { listenToTriggers } from '../helpers/triggers';
 
 let nextId = 0;
 

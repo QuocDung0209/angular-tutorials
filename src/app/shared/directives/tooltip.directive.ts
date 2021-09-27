@@ -3,14 +3,13 @@ import {
   ElementRef,
   HostListener,
   Input,
-  OnChanges,
   Renderer2,
   SecurityContext,
 } from '@angular/core';
 import { Placement, createPopper } from '@popperjs/core';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { isUndifined } from '../../helpers/utils';
+import { isUndifined } from '../helpers/utils';
 
 @Directive({
   selector: '[tooltip]',

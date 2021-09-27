@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TOOLTIP_TS, TOOLTIP_CSS, HTML_TOOLTIP } from 'src/app/constants/tooltip-directive.constant';
+import { HTML_TOOLTIP, TOOLTIP_CSS, TOOLTIP_TS } from 'src/app/shared/constants/tooltip-directive.constant';
+
 import hljs from 'highlight.js/lib/common';
 
 @Component({

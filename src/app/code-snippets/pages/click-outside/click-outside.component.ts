@@ -15,7 +15,7 @@ export class ClickOutsideComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  clickOutside(value: string) {
+  clickOutside(value: any) {
     this.clicked = value;
   }
 
