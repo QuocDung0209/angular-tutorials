@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CODE_SNIPPETS } from './constants/code-snippets-routes.constant';
-import { TUTORIALS } from './constants/tutorials-routes.constant';
+
+import { CODE_SNIPPETS } from './shared/constants/code-snippets-routes.constant';
+import { TUTORIALS } from './shared/constants/tutorials-routes.constant';
 
 @Component({
   selector: 'app-root',

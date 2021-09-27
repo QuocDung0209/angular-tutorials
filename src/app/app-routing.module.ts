@@ -1,20 +1,31 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CODE_SNIPPETS } from './constants/code-snippets-routes.constant';
-import { TUTORIALS } from './constants/tutorials-routes.constant';
+
+import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'tooltip-directive',
-    pathMatch: 'full'
+    redirectTo: 'angular-tutorials',
+    pathMatch: 'full',
   },
-  ...CODE_SNIPPETS.map(({ path, component }) => ({ path, component })),
-  ...TUTORIALS.map(({ path, component }) => ({ path, component })),
+  {
+    path: 'angular-tutorials',
+    loadChildren: () =>
+      import('./angular-tutorials/angular-tutorials.module').then(
+        (m) => m.AngularTutorialsModule
+      ),
+  },
+  {
+    path: 'code-snippets',
+    loadChildren: () =>
+      import('./code-snippets/code-snippets.module').then(
+        (m) => m.CodeSnippetsModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

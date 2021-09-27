@@ -1,78 +1,15 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TooltipDirective } from './directives/tooltip.directive';
-import { AddClassDirective } from './directives/add-class.directive';
-import { IfDirective } from './directives/if.directive';
-import { TooltipDirectiveComponent } from './components/tooltip-directive/tooltip-directive.component';
-import { ClickOutsideComponent } from './components/click-outside/click-outside.component';
-import { DragDropComponent } from './components/drag-drop/drag-drop.component';
-import { FormsModule } from '@angular/forms';
-import { JsonStringifyComponent } from './components/json-stringify/json-stringify.component';
-import { TooltipCssComponent } from './components/tooltip-css/tooltip-css.component';
-import { BootstrapFormsComponent } from './components/bootstrap-forms/bootstrap-forms.component';
-import { TextOveflowCssComponent } from './components/text-oveflow-css/text-oveflow-css.component';
-import { TextOverflowDirective } from './directives/text-overflow.directive';
-import { ClickOutsideDirective } from './directives/click-outside.directive';
-import { ClickOutsideV2Directive } from './directives/click-outside-v2.directive';
-import { CopyToClipboardComponent } from './components/copy-to-clipboard/copy-to-clipboard.component';
-import { ClipboardDirective } from './directives/clipboard.directive';
-import { DragDropDirective } from './directives/drag-drop.directive';
-import { ProgressComponent } from './components/progress/progress.component';
-import { DragAndDropDirective } from './directives/drag-and-drop.directive';
-import { UploadFileComponent } from './components/upload-file/upload-file.component';
-import { DropZoneDirective } from './directives/drop-zone.directive';
-import { UploadFilesDropzoneComponent } from './components/upload-files-dropzone/upload-files-dropzone.component';
-import { PopoverDirective } from './directives/popover.directive';
-import { PopoverComponent } from './components/popover/popover.component';
-import { AngularFormsComponent } from './components/angular-forms/angular-forms.component';
-import { TabsComponent } from './components/tabs/tabs.component';
-import { CodeHighlighterComponent } from './components/code-highlighter/code-highlighter.component';
-import { AsyncLoadingTutorialsComponent } from './components/async-loading-tutorials/async-loading-tutorials.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
-import { DockerContainerComponent } from './components/docker-container/docker-container.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TooltipDirective,
-    AddClassDirective,
-    IfDirective,
-    TooltipDirectiveComponent,
-    ClickOutsideComponent,
-    DragDropComponent,
-    JsonStringifyComponent,
-    TooltipCssComponent,
-    BootstrapFormsComponent,
-    TextOveflowCssComponent,
-    TextOverflowDirective,
-    ClickOutsideDirective,
-    ClickOutsideV2Directive,
-    CopyToClipboardComponent,
-    ClipboardDirective,
-    DragDropDirective,
-    ProgressComponent,
-    DragAndDropDirective,
-    UploadFileComponent,
-    DropZoneDirective,
-    UploadFilesDropzoneComponent,
-    PopoverDirective,
-    PopoverComponent,
-    AngularFormsComponent,
-    TabsComponent,
-    CodeHighlighterComponent,
-    AsyncLoadingTutorialsComponent,
-    SpinnerComponent,
-    DockerContainerComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, SharedModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

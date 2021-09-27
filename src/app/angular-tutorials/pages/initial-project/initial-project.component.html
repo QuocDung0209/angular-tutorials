@@ -1,0 +1,99 @@
+<app-tabs [tabDisplay]="'column'">
+  <div #tabContent tab-title="Tạo project với Angular CLI">
+    <h1 class="text-center">Tạo project với Angular CLI (v12)</h1>
+    <h4>Chỉ định packages manager - yarn cho project</h4>
+    <div><code>ng config -g cli.packageManager yarn</code></div>
+    <h4>Tạo project với tên <em>project-name</em></h4>
+    <div>
+      <code>ng new project-name --style=scss --skip-git --routing</code>
+    </div>
+    <div class="explain">
+      <em
+        >Sau khi project được tạo, hãy tạo 2 modules: <b>CoreModule</b> và
+        <b>SharedModule</b> theo
+        <span class="link" [routerLink]="'/angular-tutorials/angular-modules'"
+          >Best practices folder structure</span
+        >.</em
+      >
+    </div>
+    <h4>Khởi tạo Git để quản lý project</h4>
+    <ol>
+      <li><code>git init</code></li>
+      <li><code>git remote add origin remote-url</code></li>
+    </ol>
+  </div>
+  <div #tabContent tab-title="Install and config Prettier">
+    <h1 class="text-center">Install and config Prettier</h1>
+    <h4>Cài đặt các packages cần thiết</h4>
+    <div>
+      <code
+        >yarn add --dev prettier eslint-config-prettier
+        eslint-plugin-prettier</code
+      >
+    </div>
+    <h4>Tạo file .prettierrc.json và paste code bên dưới vào</h4>
+    <code-highlighter
+      [code]="prettierJSON"
+      [height]="'400px'"
+      [clipboard]="true"
+    ></code-highlighter>
+  </div>
+  <div #tabContent tab-title="Install and config ESLint">
+    <h1 class="text-center">Install and config ESLint</h1>
+    <h4>Thêm package @angular-eslint/schematics</h4>
+    <div><code>ng add @angular-eslint/schematics</code></div>
+    <h4>Thay toàn bộ code bên trong file .eslintrc.json bằng code bên dưới</h4>
+    <code-highlighter
+      [code]="eslintJSON"
+      [height]="'400px'"
+      [clipboard]="true"
+    ></code-highlighter>
+  </div>
+  <div
+    #tabContent
+    tab-title="Thêm script để tự động sửa các lỗi và warning từ ESLint và Prettier"
+  >
+    <h1 class="text-center">
+      Thêm script để tự động sửa các lỗi và warning từ ESLint và Prettier
+    </h1>
+    <h4>Update packages.json file</h4>
+    <code-highlighter
+      [code]="lintScripts"
+      [height]="'400px'"
+      [clipboard]="true"
+    ></code-highlighter>
+    <p>
+      Sau khi cấu hình xong, hãy chạy lệnh <code>yarn lint:fix</code> để tự động
+      fix các errors và warning từ ESLint và Prettier.
+    </p>
+  </div>
+  <div #tabContent tab-title="Thêm các package hữu ích">
+    <div class="explain">
+      Cài đặt <em>sort-import</em> extension cho VSCode để sắp xếp các import
+      theo thứ tự bạn chữ cái.
+    </div>
+    <h4>Install Bootstrap</h4>
+    <ol>
+      <li><code>yarn add bootstrap</code></li>
+      <li>
+        Add
+        <code>"./node_modules/bootstrap/dist/css/bootstrap.min.css"</code> to
+        <b>architect -> build -> styles</b> of <b>angular.json</b>
+      </li>
+    </ol>
+    <h4>Install Fontawesome</h4>
+    <ol>
+      <li><code>yarn add font-awesome</code></li>
+      <li>
+        Add <code>"./node_modules/font-awesome/css/font-awesome.css"</code> to
+        <b>architect -> build -> styles</b> of <b>angular.json</b>
+      </li>
+    </ol>
+  </div>
+  <div #tabContent tab-title="Tài liệu hướng dẫn chi tiết">
+    <iframe
+      src="https://quocdung0209.blogspot.com/2021/08/create-and-run-angular-project.html"
+      frameborder="0"
+    ></iframe>
+  </div>
+</app-tabs>
