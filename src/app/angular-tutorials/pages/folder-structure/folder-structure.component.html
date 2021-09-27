@@ -79,7 +79,7 @@
   <li>
     <span class="fs-3">Core module</span>
     <p>
-      Core module sẽ chứa tất các models và services được sử dụng trong ứng
+      Core module sẽ chứa tất các models, services và utils functions,... được sử dụng cho cả ứng
       dụng. Ví dụ như: user authentication, service để fetch data từ backend,..
     </p>
     <p>
@@ -93,6 +93,7 @@
     </p>
   </li>
 </ol>
+<h2>Folder Structure: Best Practices</h2>
 <pre>
 ├── src
 │   ├── app
@@ -117,6 +118,8 @@
 │   │   │   │   ├── repos.ts
 │   │   │   ├── services
 │   │   │   │   ├── github.service.ts
+│   │   │   ├── utils
+│   │   │   ├── custom-validators
 │   │   │   ├── core.module.ts
 │   │   ├── shared
 │   │   │   ├── layout
@@ -131,7 +134,6 @@
 │   │   │   ├── pipes
 │   │   │   ├── constants
 │   │   │   ├── helpers
-│   │   │   ├── utils
 │   ├── app-routing.module.ts  
 │   ├── app-wildcard-routing.module.ts
 │   ├── app.component.css
