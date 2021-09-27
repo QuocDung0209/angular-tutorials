@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+
 @Component({
   selector: 'app-initial-project',
   templateUrl: './initial-project.component.html',
@@ -12,5 +15,41 @@ export class InitialProjectComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const obs = new Observable((observer) => {
+      console.log('Start observable');
+      observer.next(1);
+    }).pipe(
+      finalize(() => {
+        console.log('End source oservable');
+      })
+    );
+
+    const sub1 = obs
+      .pipe(
+        finalize(() => {
+          console.log('End subscription 1');
+        })
+      )
+      .subscribe(() => {
+        console.log('Get data from subscription 1');
+      });
+
+    const sub2 = obs
+      .pipe(
+        finalize(() => {
+          console.log('End subscription 2');
+        })
+      )
+      .subscribe(() => {
+        console.log('Get data from subscription 2');
+      });
+
+    sub1.unsubscribe();
+    sub2.unsubscribe();
+
+    const promis = new Promise((resolve, reject) => {
+      console.log('Start Promise!!!!');
+    })
+  }
 }
