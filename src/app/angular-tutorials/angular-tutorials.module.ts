@@ -6,6 +6,7 @@ import { FolderStructureComponent } from './pages/folder-structure/folder-struct
 import { InitialProjectComponent } from './pages/initial-project/initial-project.component';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
+import { OverviewComponent } from './pages/overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { SharedModule } from '../shared/shared.module';
     AngularFormsComponent,
     AsyncLoadingTutorialsComponent,
     DockerContainerComponent,
-    InitialProjectComponent
+    InitialProjectComponent,
+    OverviewComponent
   ],
   imports: [SharedModule, AngularTutorialsRoutingModule],
 })

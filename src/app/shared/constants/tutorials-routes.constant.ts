@@ -3,13 +3,14 @@ import { AsyncLoadingTutorialsComponent } from 'src/app/angular-tutorials/pages/
 import { DockerContainerComponent } from 'src/app/angular-tutorials/pages/docker-container/docker-container.component';
 import { FolderStructureComponent } from 'src/app/angular-tutorials/pages/folder-structure/folder-structure.component';
 import { InitialProjectComponent } from 'src/app/angular-tutorials/pages/initial-project/initial-project.component';
+import { OverviewComponent } from 'src/app/angular-tutorials/pages/overview/overview.component';
 
 export const TUTORIALS = [
   {
-    title: 'Bắt đầu với Angular',
+    title: 'Tìm hiểu Angular Framework',
     routerLink: '/angular-tutorials/getting-started',
     path: 'getting-started',
-    component: AngularFormsComponent,
+    component: OverviewComponent,
   },
   {
     title: 'Angular modules and Best Practices Folder Structure',
