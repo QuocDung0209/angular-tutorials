@@ -122,13 +122,6 @@
       </li>
       <li>
         <a
-          href="https://www.tektutorialshub.com/angular/angular-custom-pipes/"
-          target="_blank"
-          >Angular Custom Pipes</a
-        >
-      </li>
-      <li>
-        <a
           href="https://www.tektutorialshub.com/angular/formatting-dates-with-angular-date-pipe/"
           target="_blank"
           >Date Pipe</a
@@ -201,6 +194,49 @@
           href="https://www.tektutorialshub.com/angular/angular-async-pipe/"
           target="_blank"
           >Async Pipe</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div #tabContent tab-title="Tạo Custom Pipe">
+    <h2>Các bước để tạo một custom pipe</h2>
+    <ol>
+      <li>Tạo một pipe class - <code>pipe-name.pipe.ts</code></li>
+      <li>Khai báo <code>@Pipe()</code> decorator</li>
+      <li>
+        Cung cấp tên pipe trong name property của @Pipe decorator. Chúng ta sẽ
+        sử dụng tên này trong template -
+        <code>@Pipe(&#123;name: 'pipeName'&#125;)</code>.
+      </li>
+      <li>
+        Pipe class phải implement <code>PipeTransform</code> interface
+        (interface này chỉ chứa một method <code>transform</code> -
+        <code>export class TempConverterPipe implements PipeTransform</code>
+      </li>
+      <li>
+        Tham số đầu tiên của <code>transform</code> method là giá trị được
+        chuyển từ template. <code>transform</code> method phải biến đổi giá trị
+        và trả về kết quả. Chúng ta có thể thêm bất kỳ số lượng đối số bổ sung
+        nào vào phương thức biến đổi (từ tham số thứ hai trở đi của
+        <code>transform</code>).
+      </li>
+      <li>
+        Khai báo pipe class trong Root Module của Angular (app.module.ts).
+      </li>
+      <li>Sử dụng custom pipe như các built-in.</li>
+    </ol>
+    <h2>Tạo một pipe để chuyển đổi nhiệt độ</h2>
+    <code-highlighter
+      [clipboard]="true"
+      [code]="temparaturePipe"
+    ></code-highlighter>
+    <h2>Tài liệu tham khảo</h2>
+    <ul>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/angular-custom-pipes/"
+          target="_blank"
+          >Angular Custom Pipes</a
         >
       </li>
     </ul>
