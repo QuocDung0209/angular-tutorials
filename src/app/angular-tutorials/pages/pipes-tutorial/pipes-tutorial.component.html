@@ -1,0 +1,244 @@
+<app-tabs>
+  <div #tabContent tab-title="Pipes">
+    <div class="title-note">
+      <ul>
+        <li>
+          Pipe là một JavaScript <code>class</code> và được định nghĩa bằng
+          <code>@Pipe</code> decorator.
+        </li>
+        <li>
+          Pipe thường được sử dụng trong template của component (chúng ta cũng
+          có thể sử dụng pipe trong component và service). Các pipe nhận vào
+          data và thực hiện biến đổi hoặc định dạng (transform/format) lại data
+          trước khi hiển thị ra giao diện Web.
+        </li>
+        <li>
+          Ví dụ: <code>date</code> pipe format date theo locale rules. Chúng ta
+          cũng có thể truyền tham số vào pipe và chain pipes.
+        </li>
+      </ul>
+    </div>
+    <h2>Pipes Syntax</h2>
+    <div><code>Expression | pipeOperator[:pipeArguments]</code></div>
+    <div class="explain">
+      Trong đó:
+      <ul>
+        <li>
+          <b>Expression</b>: Là biểu thức hoặc data mà chúng ta muốn transform.
+        </li>
+        <li><b>|</b>: đây là ký tự pipe, quy tắc để sử dụng pipe.</li>
+        <li><b>pipeOperator</b>: là tên của pipe được sử dụng.</li>
+        <li><b>pipeArguments</b>: là các tham số được truyền vào pipe.</li>
+      </ul>
+    </div>
+    <h2>Sử dụng pipes</h2>
+    <div>
+      <code
+        >&lt;p&gt;Formatted date : &#123; &#123;toDate | date&#125;
+        &#125;&lt;/p&gt;</code
+      >
+    </div>
+    <h4>Truyền đối số cho pipe</h4>
+    <em
+      >Chúng ta truyền đối số vào pipe bằng cách sử dụng dấu <code>:</code> theo
+      sau là đối số. Nếu chúng ta cần truyền nhiều đối số thì các đối số sẽ được
+      phân tách bằng dấu <code>:</code>.</em
+    >
+    <div>
+      <code
+        >&lt;p&gt;Formatted date : &#123; &#123;toDate |
+        date:<b>'medium'</b>&#125;&#125;&lt;/p&gt;</code
+      >
+    </div>
+    <div>
+      <code
+        >&lt;p&gt;Formatted date : &#123; &#123;toDate | date:<b
+          >'dd/MM/yy HH:mm':'GMT':'en-GB'</b
+        >&#125;&#125;&lt;/p&gt;</code
+      >
+    </div>
+    <h2>Chaining Pipes</h2>
+    <em
+      >Các pipe có được nối với nhau để sử dụng nhiều pipe trong cùng một biểu
+      thức, kết quả trả về của pipe trước sẽ được chuyển đến pipe sau.</em
+    >
+    <div><code>toDate | date | uppercase</code></div>
+    <h2>Các built-in pipe trong Angular</h2>
+    <ul>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/angular-pipes/#datepipe"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Date</a
+        >: <code>date_expression | date[:format]</code>
+      </li>
+      <li><code>uppercase - lowercase</code></li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/angular-pipes/#syntax"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Slice</a
+        >: <code>array_or_string_expression | slice:start[:end]</code>
+      </li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/angular-pipes/#syntax-2"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Number</a
+        >: <code>number_expression | number[:digitInfo]</code>
+      </li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/angular-pipes/#percentepipe"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Percent</a
+        >: <code>number_expression | percent[:digitInfo]</code>
+      </li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/angular-pipes/#currencypipe"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Currency (tiền tệ)</a
+        >:
+        <code
+          >number_expression |
+          currency[:currencyCode[:symbolDisplay[:digitInfo]]]</code
+        >
+      </li>
+    </ul>
+    <h2>Đọc thêm</h2>
+    <ol>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/angular-pipes/"
+          target="_blank"
+          >Angular Pipes</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/formatting-dates-with-angular-date-pipe/"
+          target="_blank"
+          >Date Pipe</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/angular-keyvalue-pipe/"
+          target="_blank"
+          >KeyValue Pipe</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/using-angular-pipes-in-components-or-services/"
+          target="_blank"
+          >Using Pipes in Components &amp; Services</a
+        >
+      </li>
+    </ol>
+  </div>
+  <div #tabContent tab-title="Async Pipes và shareReplay">
+    <div class="title-note">
+      <ul>
+        <li>
+          Async Pipe cho phép subscribe một Observable hoặc Promise từ template
+          và trả về giá trị được emit. Khi sử dụng async pipe
+          <code>&#123; &#123; data | async &#125; &#125;</code>, Observable sẽ
+          tự động được <em>subscribe</em> khi Component load (được tạo). Và khi
+          Component destroy, Observable sẽ tự động được <em>unsubscribe</em>.
+        </li>
+        <li>
+          Khi data được trả về, <code>async pipe</code> sẽ tự động kích hoạt
+          change detection để cập nhật lại View. Do đó, View sẽ luôn được cập
+          nhật khi sử dụng <code>async pipe</code> dù có component có thay đổi
+          chiến lược change detection thành <code>OnPush</code>.
+        </li>
+      </ul>
+    </div>
+    <h2>Lưu trữ giá trị trả về từ async pipe</h2>
+    <em
+      ><ul>
+        <li>
+          Mỗi lần sử dụng async pipe, Observable sẽ được subscribe. Nếu chúng ta
+          call HTTP request thì nó sẽ call lại HTTP request nhiều lần để lấy giá
+          trị về sau đó sử dụng.
+        </li>
+        <li>
+          Do đó, chúng ta có thể sử dụng <code><b>as</b></code> để lưu kết quả
+          từ async pipe vào một biến để sử dụng mà không bị call API nhiều lần.
+        </li>
+      </ul></em
+    >
+    <code-highlighter [code]="asSyntax"></code-highlighter>
+    <h2>shareReplay</h2>
+    <em
+      ><b>shareReplay</b> là một toán tử của rxjs, khi chúng ta sử dụng
+      <code>shareReplay</code>, Observable chỉ được subscribe một lần cho
+      subscribe đầu tiên subscribe nó, những subscriber tiếp sẽ chỉ nhận lại các
+      giá trị mà Observable đã emit cho subsciber đầu tiên chứ không subscribe
+      lại (Tức chỉ call API một lần và sử dụng kết quả đó cho tất cả các
+      subsciber tiếp theo).</em
+    >
+    <div><code>const obsValue = getData().pipe(shareReplay());</code></div>
+    <code-highlighter [code]="usingShareReplay"></code-highlighter>
+    <h2>Tài liệu tham khảo</h2>
+    <ul>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/angular-async-pipe/"
+          target="_blank"
+          >Async Pipe</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div #tabContent tab-title="Tạo Custom Pipe">
+    <h2>Các bước để tạo một custom pipe</h2>
+    <ol>
+      <li>Tạo một pipe class - <code>pipe-name.pipe.ts</code></li>
+      <li>Khai báo <code>@Pipe()</code> decorator</li>
+      <li>
+        Cung cấp tên pipe trong name property của @Pipe decorator. Chúng ta sẽ
+        sử dụng tên này trong template -
+        <code>@Pipe(&#123;name: 'pipeName'&#125;)</code>.
+      </li>
+      <li>
+        Pipe class phải implement <code>PipeTransform</code> interface
+        (interface này chỉ chứa một method <code>transform</code> -
+        <code>export class TempConverterPipe implements PipeTransform</code>
+      </li>
+      <li>
+        Tham số đầu tiên của <code>transform</code> method là giá trị được
+        chuyển từ template. <code>transform</code> method phải biến đổi giá trị
+        và trả về kết quả. Chúng ta có thể thêm bất kỳ số lượng đối số bổ sung
+        nào vào phương thức biến đổi (từ tham số thứ hai trở đi của
+        <code>transform</code>).
+      </li>
+      <li>
+        Khai báo pipe class trong Root Module của Angular (app.module.ts).
+      </li>
+      <li>Sử dụng custom pipe như các built-in.</li>
+    </ol>
+    <h2>Tạo một pipe để chuyển đổi nhiệt độ</h2>
+    <code-highlighter
+      [clipboard]="true"
+      [code]="temparaturePipe"
+    ></code-highlighter>
+    <h2>Tài liệu tham khảo</h2>
+    <ul>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/angular-custom-pipes/"
+          target="_blank"
+          >Angular Custom Pipes</a
+        >
+      </li>
+    </ul>
+  </div>
+</app-tabs>

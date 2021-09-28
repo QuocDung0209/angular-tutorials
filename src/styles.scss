@@ -281,3 +281,22 @@ span.ng-tooltip.invalid.ng-tooltip-show {
 body {
   counter-reset: step-counter;
 }
+
+.title-note {
+  border: 1px solid #8080ee;
+  border-radius: 5px;
+  margin: 15px 40px;
+  padding: 10px;
+  box-shadow: 0px 2px 15px #8080ee;
+  font-weight: 600;
+}
+
+.explain {
+  color: #727275;
+  font-size: 15px;
+  font-family: system-ui;
+  margin-top: 10px;
+  padding-left: 10px;
+  line-height: 20px;
+  border-left: 5px solid darkgray;
+}

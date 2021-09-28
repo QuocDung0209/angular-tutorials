@@ -40,7 +40,7 @@
 
 .list-group-config {
   max-width: 300px;
-  max-height: 100vh;
+  max-height: calc(100vh - 60px);
   overflow-y: auto;
 }
 

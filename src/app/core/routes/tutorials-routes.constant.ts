@@ -1,10 +1,15 @@
 import { AngularFormsComponent } from 'src/app/angular-tutorials/pages/angular-forms/angular-forms.component';
 import { AsyncLoadingTutorialsComponent } from 'src/app/angular-tutorials/pages/async-loading-tutorials/async-loading-tutorials.component';
 import { DataBindingComponent } from 'src/app/angular-tutorials/pages/data-binding/data-binding.component';
+import { DependencyInjectionComponent } from 'src/app/angular-tutorials/pages/dependency-injection/dependency-injection.component';
+import { DirectivesTutorialComponent } from 'src/app/angular-tutorials/pages/directives-tutorial/directives-tutorial.component';
 import { DockerContainerComponent } from 'src/app/angular-tutorials/pages/docker-container/docker-container.component';
+import { DynamicComponent } from 'src/app/angular-tutorials/pages/dynamic/dynamic.component';
 import { FolderStructureComponent } from 'src/app/angular-tutorials/pages/folder-structure/folder-structure.component';
 import { InitialProjectComponent } from 'src/app/angular-tutorials/pages/initial-project/initial-project.component';
 import { OverviewComponent } from 'src/app/angular-tutorials/pages/overview/overview.component';
+import { PipesTutorialComponent } from 'src/app/angular-tutorials/pages/pipes-tutorial/pipes-tutorial.component';
+import { ViewEncapsulationComponent } from 'src/app/angular-tutorials/pages/view-encapsulation/view-encapsulation.component';
 
 export const TUTORIALS = [
   {
@@ -32,10 +37,34 @@ export const TUTORIALS = [
     component: DataBindingComponent,
   },
   {
-    title: 'Directive',
+    title: 'Directives và Custom Directive',
     routerLink: '/angular-tutorials/directives',
     path: 'directives',
-    component: AngularFormsComponent,
+    component: DirectivesTutorialComponent,
+  },
+  {
+    title: 'Pipe, Async Pipe và Custom pipe',
+    routerLink: '/angular-tutorials/pipes',
+    path: 'pipes',
+    component: PipesTutorialComponent,
+  },
+  {
+    title: 'Tạo Dynamic Component',
+    routerLink: '/angular-tutorials/dynamic-component',
+    path: 'dynamic-component',
+    component: DynamicComponent,
+  },
+  {
+    title: 'View Encapsulation',
+    routerLink: '/angular-tutorials/view-encapsulation',
+    path: 'view-encapsulation',
+    component: ViewEncapsulationComponent,
+  },
+  {
+    title: 'Service và Dependency injection',
+    routerLink: '/angular-tutorials/service-and-dependency-injection',
+    path: 'service-and-dependency-injection',
+    component: DependencyInjectionComponent,
   },
   {
     title: 'Angular Forms',
