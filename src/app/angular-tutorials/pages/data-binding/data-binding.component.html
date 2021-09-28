@@ -1,0 +1,210 @@
+<app-tabs>
+  <div #tabContent tab-title="Component">
+    <h1 class="text-center">Angular Component</h1>
+    <div class="title-note text-center">
+      Component là khối xây dựng chính của Angular. Mỗi component tạo ra một
+      thành phần nhỏ cho giao diện ứng dụng web như button, sidebar, header,
+      footer,...
+    </div>
+    <p>
+      <em
+        >Angular component là một JavaScript <b>class</b> và được định nghĩa
+        bằng <b>@Component</b> decorator. <b>@Component Decorator</b> là một
+        function để chỉ định một class là Component với Angular và để cung cấp
+        view (template) và metadata cho component.</em
+      >
+    </p>
+    <div><b>Một Component bao gồm 3 khối xây dựng chính:</b></div>
+    <ul>
+      <li>
+        <b>Template</b> (View): là file .html chứa các HTML element để định
+        nghĩa layout và content cho View. Không có template thì sẽ không có gì
+        được hiển thị (Angular sẽ không render bất cứ thứ gì ra DOM).
+        <div class="explain">
+          <ul>
+            <li>
+              Ngoài HTML emelent, chúng ta còn có thể thêm các Angular
+              Directive, Angular Pipes và các Angular Component khác vào
+              template.
+            </li>
+            <li>
+              Data cho template sẽ được lấy từ component class. Angular sẽ dụng
+              kỹ thuật Data Binding để giữ cho template và component class đồng
+              bộ với nhau.
+            </li>
+            <li>
+              Template có thể sử dụng Event Binding hoặc Two Way Data Binding để
+              thông báo cho component class khi user tác động lên View
+              (template).
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <b>Class</b>: Cung cấp data và logic cho View (template). Nó chứa
+        JavaScript code liên kết với Template (View).
+        <div class="explain">
+          <ul>
+            <li>
+              Chúng ta sử dụng <em>TypeScript</em> để tạo class nhưng chúng ta
+              cũng có thể sử dụng JavaScript trực tiếp trong class.
+            </li>
+            <li>
+              Class chứa các property và method. Các property của class có thể
+              bind đến view sử dụng Data Binding.
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <b>Metadata</b>: Cung cấp các thông tin thêm cho component.
+        <div class="explain">
+          Các metadata property quan trong của Component:
+          <ul>
+            <li>
+              <b>selector</b>: Chỉ định CSS selector đại diện cho component sẽ
+              được sử dụng trong Template của các component khác. Angular sẽ dựa
+              vào CSS selector này để render component.
+            </li>
+            <li>
+              <b>providers</b>: cung cấp các service mà component sẽ sử dụng.
+            </li>
+            <li>
+              <b>styleUrls</b>: Chỉ định một file sẽ cung cấp CSS styles cho
+              component.
+            </li>
+            <li>
+              <b>templateUrls</b>: Chỉ định file .html sẽ cung cấp HTML template
+              để định nghĩa View cho component.
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <h2>Tài liệu tham khảo</h2>
+    <ul>
+      <li>
+        <a
+          href="https://www.tektutorialshub.com/angular/angular-component/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Introduction to Angular Components</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div #tabContent tab-title="Cách tạo và sử dụng component">
+    <div class="title-note">
+      <h4>Chúng ta có 2 cách để tạo ra một component</h4>
+      <ol>
+        <li>
+          Dùng Angular CLI để tạo và thêm component vào root module:
+          <div><code>ng g c component-name</code></div>
+        </li>
+        <li>
+          Tạo Component thủ công theo các bước sau:
+          <ol>
+            <li>Tạo component file - name.component.ts</li>
+            <li>
+              Import Component từ angular core -
+              <code
+                >import &#123; Component, OnInit } from '@angular/core';</code
+              >
+            </li>
+            <li>
+              Tạo component class và export nó -
+              <code>export class DataBindingComponent &#123;}</code>
+            </li>
+            <li>
+              Thêm @Component decorator bên trên class -
+              <code>@Component(&#123;})</code>
+            </li>
+            <li>
+              Thêm các metadata property vào @Component decorator -
+              <code>selector - templateUrl - styleUrls</code>
+            </li>
+            <li>
+              Tạo template - file <code>.component.html</code> hoặc inline
+              template trong file .component.ts
+            </li>
+            <li>Tạo CSS styles - file <code>.component.scss</code></li>
+            <li>
+              Đăng ký component trong declarations của Root module -
+              <code>declarations: [NameComponent]</code>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+    <h2>Component với inline template</h2>
+    <code-highlighter [code]="inlineTemplate"></code-highlighter>
+    <h2>Component với external template</h2>
+    <code-highlighter [code]="externalTemplate"></code-highlighter>
+    <h2>Sử dụng Component trong template của các component khác</h2>
+    <code>&lt;app-title&gt;&lt;/app-title&gt;</code>
+  </div>
+  <div #tabContent tab-title="Data Binding">
+    <div class="row">
+      <div class="col-9">
+        <iframe
+          src="https://quocdung0209.blogspot.com/2021/08/angular-data-binding.html"
+          frameborder="0"
+        ></iframe>
+      </div>
+      <div class="col-3">
+        <h2>Đọc thêm</h2>
+        <ol>
+          <li>
+            <a
+              href="https://www.tektutorialshub.com/angular/angular-data-binding/"
+              target="_blank"
+              >Data Binding in Angular</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.tektutorialshub.com/angular/interpolation-in-angular/"
+              target="_blank"
+              >Interpolation in Angular</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.tektutorialshub.com/angular/property-binding-in-angular/"
+              target="_blank"
+              >Property Binding in Angular</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.tektutorialshub.com/angular/event-binding-in-angular/"
+              target="_blank"
+              >Event Binding in Angular</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.tektutorialshub.com/angular/ngmodel-two-way-data-binding-in-angular/"
+              target="_blank"
+              >Two way Binding &amp; ngModel in Angular</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.tektutorialshub.com/angular/ngmodelchange-change-event-in-angular/"
+              target="_blank"
+              >ngModelChange &amp; Change Event</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.tektutorialshub.com/angular/angular-adding-child-component/"
+              target="_blank"
+              >Adding Child Component in Angular</a
+            >
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</app-tabs>
