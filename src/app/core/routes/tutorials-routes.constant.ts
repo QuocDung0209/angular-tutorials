@@ -7,6 +7,7 @@ import { DockerContainerComponent } from 'src/app/angular-tutorials/pages/docker
 import { FolderStructureComponent } from 'src/app/angular-tutorials/pages/folder-structure/folder-structure.component';
 import { InitialProjectComponent } from 'src/app/angular-tutorials/pages/initial-project/initial-project.component';
 import { OverviewComponent } from 'src/app/angular-tutorials/pages/overview/overview.component';
+import { ViewEncapsulationComponent } from 'src/app/angular-tutorials/pages/view-encapsulation/view-encapsulation.component';
 
 export const TUTORIALS = [
   {
@@ -38,6 +39,12 @@ export const TUTORIALS = [
     routerLink: '/angular-tutorials/directives',
     path: 'directives',
     component: DirectivesTutorialComponent,
+  },
+  {
+    title: 'View Encapsulation',
+    routerLink: '/angular-tutorials/view-encapsulation',
+    path: 'view-encapsulation',
+    component: ViewEncapsulationComponent,
   },
   {
     title: 'Service và Dependency injection',
