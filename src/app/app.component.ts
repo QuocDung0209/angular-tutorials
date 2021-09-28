@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CODE_SNIPPETS } from './shared/constants/code-snippets-routes.constant';
-import { TUTORIALS } from './shared/constants/tutorials-routes.constant';
+import { CODE_SNIPPETS } from './core/routes/code-snippets-routes.constant';
+import { TUTORIALS } from './core/routes/tutorials-routes.constant';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   isOpen = false;
@@ -15,9 +15,7 @@ export class AppComponent implements OnInit {
   codeSnippets: any = CODE_SNIPPETS;
   menuList = this.tutorials;
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   onOutsideClick() {
     this.isOpen = false;

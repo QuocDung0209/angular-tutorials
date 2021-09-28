@@ -7,6 +7,7 @@ import { InitialProjectComponent } from './pages/initial-project/initial-project
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { OverviewComponent } from './pages/overview/overview.component';
+import { DataBindingComponent } from './pages/data-binding/data-binding.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { OverviewComponent } from './pages/overview/overview.component';
     AsyncLoadingTutorialsComponent,
     DockerContainerComponent,
     InitialProjectComponent,
-    OverviewComponent
+    OverviewComponent,
+    DataBindingComponent
   ],
   imports: [SharedModule, AngularTutorialsRoutingModule],
 })
