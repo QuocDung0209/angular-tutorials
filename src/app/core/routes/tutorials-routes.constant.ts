@@ -4,6 +4,7 @@ import { DataBindingComponent } from 'src/app/angular-tutorials/pages/data-bindi
 import { DependencyInjectionComponent } from 'src/app/angular-tutorials/pages/dependency-injection/dependency-injection.component';
 import { DirectivesTutorialComponent } from 'src/app/angular-tutorials/pages/directives-tutorial/directives-tutorial.component';
 import { DockerContainerComponent } from 'src/app/angular-tutorials/pages/docker-container/docker-container.component';
+import { DynamicComponent } from 'src/app/angular-tutorials/pages/dynamic/dynamic.component';
 import { FolderStructureComponent } from 'src/app/angular-tutorials/pages/folder-structure/folder-structure.component';
 import { InitialProjectComponent } from 'src/app/angular-tutorials/pages/initial-project/initial-project.component';
 import { OverviewComponent } from 'src/app/angular-tutorials/pages/overview/overview.component';
@@ -39,6 +40,12 @@ export const TUTORIALS = [
     routerLink: '/angular-tutorials/directives',
     path: 'directives',
     component: DirectivesTutorialComponent,
+  },
+  {
+    title: 'Tạo Dynamic Component',
+    routerLink: '/angular-tutorials/dynamic-component',
+    path: 'dynamic-component',
+    component: DynamicComponent,
   },
   {
     title: 'View Encapsulation',
