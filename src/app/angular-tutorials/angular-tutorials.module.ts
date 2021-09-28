@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { DataBindingComponent } from './pages/data-binding/data-binding.component';
+import { DirectivesTutorialComponent } from './pages/directives-tutorial/directives-tutorial.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DataBindingComponent } from './pages/data-binding/data-binding.componen
     DockerContainerComponent,
     InitialProjectComponent,
     OverviewComponent,
-    DataBindingComponent
+    DataBindingComponent,
+    DirectivesTutorialComponent
   ],
   imports: [SharedModule, AngularTutorialsRoutingModule],
 })

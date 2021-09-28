@@ -1,6 +1,7 @@
 import { AngularFormsComponent } from 'src/app/angular-tutorials/pages/angular-forms/angular-forms.component';
 import { AsyncLoadingTutorialsComponent } from 'src/app/angular-tutorials/pages/async-loading-tutorials/async-loading-tutorials.component';
 import { DataBindingComponent } from 'src/app/angular-tutorials/pages/data-binding/data-binding.component';
+import { DirectivesTutorialComponent } from 'src/app/angular-tutorials/pages/directives-tutorial/directives-tutorial.component';
 import { DockerContainerComponent } from 'src/app/angular-tutorials/pages/docker-container/docker-container.component';
 import { FolderStructureComponent } from 'src/app/angular-tutorials/pages/folder-structure/folder-structure.component';
 import { InitialProjectComponent } from 'src/app/angular-tutorials/pages/initial-project/initial-project.component';
@@ -32,10 +33,10 @@ export const TUTORIALS = [
     component: DataBindingComponent,
   },
   {
-    title: 'Directive',
+    title: 'Directives',
     routerLink: '/angular-tutorials/directives',
     path: 'directives',
-    component: AngularFormsComponent,
+    component: DirectivesTutorialComponent,
   },
   {
     title: 'Angular Forms',
