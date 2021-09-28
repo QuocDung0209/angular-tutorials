@@ -9,6 +9,10 @@ import { SharedModule } from '../shared/shared.module';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { DataBindingComponent } from './pages/data-binding/data-binding.component';
 import { DirectivesTutorialComponent } from './pages/directives-tutorial/directives-tutorial.component';
+import { PipesTutorialComponent } from './pages/pipes-tutorial/pipes-tutorial.component';
+import { ViewEncapsulationComponent } from './pages/view-encapsulation/view-encapsulation.component';
+import { DependencyInjectionComponent } from './pages/dependency-injection/dependency-injection.component';
+import { DynamicComponent } from './pages/dynamic/dynamic.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { DirectivesTutorialComponent } from './pages/directives-tutorial/directi
     InitialProjectComponent,
     OverviewComponent,
     DataBindingComponent,
-    DirectivesTutorialComponent
+    DirectivesTutorialComponent,
+    PipesTutorialComponent,
+    ViewEncapsulationComponent,
+    DependencyInjectionComponent,
+    DynamicComponent
   ],
   imports: [SharedModule, AngularTutorialsRoutingModule],
 })

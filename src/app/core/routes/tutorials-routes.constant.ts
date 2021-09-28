@@ -8,6 +8,7 @@ import { DynamicComponent } from 'src/app/angular-tutorials/pages/dynamic/dynami
 import { FolderStructureComponent } from 'src/app/angular-tutorials/pages/folder-structure/folder-structure.component';
 import { InitialProjectComponent } from 'src/app/angular-tutorials/pages/initial-project/initial-project.component';
 import { OverviewComponent } from 'src/app/angular-tutorials/pages/overview/overview.component';
+import { PipesTutorialComponent } from 'src/app/angular-tutorials/pages/pipes-tutorial/pipes-tutorial.component';
 import { ViewEncapsulationComponent } from 'src/app/angular-tutorials/pages/view-encapsulation/view-encapsulation.component';
 
 export const TUTORIALS = [
@@ -36,10 +37,16 @@ export const TUTORIALS = [
     component: DataBindingComponent,
   },
   {
-    title: 'Directives and Custom Directive',
+    title: 'Directives và Custom Directive',
     routerLink: '/angular-tutorials/directives',
     path: 'directives',
     component: DirectivesTutorialComponent,
+  },
+  {
+    title: 'Pipe, Async Pipe và Custom pipe',
+    routerLink: '/angular-tutorials/pipes',
+    path: 'pipes',
+    component: PipesTutorialComponent,
   },
   {
     title: 'Tạo Dynamic Component',
