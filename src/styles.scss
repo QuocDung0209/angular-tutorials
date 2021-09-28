@@ -10,7 +10,7 @@
   padding: 3px 8px;
   background: #282a36;
   border-radius: 4px;
-  z-index: 1000;
+  z-index: 999999;
   opacity: 0;
 }
 .ng-tooltip:after {
