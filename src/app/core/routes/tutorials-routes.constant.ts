@@ -1,6 +1,7 @@
 import { AngularFormsComponent } from 'src/app/angular-tutorials/pages/angular-forms/angular-forms.component';
 import { AsyncLoadingTutorialsComponent } from 'src/app/angular-tutorials/pages/async-loading-tutorials/async-loading-tutorials.component';
 import { DataBindingComponent } from 'src/app/angular-tutorials/pages/data-binding/data-binding.component';
+import { DependencyInjectionComponent } from 'src/app/angular-tutorials/pages/dependency-injection/dependency-injection.component';
 import { DirectivesTutorialComponent } from 'src/app/angular-tutorials/pages/directives-tutorial/directives-tutorial.component';
 import { DockerContainerComponent } from 'src/app/angular-tutorials/pages/docker-container/docker-container.component';
 import { FolderStructureComponent } from 'src/app/angular-tutorials/pages/folder-structure/folder-structure.component';
@@ -33,10 +34,16 @@ export const TUTORIALS = [
     component: DataBindingComponent,
   },
   {
-    title: 'Directives',
+    title: 'Directives and Custom Directive',
     routerLink: '/angular-tutorials/directives',
     path: 'directives',
     component: DirectivesTutorialComponent,
+  },
+  {
+    title: 'Service và Dependency injection',
+    routerLink: '/angular-tutorials/service-and-dependency-injection',
+    path: 'service-and-dependency-injection',
+    component: DependencyInjectionComponent,
   },
   {
     title: 'Angular Forms',
