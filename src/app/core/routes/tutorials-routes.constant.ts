@@ -1,5 +1,6 @@
 import { AngularFormsComponent } from 'src/app/angular-tutorials/pages/angular-forms/angular-forms.component';
 import { AsyncLoadingTutorialsComponent } from 'src/app/angular-tutorials/pages/async-loading-tutorials/async-loading-tutorials.component';
+import { ChangeDetectionComponent } from 'src/app/angular-tutorials/pages/change-detection/change-detection.component';
 import { DataBindingComponent } from 'src/app/angular-tutorials/pages/data-binding/data-binding.component';
 import { DependencyInjectionComponent } from 'src/app/angular-tutorials/pages/dependency-injection/dependency-injection.component';
 import { DirectivesTutorialComponent } from 'src/app/angular-tutorials/pages/directives-tutorial/directives-tutorial.component';
@@ -71,6 +72,12 @@ export const TUTORIALS = [
     routerLink: '/angular-tutorials/angular-forms',
     path: 'angular-forms',
     component: AngularFormsComponent,
+  },
+  {
+    title: 'Change detection',
+    routerLink: '/angular-tutorials/change-detection',
+    path: 'change-detection',
+    component: ChangeDetectionComponent,
   },
   {
     title:
