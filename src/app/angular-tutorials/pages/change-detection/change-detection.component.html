@@ -1,0 +1,240 @@
+<h1 class="text-center">Change detection trong Angular</h1>
+<h2>Change detection là gì?</h2>
+<div class="ms-3">
+  <p>
+    <strong>Change detection</strong> là một cơ chế chịu trách nhiệm kiểm tra và
+    tự động cập nhật View khi phát hiện thay đổi trong ứng dụng Angular để đồng
+    bộ dữ liệu giữa component và view.
+  </p>
+  <p>
+    <em
+      >Mỗi component có một <strong>change detector</strong> riêng. Và do đó,
+      chúng ta có thể inject nó vào contructor của component class để quản lý
+      quá trình <strong>change detection</strong> theo cách thủ công để cải
+      thiện hiệu suất.</em
+    >
+  </p>
+  <p>
+    Khi <strong>Change detection</strong> theo dõi sự thay đổi của component, nó
+    chỉ quan tâm đến sự thay đổi của các property được ràng buộc (binding) với
+    template view (đây là những ràng buộc giữa view và model - tức khi model
+    update thì phần nào trên view cần phải cập nhật lại). Nếu các property này
+    thay đổi, template view sẽ được cập nhật.
+  </p>
+  <code-highlighter [code]="propertyBinding"></code-highlighter>
+  <p>
+    Trong ví dụ trên, khi <strong>Change detection</strong> thực hiện kiểm tra,
+    nó chỉ quan tâm đến sự thay đổi của <em>firstname</em> và <em>lastname</em>.
+    Nếu <em>firstname</em> hoặc <em>lastname</em> thay đổi, template View sẽ tự
+    động được cập nhật.
+  </p>
+  <h3>
+    Nguyên nhân nào làm cho các property được binding thay đổi và Change
+    detection được kích hoạt khi nào?
+  </h3>
+  <p>
+    Sự thay đổi của các property được binding trong ứng dụng Angular có thể được
+    phát sinh bởi 3 thứ sau:
+  </p>
+  <ul>
+    <li><strong>DOM events</strong>: click, change, submit,...</li>
+    <li><strong>Http Request</strong>: Lấy dữ liệu từ backend server.</li>
+    <li><strong>Timers</strong>: setTimeout(), setInterval()</li>
+  </ul>
+  <p>
+    Điểm chung của những thứ này là <strong>bất đồng bộ (asynchronous)</strong>.
+    Điều này nói lên rằng, bất cứ khi nào có hoạt động bất bộ thực hiện, trạng
+    thái của ứng dụng có thể bị thay đổi. Do đó, theo mặc định, khi hoạt động
+    bất đồng bộ hoàn thành, Angular sẽ tự động kích hoạt
+    <strong>Change detection</strong> để kiểm tra trạng thái của toàn bộ
+    component trong ứng dụng.
+  </p>
+  <p>
+    Ở đây có một vấn đề, như chúng ta đã biết, các hoạt động bất đồng bộ không
+    được xử lý bởi JavaScript mà được xử lý bởi Web APIs do browser cung cấp và
+    chúng ta không biết được khi nào một hoạt động bất đồng bộ hoàn thành (được
+    xử lý xong).
+    <strong
+      >Vậy làm thế nào mà Angular biết được chính xác khi nào cần kích hoạt
+      <em>Change detection</em>?</strong
+    >
+  </p>
+  <div class="title-note">
+    Câu trả lời ở đây là nhờ vào <em>NgZone</em> - một service được xây dựng dựa
+    trên thư viện Zone.js.
+    <ul>
+      <li>
+        Theo mặc định, Zone.js sẽ vá (monkey-patched / viết lại / ghi đè) tất cả
+        các phướng thức bất đồng bộ của APIs gốc như setTimeout(),
+        setInterval(), DomEvents,... và chạy bên chúng bên trong một zone mới.
+        Nhờ đó mà nó biết được khi nào một hoạt động bất đồng bộ sẽ ra và khi
+        nào hoạt động đó hoàn thành.
+      </li>
+      <li>
+        NgZone kế thừa lại các APIs monkey patched của Zone.js và bổ sung thêm
+        một số event (Observable) như onTurnStart(), onTurnDone() để thông báo
+        thời điểm hoạt động bất đồng bộ bắt đầu và kết thúc.
+      </li>
+      <li>
+        Khi chúng ta khởi chạy ứng dụng Angular, NgZone sẽ tạo ra một zone và
+        đặt tên là <em>angular</em> và đồng thời, Angular Application cũng đăng
+        ký (subscribe) để theo dõi sự kiện <em>onTurnDone()</em>. Tất cả các
+        hoạt động bất đồng sẽ chạy trong <em>angular</em> zone này. Khi hoạt
+        động bất đồng bộ hoàn thành, <em>angular</em> zone sẽ phát ra sự kiện
+        onTurnDone() để thông báo, Angular sẽ bắt sự kiện này và kích hoạt
+        <em>Change detection</em>.
+      </li>
+    </ul>
+  </div>
+  <p>
+    <em
+      >Ở đâu đó trong source code của Angular, có một thứ được gọi là
+      <strong>ApplicationRef</strong>, lắng nghe sự kiện
+      <strong>NgZones onTurnDone</strong>. Bất cứ khi nào sự kiện này được kích
+      hoạt, nó thực hiện một hàm <strong>tick()</strong> về cơ bản thực hiện
+      phát hiện thay đổi (Change detection).
+    </em>
+  </p>
+  <code-highlighter [code]="applicationRef"></code-highlighter>
+  <p>
+    Do đó, khi có sự kiện bất đồng bộ được thực thi, Angular sẽ kích hoạt change
+    detection để kiểm tra trạng thái có thay đổi hay không, nếu có thì sẽ tự
+    động cập nhật View. Và vì mỗi component có bộ change detector riêng nên khi
+    có hoạt động bất đồng bộ xảy ra, change detection sẽ được kích hoạt cho tất
+    cả các component trong ứng dụng bắt đầu từ root component (thường lại
+    AppComponent).
+  </p>
+  <div class="text-center">
+    <img src="../../../../assets/gif/cd-cycle.gif" alt="Change detection" />
+  </div>
+  <h3>Các lưu ý về Change detection</h3>
+  <ul>
+    <li>Mỗi component có một change detector riêng.</li>
+    <li>
+      Quá trình theo dõi sự thay đổi (change detection) luôn bắt đầu từ root
+      component (thường là AppComponent) đến tất cả các component con cháu của
+      nó. Do đó, việc kích hoạt change detection tại một component bất kỳ sẽ dẫn
+      đến kích hoạt change detection ở tất cả các component.
+    </li>
+    <li>
+      Change detection chỉ quan tâm đến các property được binding đến template
+      và nó chỉ cập nhật phần UI có model binding tương ứng bị thay đổi chứ
+      không render lại toàn bộ UI.
+    </li>
+  </ul>
+  <h3>Đọc thêm</h3>
+  <ul>
+    <li>
+      <a
+        href="https://quocdung0209.blogspot.com/2021/10/change-detection-trong-angular.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Change detection trong Angular</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://www.youtube.com/watch?v=CUxD91DWkGM"
+        target="_blank"
+        rel="noopener noreferrer"
+        >NG-NL 2016: Pascal Precht - Angular 2 Change Detection Explained</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://teropa.info/blog/2015/03/02/change-and-its-detection-in-javascript-frameworks.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Change And Its Detection In JavaScript Frameworks</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://www.jvandemo.com/how-i-optimized-minesweeper-using-angular-2-and-immutable-js-to-make-it-insanely-fast/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        How I optimized Minesweeper using Angular 2 and Immutable.js to make it
+        insanely fast</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://blog.nrwl.io/essential-angular-change-detection-fe0e868dcc00?gi=50fc45515ca0#.8z7p6poyp"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Essential Angular: Change Detection</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://blog.thoughtram.io/angular/2016/02/22/angular-2-change-detection-explained.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Angular Change Detection Explained</a
+      >
+    </li>
+  </ul>
+</div>
+<h2>Các chiến lược change detection trong Angular</h2>
+<div class="ms-3">
+  <p>
+    Trong Angular có 2 chiến lược change detection có thể được chọn để thiết lập
+    cho component gồm:
+  </p>
+  <ul>
+    <li>
+      <em>ChangeDetectionStrategy.<strong>Default</strong></em
+      >: đây là chiến lược được sử dụng mặc định trong Angular khi component
+      được tạo bằng Angular CLI. Với chiến lược này, change detection sẽ tự động
+      được kích hoạt khi có bất kỳ hoạt động không đồng bộ nào làm thay đổi
+      property (<em>được binding với view</em>) xảy ra trong các component.
+    </li>
+    <li>
+      <em>ChangeDetectionStrategy.<strong>OnPush</strong></em
+      >: chiến lược này sẽ loại bỏ các lần gọi change detection không cần thiết
+      cho component được thiết lập và các component con của nó - Các component
+      con của component sử dụng chiến lược OnPush cũng sẽ bị buộc sử dụng chiến
+      lược OnPush, cho dù chúng có thiết lập chiến lược thành Default thì vẫn
+      không có tác dụng, không override lại.
+    </li>
+  </ul>
+  <div class="title-note">
+    Với chiến lược OnPush, change detection chỉ được gọi khi
+    <em>@Input() property</em> của component thay đổi hoặc thực hiện các
+    <em>DOM events</em> như click, change, submit,... Các Timers như
+    setTimeout(), setInterval(), hoặc Http Request sẽ không kích hoạt change
+    detection trong chiến lược này mà chúng ta phải gọi change detection thủ
+    công bằng cách gọi hàm <strong>marForCheck()</strong> từ
+    <strong>ChangeDetectorRef</strong> được inject vào contructor của component.
+  </div>
+  <h3>Sự khác biệt giữa <em>detectChanges()</em> và <em>markForCheck()</em></h3>
+  <p>
+    Sử dụng <em>detectChanges()</em> khi chúng ta đã cập nhật model sau khi
+    Angular đã chạy phát hiện thay đổi hoặc thực hiện runOutsideAngular().
+  </p>
+  <p>
+    Sử dụng <em>markForCheck()</em> nếu chúng ta sử dụng OnPush và chúng ta đang
+    bỏ quá ChangeDetectionStrategy bằng cách truyền same reference cho Input
+    hoặc cập nhật model trong setTimeout().
+  </p>
+  <h3>Đọc thêm</h3>
+  <ul>
+    <li>
+      <a
+        href="https://helpex.vn/article/dieu-chinh-phat-hien-thay-doi-cua-angular-5c54c237507419248c9aef65"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Điều chỉnh phát hiện thay đổi của Angular</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://ichi.pro/vi/hieu-chien-luoc-onpush-de-cai-thien-hieu-suat-angular-115421376083687"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Hiểu chiến lược OnPush để cải thiện hiệu suất Angular</a
+      >
+    </li>
+  </ul>
+</div>

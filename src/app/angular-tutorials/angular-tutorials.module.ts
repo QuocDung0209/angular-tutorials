@@ -13,6 +13,7 @@ import { PipesTutorialComponent } from './pages/pipes-tutorial/pipes-tutorial.co
 import { ViewEncapsulationComponent } from './pages/view-encapsulation/view-encapsulation.component';
 import { DependencyInjectionComponent } from './pages/dependency-injection/dependency-injection.component';
 import { DynamicComponent } from './pages/dynamic/dynamic.component';
+import { ChangeDetectionComponent } from './pages/change-detection/change-detection.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DynamicComponent } from './pages/dynamic/dynamic.component';
     PipesTutorialComponent,
     ViewEncapsulationComponent,
     DependencyInjectionComponent,
-    DynamicComponent
+    DynamicComponent,
+    ChangeDetectionComponent
   ],
   imports: [SharedModule, AngularTutorialsRoutingModule],
 })
