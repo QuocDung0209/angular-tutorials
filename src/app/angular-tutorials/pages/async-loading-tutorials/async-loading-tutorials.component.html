@@ -50,21 +50,13 @@
 <div class="ms-3">
   <p><code>ng g c spinner-overlay</code></p>
   <h5>HTML template</h5>
-  <code-highlighter
-    [clipboard]="true"
-    [code]="spinnerTemplate"
-  ></code-highlighter>
+  <code-highlighter [code]="spinnerTemplate"></code-highlighter>
   <h5>CSS</h5>
-  <code-highlighter
-    [clipboard]="true"
-    [height]="'300px'"
-    [code]="spinnerCss"
-  ></code-highlighter>
+  <code-highlighter [height]="'300px'" [code]="spinnerCss"></code-highlighter>
 </div>
 <div class="step">Tạo spinner service</div>
 <div class="ms-3">
   <code-highlighter
-    [clipboard]="true"
     [height]="'300px'"
     [code]="spinnerService"
   ></code-highlighter>
@@ -137,7 +129,6 @@
     <dt>Tạo spinner interceptor implement HttpInterceptor</dt>
     <dd>
       <code-highlighter
-        [clipboard]="true"
         [height]="'300px'"
         [code]="spinnerInterceptor"
       ></code-highlighter>
@@ -145,7 +136,6 @@
     <dt>Cung cấp SpinnerInterceptor cho app.moudle.ts</dt>
     <dd>
       <code-highlighter
-        [clipboard]="true"
         [height]="'300px'"
         [code]="serviceProvider"
       ></code-highlighter>
